@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Vimu</title>
+	<script type="text/javascript" src="paper-full.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.0.15/howler.core.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="VimuCSS.css">
+
+	<script type="text/paperscript" canvas="myCanvas"> 
+
+	var keyData = {
+
+	q: {
+		shape: new String("roundedRectangle"),
+		color: "purple",
+		sound: new Howl({ src: ['bubbles.mp3']})
+	},
+
+	w: {
+		shape: new String("circle"),
+		sound: new Howl({
+  		src: ['sounds/clay.mp3']
+		}),
+		color: '#2ecc71'
+	},
+	e: {
+		shape: new String("triangle"),
+		sound: new Howl({
+  		src: ['sounds/confetti.mp3']
+		}),
+		color: '#3498db'
+	},
+	r: {
+		shape: new String("circle"),
+		sound: new Howl({
+  		src: ['sounds/corona.mp3']
+		}),
+		color: '#9b59b6'
+	},
+	t: {
+		shape: new String("triangle"),
+		sound: new Howl({
+  		src: ['sounds/dotted-spiral.mp3']
+		}),
+		color: '#34495e'
+	},
+	y: {
+		shape: new String("circle"),
+		sound: new Howl({
+  		src: ['sounds/flash-1.mp3']
+		}),
+		color: '#16a085'
+	},
+	u: {
+		shape: new String("circle"),
+		sound: new Howl({
+  		src: ['sounds/flash-2.mp3']
+		}),
+		color: '#27ae60'
+	},
+	i: {
+		shape: new String("circle"),
+		sound: new Howl({
+  		src: ['sounds/flash-3.mp3']
+		}),
+		color: '#2980b9'
+	},
+	o: {
+		shape: new String("triangle"),
+		sound: new Howl({
+			src: ['sounds/glimmer.mp3']
+		}),
+		color: '#8e44ad'
+	},
+	p: {
+		shape: new String("circle"),
+		sound: new Howl({
+  		src: ['sounds/moon.mp3']
+		}),
+		color: '#2c3e50'
+	},
+	a: {
+		shape: new String("circle"),
+		sound: new Howl({
+  		src: ['sounds/pinwheel.mp3']
+		}),
+		color: '#f1c40f'
+	},
+	s: {
+		shape: new String("circle"),
+		sound: new Howl({
+  		src: ['sounds/piston-1.mp3']
+		}),
+		color: '#e67e22'
+	},
+	d: {
+		shape: new String("roundedRectangle"),
+		sound: new Howl({
+  		src: ['sounds/piston-2.mp3']
+		}),
+		color: '#e74c3c'
+	},
+	f: {
+		shape: new String("triangle"),
+		sound: new Howl({
+  		src: ['sounds/prism-1.mp3']
+		}),
+		color: '#95a5a6'
+	},
+	g: {
+		shape: new String("roundedRectangle"),
+		sound: new Howl({
+  		src: ['sounds/prism-2.mp3']
+		}),
+		color: '#f39c12'
+	},
+	h: {
+		shape: new String("roundedRectangle"),
+		sound: new Howl({
+  		src: ['sounds/prism-3.mp3']
+		}),
+		color: '#d35400'
+	},
+	j: {
+		shape: new String("roundedRectangle"),
+		sound: new Howl({
+  		src: ['sounds/splits.mp3']
+		}),
+		color: '#1abc9c'
+	},
+	k: {
+		shape: new String("roundedRectangle"),
+		sound: new Howl({
+  		src: ['sounds/squiggle.mp3']
+		}),
+		color: '#2ecc71'
+	},
+	l: {
+		shape: new String("roundedRectangle"),
+		sound: new Howl({
+  		src: ['sounds/strike.mp3']
+		}),
+		color: '#3498db'
+	},
+	z: {
+		shape: new String("roundedRectangle"),
+		sound: new Howl({
+  		src: ['sounds/suspension.mp3']
+		}),
+		color: '#9b59b6'
+	},
+	x: {
+		shape: new String("triangle"),
+		sound: new Howl({
+  		src: ['sounds/timer.mp3']
+		}),
+		color: '#34495e'
+	},
+	c: {
+		shape: new String("circle"),
+		sound: new Howl({
+  		src: ['sounds/ufo.mp3']
+		}),
+		color: '#16a085'
+	},
+	v: {
+		shape: new String("circle"),
+		sound: new Howl({
+  		src: ['sounds/veil.mp3']
+		}),
+		color: '#27ae60'
+	},
+	b: {
+		shape: new String("circle"),
+		sound: new Howl({
+  		src: ['sounds/wipe.mp3']
+		}),
+		color: '#2980b9'
+	},
+	n: {
+		shape: new String("triangle"),
+		sound: new Howl({
+			src: ['sounds/zig-zag.mp3']
+		}),
+		color: '#8e44ad'
+	},
+	m: {
+		shape: new String("roundedRectangle"),
+		sound: new Howl({
+  		src: ['sounds/moon.mp3']
+		}),
+		color: '#2c3e50'
+	}
+}
+
+	var myCircles = [];
+	var myRoundRectangles = [];
+	var myTriangles = [];
+
+	function onKeyDown(event){
+		if(keyData[event.key] && (keyData[event.key].shape =="circle")){
+
+			var maxPoint = new Point(view.size.width, view.size.height);
+			var randomPt = Point.random();
+			var point = maxPoint*randomPt;
+			var newCircle = new Path.Circle(point, 200);
+			newCircle.fillColor = keyData[event.key].color;
+			keyData[event.key].sound.play();
+			myCircles.push(newCircle);
+		}
+
+		else if(keyData[event.key] && (keyData[event.key].shape =="roundedRectangle")){
+			var maxPoint = new Point(view.size.width, view.size.height);
+			var randomPt1 = Point.random();
+			var randomPt2 = Point.random();
+			var rectangle = new Rectangle(maxPoint*randomPt1, maxPoint*randomPt2);
+			var cornerSize = new Size(20,20);
+			var newRoundRec = new Path.RoundRectangle(rectangle, cornerSize);
+			newRoundRec.fillColor = keyData[event.key].color;
+			keyData[event.key].sound.play();
+			myRoundRectangles.push(newRoundRec);
+		} 
+
+		else if(keyData[event.key] && (keyData[event.key].shape =="triangle")){
+			// Create a triangle shaped path 
+			var maxPoint = new Point(view.size.width, view.size.height);
+			var randomPt = Point.random();
+			var newTriangle = new Path.RegularPolygon(maxPoint*randomPt, 3, 70);
+			newTriangle.fillColor = keyData[event.key].color;
+			keyData[event.key].sound.play();
+			newTriangle.selected = false;
+			myTriangles.push(newTriangle);
+		}
+
+	}
+	var triangleDestination = Point.random() * view.size;
+	function onFrame(event){
+
+		if(myCircles.length>0){
+			for(var i=0; i< myCircles.length; i++){
+			myCircles[i].fillColor.hue += 1;
+			myCircles[i].scale(.9);
+			}		
+		}
+
+		if(myRoundRectangles.length>0){
+			for(var j=0; j< myRoundRectangles.length; j++){
+				var random = Point.random();
+				var destination = Point.random() * view.size;
+				myRoundRectangles[j].fillColor.hue += 1;
+				if(random > 0.5){
+					myRoundRectangles[j].rotate(3);}
+				else {
+					myRoundRectangles[j].rotate(-3);}
+				myRoundRectangles[j].scale(0.95);
+			}
+		}
+
+		if(myTriangles.length>0){
+			for(var k=0; k< myTriangles.length; k++){
+				var random = Point.random();
+				myTriangles[k].fillColor.hue += 1;
+				//if(random>0.5){
+					var vector = triangleDestination - myTriangles[k].position;
+					myTriangles[k].position += vector / 30;
+					if(vector.length <6) {
+						myTriangles[k].scale(0.95);
+					}
+				//}
+				/*else {
+					var vector = destination - myTriangles[k].position;
+					myTriangles[k].position -= vector / 30;
+					if(vector.length <6) {
+					myTriangles[k].scale(0.95);
+					}
+				}*/
+			}
+		}
+	}
+
+</script>
+</head>
+<body>
+	<canvas id="myCanvas" resize></canvas>
+</body>
+</html>
