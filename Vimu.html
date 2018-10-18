@@ -7,385 +7,328 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-	<title>Vimu</title>
+	<title>VIMU</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
+    <link href="library/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Custom styles for this template -->
-    <link href="css/half-slider.css" rel="stylesheet">
-    
-	<script type="text/javascript" src="paper-full.js"></script>
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.0.15/howler.core.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="VimuCSS.css">
-
-	<script type="text/paperscript" canvas="myCanvas"> 
-
-	var keyData = {
-
-	q: {
-		shape: new String("roundedRectangle"),
-		color: "purple",
-		sound: new Howl({ src: ['bubbles.mp3']})
-	},
-
-	w: {
-		shape: new String("circle"),
-		sound: new Howl({
-  		src: ['sounds/clay.mp3']
-		}),
-		color: '#2ecc71'
-	},
-	e: {
-		shape: new String("triangle"),
-		sound: new Howl({
-  		src: ['sounds/confetti.mp3']
-		}),
-		color: '#3498db'
-	},
-	r: {
-		shape: new String("circle"),
-		sound: new Howl({
-  		src: ['sounds/corona.mp3']
-		}),
-		color: '#9b59b6'
-	},
-	t: {
-		shape: new String("triangle"),
-		sound: new Howl({
-  		src: ['sounds/dotted-spiral.mp3']
-		}),
-		color: '#34495e'
-	},
-	y: {
-		shape: new String("circle"),
-		sound: new Howl({
-  		src: ['sounds/flash-1.mp3']
-		}),
-		color: '#16a085'
-	},
-	u: {
-		shape: new String("circle"),
-		sound: new Howl({
-  		src: ['sounds/flash-2.mp3']
-		}),
-		color: '#27ae60'
-	},
-	i: {
-		shape: new String("circle"),
-		sound: new Howl({
-  		src: ['sounds/flash-3.mp3']
-		}),
-		color: '#2980b9'
-	},
-	o: {
-		shape: new String("triangle"),
-		sound: new Howl({
-			src: ['sounds/glimmer.mp3']
-		}),
-		color: '#8e44ad'
-	},
-	p: {
-		shape: new String("circle"),
-		sound: new Howl({
-  		src: ['sounds/moon.mp3']
-		}),
-		color: '#2c3e50'
-	},
-	a: {
-		shape: new String("circle"),
-		sound: new Howl({
-  		src: ['sounds/pinwheel.mp3']
-		}),
-		color: '#f1c40f'
-	},
-	s: {
-		shape: new String("circle"),
-		sound: new Howl({
-  		src: ['sounds/piston-1.mp3']
-		}),
-		color: '#e67e22'
-	},
-	d: {
-		shape: new String("roundedRectangle"),
-		sound: new Howl({
-  		src: ['sounds/piston-2.mp3']
-		}),
-		color: '#e74c3c'
-	},
-	f: {
-		shape: new String("triangle"),
-		sound: new Howl({
-  		src: ['sounds/prism-1.mp3']
-		}),
-		color: '#95a5a6'
-	},
-	g: {
-		shape: new String("roundedRectangle"),
-		sound: new Howl({
-  		src: ['sounds/prism-2.mp3']
-		}),
-		color: '#f39c12'
-	},
-	h: {
-		shape: new String("roundedRectangle"),
-		sound: new Howl({
-  		src: ['sounds/prism-3.mp3']
-		}),
-		color: '#d35400'
-	},
-	j: {
-		shape: new String("roundedRectangle"),
-		sound: new Howl({
-  		src: ['sounds/splits.mp3']
-		}),
-		color: '#1abc9c'
-	},
-	k: {
-		shape: new String("roundedRectangle"),
-		sound: new Howl({
-  		src: ['sounds/squiggle.mp3']
-		}),
-		color: '#2ecc71'
-	},
-	l: {
-		shape: new String("roundedRectangle"),
-		sound: new Howl({
-  		src: ['sounds/strike.mp3']
-		}),
-		color: '#3498db'
-	},
-	z: {
-		shape: new String("roundedRectangle"),
-		sound: new Howl({
-  		src: ['sounds/suspension.mp3']
-		}),
-		color: '#9b59b6'
-	},
-	x: {
-		shape: new String("triangle"),
-		sound: new Howl({
-  		src: ['sounds/timer.mp3']
-		}),
-		color: '#34495e'
-	},
-	c: {
-		shape: new String("circle"),
-		sound: new Howl({
-  		src: ['sounds/ufo.mp3']
-		}),
-		color: '#16a085'
-	},
-	v: {
-		shape: new String("circle"),
-		sound: new Howl({
-  		src: ['sounds/veil.mp3']
-		}),
-		color: '#27ae60'
-	},
-	b: {
-		shape: new String("circle"),
-		sound: new Howl({
-  		src: ['sounds/wipe.mp3']
-		}),
-		color: '#2980b9'
-	},
-	n: {
-		shape: new String("triangle"),
-		sound: new Howl({
-			src: ['sounds/zig-zag.mp3']
-		}),
-		color: '#8e44ad'
-	},
-	m: {
-		shape: new String("roundedRectangle"),
-		sound: new Howl({
-  		src: ['sounds/moon.mp3']
-		}),
-		color: '#2c3e50'
-	}
-}
-
-	var myCircles = [];
-	var myRoundRectangles = [];
-	var myTriangles = [];
-
-	function onKeyDown(event){
-		if(keyData[event.key] && (keyData[event.key].shape =="circle")){
-
-			var maxPoint = new Point(view.size.width, view.size.height);
-			var randomPt = Point.random();
-			var point = maxPoint*randomPt;
-			var newCircle = new Path.Circle(point, 200);
-			newCircle.fillColor = keyData[event.key].color;
-			keyData[event.key].sound.play();
-			myCircles.push(newCircle);
-		}
-
-		else if(keyData[event.key] && (keyData[event.key].shape =="roundedRectangle")){
-			var maxPoint = new Point(view.size.width, view.size.height);
-			var randomPt1 = Point.random();
-			var randomPt2 = Point.random();
-			var rectangle = new Rectangle(maxPoint*randomPt1, maxPoint*randomPt2);
-			var cornerSize = new Size(20,20);
-			var newRoundRec = new Path.RoundRectangle(rectangle, cornerSize);
-			newRoundRec.fillColor = keyData[event.key].color;
-			keyData[event.key].sound.play();
-			myRoundRectangles.push(newRoundRec);
-		} 
-
-		else if(keyData[event.key] && (keyData[event.key].shape =="triangle")){
-			// Create a triangle shaped path 
-			var maxPoint = new Point(view.size.width, view.size.height);
-			var randomPt = Point.random();
-			var newTriangle = new Path.RegularPolygon(maxPoint*randomPt, 3, 70);
-			newTriangle.fillColor = keyData[event.key].color;
-			keyData[event.key].sound.play();
-			newTriangle.selected = false;
-			myTriangles.push(newTriangle);
-		}
-
-	}
-	var triangleDestination = Point.random() * view.size;
-	function onFrame(event){
-
-		if(myCircles.length>0){
-			for(var i=0; i< myCircles.length; i++){
-			myCircles[i].fillColor.hue += 1;
-			myCircles[i].scale(.9);
-			}		
-		}
-
-		if(myRoundRectangles.length>0){
-			for(var j=0; j< myRoundRectangles.length; j++){
-				var random = Point.random();
-				var destination = Point.random() * view.size;
-				myRoundRectangles[j].fillColor.hue += 1;
-				if(random > 0.5){
-					myRoundRectangles[j].rotate(3);}
-				else {
-					myRoundRectangles[j].rotate(-3);}
-				myRoundRectangles[j].scale(0.95);
-			}
-		}
-
-		if(myTriangles.length>0){
-			for(var k=0; k< myTriangles.length; k++){
-				var random = Point.random();
-				myTriangles[k].fillColor.hue += 1;
-				//if(random>0.5){
-					var vector = triangleDestination - myTriangles[k].position;
-					myTriangles[k].position += vector / 30;
-					if(vector.length <6) {
-						myTriangles[k].scale(0.95);
-					}
-				//}
-				/*else {
-					var vector = destination - myTriangles[k].position;
-					myTriangles[k].position -= vector / 30;
-					if(vector.length <6) {
-					myTriangles[k].scale(0.95);
-					}
-				}*/
-			}
-		}
-	}
-
-</script>
+    <link href="css/vimu.css" rel="stylesheet">
 </head>
 <body>
-	<canvas id="myCanvas" resize></canvas>
-    
-
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-      <div class="container">
-        <a class="navbar-brand" href="#">Start Bootstrap</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="#">Home
-                <span class="sr-only">(current)</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">About</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Services</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Contact</a>
-            </li>
-          </ul>
+    <!--Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <div class="navbar-brand" id="logo">VIMU</div>
+            <div class="icons">
+                <button type="button" onclick="toggleEditing()" id="lock">
+                    <i class="fa fa-lock fa-2x"></i>
+                </button>
+                <button type="button">
+                    <i class="fa fa-info-circle fa-2x"></i>
+                </button>
+                <button type="button">
+                    <i class="fa fa-cog fa-2x"></i>
+                </button>
+            </div>
         </div>
-      </div>
     </nav>
 
-    <header>
-      <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-        <ol class="carousel-indicators">
-          <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-          <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-          <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-        </ol>
-        <div class="carousel-inner" role="listbox">
-          <!-- Slide One - Set the background image for this slide in the line below -->
-          <div class="carousel-item active" style="background-image: url('http://placehold.it/1900x1080')">
-            <div class="carousel-caption d-none d-md-block">
-              <h3>First Slide</h3>
-              <p>This is a description for the first slide.</p>
-            </div>
-          </div>
-          <!-- Slide Two - Set the background image for this slide in the line below -->
-          <div class="carousel-item" style="background-image: url('http://placehold.it/1900x1080')">
-            <div class="carousel-caption d-none d-md-block">
-              <h3>Second Slide</h3>
-              <p>This is a description for the second slide.</p>
-            </div>
-          </div>
-          <!-- Slide Three - Set the background image for this slide in the line below -->
-          <div class="carousel-item" style="background-image: url('http://placehold.it/1900x1080')">
-            <div class="carousel-caption d-none d-md-block">
-              <h3>Third Slide</h3>
-              <p>This is a description for the third slide.</p>
-            </div>
-          </div>
-        </div>
-        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="sr-only">Next</span>
-        </a>
-      </div>
-    </header>
+    <!--Visualization canvas-->
+    <canvas id="myCanvas"></canvas>
 
-    <!-- Page Content -->
-    <section class="py-5">
-      <div class="container">
-        <h1>Half Slider by Start Bootstrap</h1>
-        <p>The background images for the slider are set directly in the HTML using inline CSS. The rest of the styles for this template are contained within the
-          <code>half-slider.css</code>
-          file.</p>
-      </div>
-    </section>
+    <!-- Editing Mode -->
+    <div id="editingScreen">
+        <section class="py-5">
+          <div class="container">
+            <h1>Half Slider by Start Bootstrap</h1>
+            <p>The background images for the slider are set directly in the HTML using inline CSS. The rest of the styles for this template are contained within the
+              <code>half-slider.css</code>
+              file.</p>
+          </div>
+        </section>
+    </div>
 
-    <!-- Footer -->
-    <footer class="py-5 bg-dark">
-      <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; Your Website 2018</p>
-      </div>
-      <!-- /.container -->
-    </footer>
 
-    <!-- Bootstrap core JavaScript -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="library/jquery/jquery.min.js"></script>
+    <script src="library/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <script type="text/javascript" src="js/paper-full.js"></script>
+    <script type="text/javascript" src="js/howler.core.min.js"></script>
+
+    <script type="text/javascript" src="js/vimu.js"></script>
+
+    <script type="text/paperscript" canvas="myCanvas">
+        var keyData = {
+
+        q: {
+            shape: new String("roundedRectangle"),
+            color: "purple",
+            sound: new Howl({ src: ['sounds/bubbles.mp3']})
+        },
+
+        w: {
+            shape: new String("circle"),
+            sound: new Howl({
+                src: ['sounds/clay.mp3']
+            }),
+            color: '#2ecc71'
+        },
+        e: {
+            shape: new String("triangle"),
+            sound: new Howl({
+                src: ['sounds/confetti.mp3']
+            }),
+            color: '#3498db'
+        },
+        r: {
+            shape: new String("circle"),
+            sound: new Howl({
+                src: ['sounds/corona.mp3']
+            }),
+            color: '#9b59b6'
+        },
+        t: {
+            shape: new String("triangle"),
+            sound: new Howl({
+                src: ['sounds/dotted-spiral.mp3']
+            }),
+            color: '#34495e'
+        },
+        y: {
+            shape: new String("circle"),
+            sound: new Howl({
+                src: ['sounds/flash-1.mp3']
+            }),
+            color: '#16a085'
+        },
+        u: {
+            shape: new String("circle"),
+            sound: new Howl({
+                src: ['sounds/flash-2.mp3']
+            }),
+            color: '#27ae60'
+        },
+        i: {
+            shape: new String("circle"),
+            sound: new Howl({
+                src: ['sounds/flash-3.mp3']
+            }),
+            color: '#2980b9'
+        },
+        o: {
+            shape: new String("triangle"),
+            sound: new Howl({
+                src: ['sounds/glimmer.mp3']
+            }),
+            color: '#8e44ad'
+        },
+        p: {
+            shape: new String("circle"),
+            sound: new Howl({
+                src: ['sounds/moon.mp3']
+            }),
+            color: '#2c3e50'
+        },
+        a: {
+            shape: new String("circle"),
+            sound: new Howl({
+                src: ['sounds/pinwheel.mp3']
+            }),
+            color: '#f1c40f'
+        },
+        s: {
+            shape: new String("circle"),
+            sound: new Howl({
+                src: ['sounds/piston-1.mp3']
+            }),
+            color: '#e67e22'
+        },
+        d: {
+            shape: new String("roundedRectangle"),
+            sound: new Howl({
+                src: ['sounds/piston-2.mp3']
+            }),
+            color: '#e74c3c'
+        },
+        f: {
+            shape: new String("triangle"),
+            sound: new Howl({
+                src: ['sounds/prism-1.mp3']
+            }),
+            color: '#95a5a6'
+        },
+        g: {
+            shape: new String("roundedRectangle"),
+            sound: new Howl({
+                src: ['sounds/prism-2.mp3']
+            }),
+            color: '#f39c12'
+        },
+        h: {
+            shape: new String("roundedRectangle"),
+            sound: new Howl({
+                src: ['sounds/prism-3.mp3']
+            }),
+            color: '#d35400'
+        },
+        j: {
+            shape: new String("roundedRectangle"),
+            sound: new Howl({
+                src: ['sounds/splits.mp3']
+            }),
+            color: '#1abc9c'
+        },
+        k: {
+            shape: new String("roundedRectangle"),
+            sound: new Howl({
+                src: ['sounds/squiggle.mp3']
+            }),
+            color: '#2ecc71'
+        },
+        l: {
+            shape: new String("roundedRectangle"),
+            sound: new Howl({
+                src: ['sounds/strike.mp3']
+            }),
+            color: '#3498db'
+        },
+        z: {
+            shape: new String("roundedRectangle"),
+            sound: new Howl({
+                src: ['sounds/suspension.mp3']
+            }),
+            color: '#9b59b6'
+        },
+        x: {
+            shape: new String("triangle"),
+            sound: new Howl({
+                src: ['sounds/timer.mp3']
+            }),
+            color: '#34495e'
+        },
+        c: {
+            shape: new String("circle"),
+            sound: new Howl({
+                src: ['sounds/ufo.mp3']
+            }),
+            color: '#16a085'
+        },
+        v: {
+            shape: new String("circle"),
+            sound: new Howl({
+                src: ['sounds/veil.mp3']
+            }),
+            color: '#27ae60'
+        },
+        b: {
+            shape: new String("circle"),
+            sound: new Howl({
+                src: ['sounds/wipe.mp3']
+            }),
+            color: '#2980b9'
+        },
+        n: {
+            shape: new String("triangle"),
+            sound: new Howl({
+                src: ['sounds/zig-zag.mp3']
+            }),
+            color: '#8e44ad'
+        },
+        m: {
+            shape: new String("roundedRectangle"),
+            sound: new Howl({
+                src: ['sounds/moon.mp3']
+            }),
+            color: '#2c3e50'
+        }
+    }
+
+    var myCircles = [];
+    var myRoundRectangles = [];
+    var myTriangles = [];
+
+    function onKeyDown(event){
+        if(keyData[event.key] && (keyData[event.key].shape =="circle")){
+
+            var maxPoint = new Point(view.size.width, view.size.height);
+            var randomPt = Point.random();
+            var point = maxPoint*randomPt;
+            var newCircle = new Path.Circle(point, 200);
+            newCircle.fillColor = keyData[event.key].color;
+            keyData[event.key].sound.play();
+            myCircles.push(newCircle);
+        }
+
+        else if(keyData[event.key] && (keyData[event.key].shape =="roundedRectangle")){
+            var maxPoint = new Point(view.size.width, view.size.height);
+            var randomPt1 = Point.random();
+            var randomPt2 = Point.random();
+            var rectangle = new Rectangle(maxPoint*randomPt1, maxPoint*randomPt2);
+            var cornerSize = new Size(20,20);
+            var newRoundRec = new Path.RoundRectangle(rectangle, cornerSize);
+            newRoundRec.fillColor = keyData[event.key].color;
+            keyData[event.key].sound.play();
+            myRoundRectangles.push(newRoundRec);
+        }
+
+        else if(keyData[event.key] && (keyData[event.key].shape =="triangle")){
+            // Create a triangle shaped path
+            var maxPoint = new Point(view.size.width, view.size.height);
+            var randomPt = Point.random();
+            var newTriangle = new Path.RegularPolygon(maxPoint*randomPt, 3, 70);
+            newTriangle.fillColor = keyData[event.key].color;
+            keyData[event.key].sound.play();
+            newTriangle.selected = false;
+            myTriangles.push(newTriangle);
+        }
+
+    }
+    var triangleDestination = Point.random() * view.size;
+    function onFrame(event){
+
+        if(myCircles.length>0){
+            for(var i=0; i< myCircles.length; i++){
+                myCircles[i].fillColor.hue += 1;
+                myCircles[i].scale(.9);
+            }
+        }
+
+        if(myRoundRectangles.length>0){
+            for(var j=0; j< myRoundRectangles.length; j++){
+                var random = Point.random();
+                var destination = Point.random() * view.size;
+                myRoundRectangles[j].fillColor.hue += 1;
+                if(random > 0.5){
+                    myRoundRectangles[j].rotate(3);}
+                else {
+                    myRoundRectangles[j].rotate(-3);}
+                myRoundRectangles[j].scale(0.95);
+            }
+        }
+
+        if(myTriangles.length>0){
+            for(var k=0; k< myTriangles.length; k++){
+                var random = Point.random();
+                myTriangles[k].fillColor.hue += 1;
+                //if(random>0.5){
+                var vector = triangleDestination - myTriangles[k].position;
+                myTriangles[k].position += vector / 30;
+                if(vector.length <6) {
+                    myTriangles[k].scale(0.95);
+                }
+                //}
+                /*else {
+                    var vector = destination - myTriangles[k].position;
+                    myTriangles[k].position -= vector / 30;
+                    if(vector.length <6) {
+                    myTriangles[k].scale(0.95);
+                    }
+                }*/
+            }
+        }
+    }
+    </script>
+
+</body>
 
 </html>
