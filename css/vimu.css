@@ -64,21 +64,25 @@ canvas {
     width: 200px;
 }
 
-/* Keyboard */
-#keyboard-container {
+#keyboard-audio-visual {
     width: inherit;
     height: inherit;
     z-index: 2;
 }
 
+/* Keyboard */
+#keyboard {
+    height: 70%;
+}
+
 .keyboard-row {
     margin: 20px auto;
-    height: 15%;
+    height: 20%;
 }
 
 .keyboard-row-edit {
-    margin: 8px auto;
-    height: 12%;
+    margin: 15px auto;
+    height: 15%;
 }
 
 .keyboard-key {
@@ -129,8 +133,8 @@ canvas {
 /* End File Directory */
 
 #customization-container {
-    margin-top: 12px;
-    height: 30%;
+    margin-top: 10px;
+    height: 25%;
 }
 
 #audio, #visuals {

@@ -28,18 +28,24 @@ function toggleEditing() {
         $('#myCanvas').show();
         $('#customization-container').hide();
         $('#file-directory').hide();
-        $('#keyboard-container').removeClass('col-9'); // make keyboard back to full width
+        $('#keyboard-audio-visual').removeClass('col-9'); // make keyboard back to full width
         $('.keyboard-key-edit').removeClass('keyboard-key-edit').addClass('keyboard-key');
         $('.keyboard-row-edit').removeClass('keyboard-row-edit').addClass('keyboard-row');
 
         // return back to original settings
         if (!showKeyboard) {
-            $('#keyboard-container').hide();
+            $('#keyboard').hide();
             $('#display-keyboard').attr("checked", false);
+        } else {
+            $('#keyboard').show();
+            $('#display-keyboard').attr("checked", true);
         }
         if (!showLetters) {
             $('.keyboard-key > p').hide();
             $('#display-labels').attr("checked", false);
+        } else {
+            $('.keyboard-key > p').show();
+            $('#display-labels').attr("checked", true);
         }
     } else {
         // navigation bar
@@ -54,13 +60,13 @@ function toggleEditing() {
         $('#myCanvas').hide();
         $('#customization-container').show();
         $('#file-directory').show();
-        $('#keyboard-container').addClass('col-9'); // make keyboard smaller
+        $('#keyboard-audio-visual').addClass('col-9'); // make keyboard smaller
         $('.keyboard-key').removeClass('keyboard-key').addClass('keyboard-key-edit');
         $('.keyboard-row').removeClass('keyboard-row').addClass('keyboard-row-edit');
 
         // must show keyboard and letters in editing mode
         if (!showKeyboard) {
-            $('#keyboard-container').show();
+            $('#keyboard').show();
         }
         if (!showLetters) {
             $('.keyboard-key-edit > p').show();
@@ -80,10 +86,10 @@ function toggleLabels(element) {
 
 function toggleKeyboard(element) {
     if (element.checked) {
-        $('#keyboard-container').show();
+        $('#keyboard').show();
         showKeyboard = true;
     } else {
-        $('#keyboard-container').hide();
+        $('#keyboard').hide();
         showKeyboard = false;
     }
 }
