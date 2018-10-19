@@ -59,6 +59,11 @@ canvas {
     z-index: 2;
 }
 
+#settings-popover {
+    display: none;
+    width: 200px;
+}
+
 /* Keyboard */
 #keyboard-container {
     width: inherit;
