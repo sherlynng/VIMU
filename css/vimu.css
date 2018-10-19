@@ -3,6 +3,15 @@ body, html {
     margin: 0;
 }
 
+@media screen and (max-width: 800px){
+    /*To prevent keys to from becoming too small when resize screen */
+    .keyboard-key, .keyboard-key-edit {
+        height: 60px;
+        width: 60px;
+    }
+}
+
+/* Navigation Bar */
 nav {
     background-color: ghostwhite;
     opacity: 0.7;
@@ -24,6 +33,7 @@ nav button {
 .active-btn {
     color: lightpink;
 }
+/* End Navigation Bar */
 
 #container {
     width: 100%;
@@ -31,6 +41,7 @@ nav button {
     background-color: white;
     position: relative;
     margin: 0 auto;
+    min-width:1000px;
 }
 
 canvas {
@@ -40,24 +51,44 @@ canvas {
     z-index: 1
 }
 
+.components-container {
+    width: inherit;
+    height: inherit;
+    margin: 0 auto;
+    padding: 80px 0 0;
+    z-index: 2;
+}
+
+/* Keyboard */
 #keyboard-container {
     width: inherit;
     height: inherit;
-    position: absolute;
-    margin: 0 auto;
-    padding-top: 80px;
     z-index: 2;
 }
 
 .keyboard-row {
-    margin: 25px auto;
+    margin: 20px auto;
     height: 15%;
+}
+
+.keyboard-row-edit {
+    margin: 8px auto;
+    height: 12%;
 }
 
 .keyboard-key {
     opacity: 0.7;
     border: 1px solid black;
     border-radius: 25px;
+    color: black;
+    padding-top: 10px;
+    padding-right: 10px;
+}
+
+.keyboard-key-edit {
+    opacity: 0.7;
+    border: 1px solid black;
+    border-radius: 15px;
     color: black;
     padding-top: 10px;
     padding-right: 10px;
@@ -82,3 +113,32 @@ canvas {
 .row5 {
     background-color: #99DEE5;
 }
+/* End Keyboard */
+
+/* File Directory */
+#file-directory {
+    background-color: #F7D5D6;
+    border: 1px solid hotpink;
+    border-radius: 10px;
+}
+/* End File Directory */
+
+#customization-container {
+    margin-top: 12px;
+    height: 30%;
+}
+
+#audio, #visuals {
+    background-color: #D6EACC;
+    border: 1px solid forestgreen;
+    border-radius: 10px;
+}
+
+/*Audio*/
+
+/* End Audio */
+
+
+/* Visuals */
+
+/* End Visuals */

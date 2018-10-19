@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-    
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
 
-	<title>VIMU</title>
+    <title>VIMU</title>
 
     <link href="library/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -15,100 +15,98 @@
     <link href="css/vimu.css" rel="stylesheet">
 </head>
 <body>
-    <!--Navigation-->
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
-        <div class="container">
-            <div class="navbar-brand" id="logo">VIMU</div>
-            <div class="icons">
-                <button type="button" onclick="toggleEditing()" id="lock">
-                    <i class="fa fa-lock fa-2x"></i>
-                </button>
-                <button type="button">
-                    <i class="fa fa-info-circle fa-2x"></i>
-                </button>
-                <button type="button">
-                    <i class="fa fa-cog fa-2x"></i>
-                </button>
-            </div>
+<!--Navigation-->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container">
+        <div class="navbar-brand" id="logo">VIMU</div>
+        <div class="icons">
+            <button type="button" onclick="toggleEditing()" id="lock">
+                <i class="fa fa-lock fa-2x"></i>
+            </button>
+            <button type="button">
+                <i class="fa fa-info-circle fa-2x"></i>
+            </button>
+            <button type="button">
+                <i class="fa fa-cog fa-2x"></i>
+            </button>
         </div>
-    </nav>
+    </div>
+</nav>
 
-    <!--Visualization canvas-->
-    <div id="container">
-        <canvas id="myCanvas"></canvas>
+<!--Visualization canvas-->
+<div id="container">
+    <canvas id="myCanvas"></canvas>
+    <div class="row components-container">
+        <div class="col-3" id="file-directory">
+            File Directory
+        </div>
         <div id="keyboard-container">
             <div class="keyboard-row row justify-content-md-center">
-                <div class="keyboard-key col-sm-1 mx-2 row1">1</div>
-                <div class="keyboard-key col-sm-1 mx-2 row1">2</div>
-                <div class="keyboard-key col-sm-1 mx-2 row1">3</div>
-                <div class="keyboard-key col-sm-1 mx-2 row1">4</div>
-                <div class="keyboard-key col-sm-1 mx-2 row1">5</div>
-                <div class="keyboard-key col-sm-1 mx-2 row1">6</div>
-                <div class="keyboard-key col-sm-1 mx-2 row1">7</div>
-                <div class="keyboard-key col-sm-1 mx-2 row1">8</div>
-                <div class="keyboard-key col-sm-1 mx-2 row1">9</div>
-                <div class="keyboard-key col-sm-1 mx-2 row1">0</div>
+                <div class="keyboard-key col-sm-1 mx-1 row1">1</div>
+                <div class="keyboard-key col-sm-1 mx-1 row1">2</div>
+                <div class="keyboard-key col-sm-1 mx-1 row1">3</div>
+                <div class="keyboard-key col-sm-1 mx-1 row1">4</div>
+                <div class="keyboard-key col-sm-1 mx-1 row1">5</div>
+                <div class="keyboard-key col-sm-1 mx-1 row1">6</div>
+                <div class="keyboard-key col-sm-1 mx-1 row1">7</div>
+                <div class="keyboard-key col-sm-1 mx-1 row1">8</div>
+                <div class="keyboard-key col-sm-1 mx-1 row1">9</div>
+                <div class="keyboard-key col-sm-1 mx-1 row1">0</div>
             </div>
             <div class="keyboard-row row justify-content-md-center">
-                <div class="keyboard-key col-sm-1 mx-2 row2">Q</div>
-                <div class="keyboard-key col-sm-1 mx-2 row2">W</div>
-                <div class="keyboard-key col-sm-1 mx-2 row2">E</div>
-                <div class="keyboard-key col-sm-1 mx-2 row2">R</div>
-                <div class="keyboard-key col-sm-1 mx-2 row2">T</div>
-                <div class="keyboard-key col-sm-1 mx-2 row2">Y</div>
-                <div class="keyboard-key col-sm-1 mx-2 row2">U</div>
-                <div class="keyboard-key col-sm-1 mx-2 row2">I</div>
-                <div class="keyboard-key col-sm-1 mx-2 row2">O</div>
-                <div class="keyboard-key col-sm-1 mx-2 row2">P</div>
+                <div class="keyboard-key col-sm-1 mx-1 row2">Q</div>
+                <div class="keyboard-key col-sm-1 mx-1 row2">W</div>
+                <div class="keyboard-key col-sm-1 mx-1 row2">E</div>
+                <div class="keyboard-key col-sm-1 mx-1 row2">R</div>
+                <div class="keyboard-key col-sm-1 mx-1 row2">T</div>
+                <div class="keyboard-key col-sm-1 mx-1 row2">Y</div>
+                <div class="keyboard-key col-sm-1 mx-1 row2">U</div>
+                <div class="keyboard-key col-sm-1 mx-1 row2">I</div>
+                <div class="keyboard-key col-sm-1 mx-1 row2">O</div>
+                <div class="keyboard-key col-sm-1 mx-1 row2">P</div>
             </div>
             <div class="keyboard-row row justify-content-md-center">
-                <div class="keyboard-key col-sm-1 mx-2 row3">A</div>
-                <div class="keyboard-key col-sm-1 mx-2 row3">S</div>
-                <div class="keyboard-key col-sm-1 mx-2 row3">D</div>
-                <div class="keyboard-key col-sm-1 mx-2 row3">F</div>
-                <div class="keyboard-key col-sm-1 mx-2 row3">G</div>
-                <div class="keyboard-key col-sm-1 mx-2 row3">H</div>
-                <div class="keyboard-key col-sm-1 mx-2 row3">J</div>
-                <div class="keyboard-key col-sm-1 mx-2 row3">K</div>
-                <div class="keyboard-key col-sm-1 mx-2 row3">L</div>
+                <div class="keyboard-key col-sm-1 mx-1 row3">A</div>
+                <div class="keyboard-key col-sm-1 mx-1 row3">S</div>
+                <div class="keyboard-key col-sm-1 mx-1 row3">D</div>
+                <div class="keyboard-key col-sm-1 mx-1 row3">F</div>
+                <div class="keyboard-key col-sm-1 mx-1 row3">G</div>
+                <div class="keyboard-key col-sm-1 mx-1 row3">H</div>
+                <div class="keyboard-key col-sm-1 mx-1 row3">J</div>
+                <div class="keyboard-key col-sm-1 mx-1 row3">K</div>
+                <div class="keyboard-key col-sm-1 mx-1 row3">L</div>
             </div>
             <div class="keyboard-row row justify-content-md-center">
-                <div class="keyboard-key col-sm-1 mx-2 row4">Z</div>
-                <div class="keyboard-key col-sm-1 mx-2 row4">X</div>
-                <div class="keyboard-key col-sm-1 mx-2 row4">C</div>
-                <div class="keyboard-key col-sm-1 mx-2 row4">V</div>
-                <div class="keyboard-key col-sm-1 mx-2 row4">B</div>
-                <div class="keyboard-key col-sm-1 mx-2 row4">N</div>
-                <div class="keyboard-key col-sm-1 mx-2 row4">M</div>
+                <div class="keyboard-key col-sm-1 mx-1 row4">Z</div>
+                <div class="keyboard-key col-sm-1 mx-1 row4">X</div>
+                <div class="keyboard-key col-sm-1 mx-1 row4">C</div>
+                <div class="keyboard-key col-sm-1 mx-1 row4">V</div>
+                <div class="keyboard-key col-sm-1 mx-1 row4">B</div>
+                <div class="keyboard-key col-sm-1 mx-1 row4">N</div>
+                <div class="keyboard-key col-sm-1 mx-1 row4">M</div>
             </div>
             <div class="keyboard-row row justify-content-md-center">
-                <div class="keyboard-key col-sm-5 mx-2 row5"></div>
+                <div class="keyboard-key col-sm-5 mx-1 row5"></div>
+            </div>
+
+            <div class="row" id="customization-container">
+                <div class="col-6" id="audio">Sound Editor</div>
+                <div class="col-6" id="visuals">Visuals Editor</div>
             </div>
         </div>
     </div>
-
-    <!-- Editing Mode -->
-    <div id="editingScreen">
-        <section class="py-5">
-          <div class="container">
-            <h1>Half Slider by Start Bootstrap</h1>
-            <p>The background images for the slider are set directly in the HTML using inline CSS. The rest of the styles for this template are contained within the
-              <code>half-slider.css</code>
-              file.</p>
-          </div>
-        </section>
-    </div>
+</div>
 
 
-    <script src="library/jquery/jquery.min.js"></script>
-    <script src="library/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="library/jquery/jquery.min.js"></script>
+<script src="library/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-    <script type="text/javascript" src="js/paper-full.js"></script>
-    <script type="text/javascript" src="js/howler.core.min.js"></script>
+<script type="text/javascript" src="js/paper-full.js"></script>
+<script type="text/javascript" src="js/howler.core.min.js"></script>
 
-    <script type="text/javascript" src="js/vimu.js"></script>
+<script type="text/javascript" src="js/vimu.js"></script>
 
-    <script type="text/paperscript" canvas="myCanvas">
+<script type="text/paperscript" canvas="myCanvas">
         var keyData = {
 
         q: {
@@ -378,7 +376,8 @@
             }
         }
     }
-    </script>
+
+</script>
 
 </body>
 
