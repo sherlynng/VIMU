@@ -35,6 +35,25 @@ nav button {
 }
 /* End Navigation Bar */
 
+/* Settings */
+.theme-btn {
+    border: none;
+    background: none;
+    padding: 0;
+}
+
+.border-shadow img:hover {
+    box-shadow: 0 0 6px grey;
+}
+
+.border-shadow img {
+    width: inherit;
+    transition: box-shadow .3s;
+    -webkit-transition: box-shadow .3s; /* Safari */
+}
+
+/* End Settings */
+
 #container {
     width: 100%;
     height: 100%;
@@ -121,23 +140,23 @@ canvas {
 }
 
 .row1 {
-    background-color: #19BBCC;
+    background-color: #62C9D3;
 }
 
 .row2 {
-    background-color: #4CC0CC;
+    background-color: #82CDDE;
 }
 
 .row3 {
-    background-color: #66D9E5;
+    background-color: #A2D8E7;
 }
 
 .row4 {
-    background-color: #7FDCE5;
+    background-color: #C5E4F1;
 }
 
 .row5 {
-    background-color: #99DEE5;
+    background-color: #E6F4FD;
 }
 
 .row5 h6 {

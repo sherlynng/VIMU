@@ -31,7 +31,27 @@
             </button>
             <div id="settings-popover">
                 <h5>THEMES</h5>
-                <div class="form-check">
+                <button class="theme-btn" onclick="setTheme('blue')">
+                    <div class="border-shadow">
+                        <img class="img-fluid" src="img/theme-blue.png" alt="">
+                    </div>
+                </button>
+                <button class="theme-btn" onclick="setTheme('green')">
+                    <div class="border-shadow">
+                        <img class="img-fluid" src="img/theme-green.png" alt="">
+                    </div>
+                </button>
+                <button class="theme-btn" onclick="setTheme('red')">
+                    <div class="border-shadow">
+                        <img class="img-fluid" src="img/theme-red.png" alt="">
+                    </div>
+                </button>
+                <button class="theme-btn" onclick="setTheme('orange')">
+                    <div class="border-shadow">
+                        <img class="img-fluid" src="img/theme-orange.png" alt="">
+                    </div>
+                </button>
+                <div class="form-check mt-3">
                     <input class="form-check-input" type="checkbox" id="display-keyboard"
                            onchange="toggleKeyboard(this)" checked>
                     <label class="form-check-label">Display Keyboard</label>

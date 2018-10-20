@@ -94,6 +94,46 @@ function toggleKeyboard(element) {
     }
 }
 
+// set theme
+function setTheme(colour) {
+    var row1 = $('.row1');
+    var row2 = $('.row2');
+    var row3 = $('.row3');
+    var row4 = $('.row4');
+    var row5 = $('.row5');
+
+    switch (colour) {
+        case "blue":
+            row1.css('background-color', '#62C9D3');
+            row2.css('background-color', '#82CDDE');
+            row3.css('background-color', '#A2D8E7');
+            row4.css('background-color', '#C5E4F1');
+            row5.css('background-color', '#E6F4FD');
+            break;
+        case "green":
+            row1.css('background-color', '#9AC87D');
+            row2.css('background-color', '#AFD299');
+            row3.css('background-color', '#C1DEB3');
+            row4.css('background-color', '#D6EACC');
+            row5.css('background-color', '#F1F7E4');
+            break;
+        case "red":
+            row1.css('background-color', '#DB8F8E');
+            row2.css('background-color', '#E0A9AA');
+            row3.css('background-color', '#EBBAB9');
+            row4.css('background-color', '#F7D5D6');
+            row5.css('background-color', '#FDEEEE');
+            break;
+        case "orange":
+            row1.css('background-color', '#DE7C62');
+            row2.css('background-color', '#E69276');
+            row3.css('background-color', '#F5AF92');
+            row4.css('background-color', '#F2BAAA');
+            row5.css('background-color', '#FCD4CA');
+            break;
+    }
+}
+
 // drag and drop
 function allowDrop(ev) {
     if (isEditing) {
