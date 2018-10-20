@@ -1,6 +1,7 @@
 var isEditing = false;
 var showKeyboard = true;
 var showLetters = true;
+var theme = "blue";
 
 $( document ).ready(function() {
     $('#customization-container').hide();
@@ -109,6 +110,7 @@ function setTheme(colour) {
             row3.css('background-color', '#A2D8E7');
             row4.css('background-color', '#C5E4F1');
             row5.css('background-color', '#E6F4FD');
+            theme = "blue";
             break;
         case "green":
             row1.css('background-color', '#9AC87D');
@@ -116,6 +118,7 @@ function setTheme(colour) {
             row3.css('background-color', '#C1DEB3');
             row4.css('background-color', '#D6EACC');
             row5.css('background-color', '#F1F7E4');
+            theme = "green";
             break;
         case "red":
             row1.css('background-color', '#DB8F8E');
@@ -123,6 +126,7 @@ function setTheme(colour) {
             row3.css('background-color', '#EBBAB9');
             row4.css('background-color', '#F7D5D6');
             row5.css('background-color', '#FDEEEE');
+            theme = "red";
             break;
         case "orange":
             row1.css('background-color', '#DE7C62');
@@ -130,7 +134,58 @@ function setTheme(colour) {
             row3.css('background-color', '#F5AF92');
             row4.css('background-color', '#F2BAAA');
             row5.css('background-color', '#FCD4CA');
+            theme = "orange";
             break;
+    }
+}
+
+// add shadow lighting on keypress
+window.addEventListener("keydown", addShadow);
+window.addEventListener("keyup", removeShadow);
+
+function addShadow(event){
+    if (!isEditing) {
+        var key = event.key.toUpperCase();
+        if (key === ' ') {
+            key = 'spacebar';
+        }
+        var element = $('#' + key);
+        var elementParent = $(element).parent().parent()[0];
+        console.log(event.key);
+        console.log(elementParent);
+
+        $(elementParent).css('transition', 'opacity .2s');
+        $(elementParent).css('opacity', '1');
+
+        switch (theme) {
+            case "blue":
+                $(elementParent).css('box-shadow', '0 0 15px 10px #89D8E7');
+                break;
+            case "green":
+                $(elementParent).css('box-shadow', '0 0 15px 10px #98DB76');
+                break;
+            case "red":
+                $(elementParent).css('box-shadow', '0 0 15px 10px #EBBAB9');
+                break;
+            case "orange":
+                $(elementParent).css('box-shadow', '0 0 15px 10px #F48255');
+                break;
+        }
+    }
+}
+
+function removeShadow(event){
+    if (!isEditing) {
+        var key = event.key.toUpperCase();
+        if (key === ' ') {
+            key = 'spacebar';
+        }
+        var element = $('#' + key);
+        var elementParent = $(element).parent().parent()[0];
+
+        $(elementParent).css('transition', 'opacity .2s');
+        $(elementParent).css('opacity', '');
+        $(elementParent).css('box-shadow', '');
     }
 }
 

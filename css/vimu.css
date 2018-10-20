@@ -105,7 +105,7 @@ canvas {
 }
 
 .keyboard-key {
-    opacity: 0.7;
+    opacity: 0.6;
     border: 1px solid black;
     border-radius: 25px;
     color: black;
@@ -136,7 +136,7 @@ canvas {
 .keyboard-key-edit p {
     font-size: xx-small;
     text-align: center;
-    background-color: lightsalmon;
+    background-color: papayawhip;
 }
 
 .row1 {
