@@ -72,7 +72,7 @@ canvas {
 
 /* Keyboard */
 #keyboard {
-    height: 70%;
+    height: 65%;
 }
 
 .keyboard-row {
@@ -82,7 +82,7 @@ canvas {
 
 .keyboard-row-edit {
     margin: 15px auto;
-    height: 15%;
+    height: 16%;
 }
 
 .keyboard-key {
@@ -91,7 +91,12 @@ canvas {
     border-radius: 25px;
     color: black;
     padding-top: 10px;
-    padding-right: 10px;
+    padding-left: 10px;
+}
+
+.keyboard-key p {
+    text-align: center;
+    background-color: transparent;
 }
 
 .keyboard-key-edit {
@@ -99,8 +104,20 @@ canvas {
     border: 1px solid black;
     border-radius: 15px;
     color: black;
-    padding-top: 10px;
-    padding-right: 10px;
+    padding-left: 3px;
+    padding-right: 3px;
+}
+
+.keyboard-key-edit h6 {
+    padding-left: 5px;
+    padding-top: 5px;
+    margin-bottom: 2px;
+}
+
+.keyboard-key-edit p {
+    font-size: xx-small;
+    text-align: center;
+    background-color: lightsalmon;
 }
 
 .row1 {
@@ -122,6 +139,17 @@ canvas {
 .row5 {
     background-color: #99DEE5;
 }
+
+.row5 h6 {
+    visibility: hidden;
+}
+
+#keyboard div {
+    word-wrap: break-word;
+    overflow-y: hidden;
+    font-size: x-small;
+}
+
 /* End Keyboard */
 
 /* File Directory */
@@ -134,7 +162,7 @@ canvas {
 
 #customization-container {
     margin-top: 10px;
-    height: 25%;
+    height: 30%;
 }
 
 #audio, #visuals {

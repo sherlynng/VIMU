@@ -50,57 +50,242 @@
 <div id="container">
     <canvas id="myCanvas"></canvas>
     <div class="row components-container">
-        <div class="col-3" id="file-directory">
+        <div class="col-2" id="file-directory">
             File Directory
         </div>
         <div id="keyboard-audio-visual">
             <div id="keyboard">
                 <div class="keyboard-row row justify-content-md-center">
-                    <div class="keyboard-key col-sm-1 mx-1 row1"><p>1</p></div>
-                    <div class="keyboard-key col-sm-1 mx-1 row1"><p>2</p></div>
-                    <div class="keyboard-key col-sm-1 mx-1 row1"><p>3</p></div>
-                    <div class="keyboard-key col-sm-1 mx-1 row1"><p>4</p></div>
-                    <div class="keyboard-key col-sm-1 mx-1 row1"><p>5</p></div>
-                    <div class="keyboard-key col-sm-1 mx-1 row1"><p>6</p></div>
-                    <div class="keyboard-key col-sm-1 mx-1 row1"><p>7</p></div>
-                    <div class="keyboard-key col-sm-1 mx-1 row1"><p>8</p></div>
-                    <div class="keyboard-key col-sm-1 mx-1 row1"><p>9</p></div>
-                    <div class="keyboard-key col-sm-1 mx-1 row1"><p>0</p></div>
+                    <div class="keyboard-key col-sm-1 mx-1 row1">
+                        <h6>1</h6>
+                        <div ondrop="drop(event)" ondragover="allowDrop(event)">
+                            <p draggable="true" ondragstart="drag(event)" id="1">bubbles.mp3</p>
+                        </div>
+                    </div>
+                    <div class="keyboard-key col-sm-1 mx-1 row1">
+                        <h6>2</h6>
+                        <div ondrop="drop(event)" ondragover="allowDrop(event)">
+                            <p draggable="true" ondragstart="drag(event)" id="2">zig-zag.mp3</p>
+                        </div>
+                    </div>
+                    <div class="keyboard-key col-sm-1 mx-1 row1">
+                        <h6>3</h6>
+                        <div ondrop="drop(event)" ondragover="allowDrop(event)">
+                            <p draggable="true" ondragstart="drag(event)" id="3"></p>
+                        </div>
+                    </div>
+                    <div class="keyboard-key col-sm-1 mx-1 row1">
+                        <h6>4</h6>
+                        <div ondrop="drop(event)" ondragover="allowDrop(event)">
+                            <p draggable="true" ondragstart="drag(event)" id="4"></p>
+                        </div>
+                    </div>
+                    <div class="keyboard-key col-sm-1 mx-1 row1">
+                        <h6>5</h6>
+                        <div ondrop="drop(event)" ondragover="allowDrop(event)">
+                            <p draggable="true" ondragstart="drag(event)" id="5"></p>
+                        </div>
+                    </div>
+                    <div class="keyboard-key col-sm-1 mx-1 row1">
+                        <h6>6</h6>
+                        <div ondrop="drop(event)" ondragover="allowDrop(event)">
+                            <p draggable="true" ondragstart="drag(event)" id="6"></p>
+                        </div>
+                    </div>
+                    <div class="keyboard-key col-sm-1 mx-1 row1">
+                        <h6>7</h6>
+                        <div ondrop="drop(event)" ondragover="allowDrop(event)">
+                            <p draggable="true" ondragstart="drag(event)" id="7"></p>
+                        </div>
+                    </div>
+                    <div class="keyboard-key col-sm-1 mx-1 row1">
+                        <h6>8</h6>
+                        <div ondrop="drop(event)" ondragover="allowDrop(event)">
+                            <p draggable="true" ondragstart="drag(event)" id="8"></p>
+                        </div>
+                    </div>
+                    <div class="keyboard-key col-sm-1 mx-1 row1">
+                        <h6>9</h6>
+                        <div ondrop="drop(event)" ondragover="allowDrop(event)">
+                            <p draggable="true" ondragstart="drag(event)" id="9"></p>
+                        </div>
+                    </div>
+                    <div class="keyboard-key col-sm-1 mx-1 row1">
+                        <h6>0</h6>
+                        <div ondrop="drop(event)" ondragover="allowDrop(event)">
+                            <p draggable="true" ondragstart="drag(event)" id="0"></p>
+                        </div>
+                    </div>
                 </div>
                 <div class="keyboard-row row justify-content-md-center">
-                    <div class="keyboard-key col-sm-1 mx-1 row2"><p>Q</p></div>
-                    <div class="keyboard-key col-sm-1 mx-1 row2"><p>W</p></div>
-                    <div class="keyboard-key col-sm-1 mx-1 row2"><p>E</p></div>
-                    <div class="keyboard-key col-sm-1 mx-1 row2"><p>R</p></div>
-                    <div class="keyboard-key col-sm-1 mx-1 row2"><p>T</p></div>
-                    <div class="keyboard-key col-sm-1 mx-1 row2"><p>Y</p></div>
-                    <div class="keyboard-key col-sm-1 mx-1 row2"><p>U</p></div>
-                    <div class="keyboard-key col-sm-1 mx-1 row2"><p>I</p></div>
-                    <div class="keyboard-key col-sm-1 mx-1 row2"><p>O</p></div>
-                    <div class="keyboard-key col-sm-1 mx-1 row2"><p>P</p></div>
+                    <div class="keyboard-key col-sm-1 mx-1 row2">
+                        <h6>Q</h6>
+                        <div ondrop="drop(event)" ondragover="allowDrop(event)">
+                            <p draggable="true" ondragstart="drag(event)" id="Q"></p>
+                        </div>
+                    </div>
+                    <div class="keyboard-key col-sm-1 mx-1 row2">
+                        <h6>W</h6>
+                        <div ondrop="drop(event)" ondragover="allowDrop(event)">
+                            <p draggable="true" ondragstart="drag(event)" id="W"></p>
+                        </div>
+                    </div>
+                    <div class="keyboard-key col-sm-1 mx-1 row2">
+                        <h6>E</h6>
+                        <div ondrop="drop(event)" ondragover="allowDrop(event)">
+                            <p draggable="true" ondragstart="drag(event)" id="E"></p>
+                        </div>
+                    </div>
+                    <div class="keyboard-key col-sm-1 mx-1 row2">
+                        <h6>R</h6>
+                        <div ondrop="drop(event)" ondragover="allowDrop(event)">
+                            <p draggable="true" ondragstart="drag(event)" id="R"></p>
+                        </div>
+                    </div>
+                    <div class="keyboard-key col-sm-1 mx-1 row2">
+                        <h6>T</h6>
+                        <div ondrop="drop(event)" ondragover="allowDrop(event)">
+                            <p draggable="true" ondragstart="drag(event)" id="T"></p>
+                        </div>
+                    </div>
+                    <div class="keyboard-key col-sm-1 mx-1 row2">
+                        <h6>Y</h6>
+                        <div ondrop="drop(event)" ondragover="allowDrop(event)">
+                            <p draggable="true" ondragstart="drag(event)" id="Y"></p>
+                        </div>
+                    </div>
+                    <div class="keyboard-key col-sm-1 mx-1 row2">
+                        <h6>U</h6>
+                        <div ondrop="drop(event)" ondragover="allowDrop(event)">
+                            <p draggable="true" ondragstart="drag(event)" id="U"></p>
+                        </div>
+                    </div>
+                    <div class="keyboard-key col-sm-1 mx-1 row2">
+                        <h6>I</h6>
+                        <div ondrop="drop(event)" ondragover="allowDrop(event)">
+                            <p draggable="true" ondragstart="drag(event)" id="I"></p>
+                        </div>
+                    </div>
+                    <div class="keyboard-key col-sm-1 mx-1 row2">
+                        <h6>O</h6>
+                        <div ondrop="drop(event)" ondragover="allowDrop(event)">
+                            <p draggable="true" ondragstart="drag(event)" id="O"></p>
+                        </div>
+                    </div>
+                    <div class="keyboard-key col-sm-1 mx-1 row2">
+                        <h6>P</h6>
+                        <div ondrop="drop(event)" ondragover="allowDrop(event)">
+                            <p draggable="true" ondragstart="drag(event)" id="P"></p>
+                        </div>
+                    </div>
                 </div>
                 <div class="keyboard-row row justify-content-md-center">
-                    <div class="keyboard-key col-sm-1 mx-1 row3"><p>A</p></div>
-                    <div class="keyboard-key col-sm-1 mx-1 row3"><p>S</p></div>
-                    <div class="keyboard-key col-sm-1 mx-1 row3"><p>D</p></div>
-                    <div class="keyboard-key col-sm-1 mx-1 row3"><p>F</p></div>
-                    <div class="keyboard-key col-sm-1 mx-1 row3"><p>G</p></div>
-                    <div class="keyboard-key col-sm-1 mx-1 row3"><p>H</p></div>
-                    <div class="keyboard-key col-sm-1 mx-1 row3"><p>J</p></div>
-                    <div class="keyboard-key col-sm-1 mx-1 row3"><p>K</p></div>
-                    <div class="keyboard-key col-sm-1 mx-1 row3"><p>L</p></div>
+                    <div class="keyboard-key col-sm-1 mx-1 row3">
+                        <h6>A</h6>
+                        <div ondrop="drop(event)" ondragover="allowDrop(event)">
+                            <p draggable="true" ondragstart="drag(event)" id="A"></p>
+                        </div>
+                    </div>
+                    <div class="keyboard-key col-sm-1 mx-1 row3">
+                        <h6>S</h6>
+                        <div ondrop="drop(event)" ondragover="allowDrop(event)">
+                            <p draggable="true" ondragstart="drag(event)" id="S"></p>
+                        </div>
+                    </div>
+                    <div class="keyboard-key col-sm-1 mx-1 row3">
+                        <h6>D</h6>
+                        <div ondrop="drop(event)" ondragover="allowDrop(event)">
+                            <p draggable="true" ondragstart="drag(event)" id="D"></p>
+                        </div>
+                    </div>
+                    <div class="keyboard-key col-sm-1 mx-1 row3">
+                        <h6>F</h6>
+                        <div ondrop="drop(event)" ondragover="allowDrop(event)">
+                            <p draggable="true" ondragstart="drag(event)" id="F"></p>
+                        </div>
+                    </div>
+                    <div class="keyboard-key col-sm-1 mx-1 row3">
+                        <h6>G</h6>
+                        <div ondrop="drop(event)" ondragover="allowDrop(event)">
+                            <p draggable="true" ondragstart="drag(event)" id="G"></p>
+                        </div>
+                    </div>
+                    <div class="keyboard-key col-sm-1 mx-1 row3">
+                        <h6>H</h6>
+                        <div ondrop="drop(event)" ondragover="allowDrop(event)">
+                            <p draggable="true" ondragstart="drag(event)" id="H"></p>
+                        </div>
+                    </div>
+                    <div class="keyboard-key col-sm-1 mx-1 row3">
+                        <h6>J</h6>
+                        <div ondrop="drop(event)" ondragover="allowDrop(event)">
+                            <p draggable="true" ondragstart="drag(event)" id="J"></p>
+                        </div>
+                    </div>
+                    <div class="keyboard-key col-sm-1 mx-1 row3">
+                        <h6>K</h6>
+                        <div ondrop="drop(event)" ondragover="allowDrop(event)">
+                            <p draggable="true" ondragstart="drag(event)" id="K"></p>
+                        </div>
+                    </div>
+                    <div class="keyboard-key col-sm-1 mx-1 row3">
+                        <h6>L</h6>
+                        <div ondrop="drop(event)" ondragover="allowDrop(event)">
+                            <p draggable="true" ondragstart="drag(event)" id="L"></p>
+                        </div>
+                    </div>
                 </div>
                 <div class="keyboard-row row justify-content-md-center">
-                    <div class="keyboard-key col-sm-1 mx-1 row4"><p>Z</p></div>
-                    <div class="keyboard-key col-sm-1 mx-1 row4"><p>X</p></div>
-                    <div class="keyboard-key col-sm-1 mx-1 row4"><p>C</p></div>
-                    <div class="keyboard-key col-sm-1 mx-1 row4"><p>V</p></div>
-                    <div class="keyboard-key col-sm-1 mx-1 row4"><p>B</p></div>
-                    <div class="keyboard-key col-sm-1 mx-1 row4"><p>N</p></div>
-                    <div class="keyboard-key col-sm-1 mx-1 row4"><p>M</p></div>
+                    <div class="keyboard-key col-sm-1 mx-1 row4">
+                        <h6>Z</h6>
+                        <div ondrop="drop(event)" ondragover="allowDrop(event)">
+                            <p draggable="true" ondragstart="drag(event)" id="Z"></p>
+                        </div>
+                    </div>
+                    <div class="keyboard-key col-sm-1 mx-1 row4">
+                        <h6>X</h6>
+                        <div ondrop="drop(event)" ondragover="allowDrop(event)">
+                            <p draggable="true" ondragstart="drag(event)" id="X"></p>
+                        </div>
+                    </div>
+                    <div class="keyboard-key col-sm-1 mx-1 row4">
+                        <h6>C</h6>
+                        <div ondrop="drop(event)" ondragover="allowDrop(event)">
+                            <p draggable="true" ondragstart="drag(event)" id="C"></p>
+                        </div>
+                    </div>
+                    <div class="keyboard-key col-sm-1 mx-1 row4">
+                        <h6>V</h6>
+                        <div ondrop="drop(event)" ondragover="allowDrop(event)">
+                            <p draggable="true" ondragstart="drag(event)" id="V"></p>
+                        </div>
+                    </div>
+                    <div class="keyboard-key col-sm-1 mx-1 row4">
+                        <h6>B</h6>
+                        <div ondrop="drop(event)" ondragover="allowDrop(event)">
+                            <p draggable="true" ondragstart="drag(event)" id="B"></p>
+                        </div>
+                    </div>
+                    <div class="keyboard-key col-sm-1 mx-1 row4">
+                        <h6>N</h6>
+                        <div ondrop="drop(event)" ondragover="allowDrop(event)">
+                            <p draggable="true" ondragstart="drag(event)" id="N"></p>
+                        </div>
+                    </div>
+                    <div class="keyboard-key col-sm-1 mx-1 row4">
+                        <h6>M</h6>
+                        <div ondrop="drop(event)" ondragover="allowDrop(event)">
+                            <p draggable="true" ondragstart="drag(event)" id="M"></p>
+                        </div>
+                    </div>
                 </div>
                 <div class="keyboard-row row justify-content-md-center">
-                    <div class="keyboard-key col-sm-5 mx-1 row5"></div>
+                    <div class="keyboard-key col-sm-5 mx-1 row5">
+                        <h6>SpaceBar</h6>
+                        <div ondrop="drop(event)" ondragover="allowDrop(event)">
+                            <p draggable="true" ondragstart="drag(event)" id="spacebar"></p>
+                        </div>
+                    </div>
                 </div>
             </div>
 

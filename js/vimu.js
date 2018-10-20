@@ -28,7 +28,7 @@ function toggleEditing() {
         $('#myCanvas').show();
         $('#customization-container').hide();
         $('#file-directory').hide();
-        $('#keyboard-audio-visual').removeClass('col-9'); // make keyboard back to full width
+        $('#keyboard-audio-visual').removeClass('col-10'); // make keyboard back to full width
         $('.keyboard-key-edit').removeClass('keyboard-key-edit').addClass('keyboard-key');
         $('.keyboard-row-edit').removeClass('keyboard-row-edit').addClass('keyboard-row');
 
@@ -41,10 +41,10 @@ function toggleEditing() {
             $('#display-keyboard').attr("checked", true);
         }
         if (!showLetters) {
-            $('.keyboard-key > p').hide();
+            $('.keyboard-key').contents().hide();
             $('#display-labels').attr("checked", false);
         } else {
-            $('.keyboard-key > p').show();
+            $('.keyboard-key').contents().show();
             $('#display-labels').attr("checked", true);
         }
     } else {
@@ -60,7 +60,7 @@ function toggleEditing() {
         $('#myCanvas').hide();
         $('#customization-container').show();
         $('#file-directory').show();
-        $('#keyboard-audio-visual').addClass('col-9'); // make keyboard smaller
+        $('#keyboard-audio-visual').addClass('col-10'); // make keyboard smaller
         $('.keyboard-key').removeClass('keyboard-key').addClass('keyboard-key-edit');
         $('.keyboard-row').removeClass('keyboard-row').addClass('keyboard-row-edit');
 
@@ -69,17 +69,17 @@ function toggleEditing() {
             $('#keyboard').show();
         }
         if (!showLetters) {
-            $('.keyboard-key-edit > p').show();
+            $('.keyboard-key-edit').contents().show();
         }
     }
 }
 
 function toggleLabels(element) {
     if (element.checked) {
-        $('.keyboard-key > p').show();
+        $('.keyboard-key').contents().show();
         showLetters = true;
     } else {
-        $('.keyboard-key > p').hide();
+        $('.keyboard-key').contents().hide();
         showLetters = false;
     }
 }
@@ -91,5 +91,40 @@ function toggleKeyboard(element) {
     } else {
         $('#keyboard').hide();
         showKeyboard = false;
+    }
+}
+
+// drag and drop
+function allowDrop(ev) {
+    if (isEditing) {
+        ev.preventDefault();
+    }
+}
+
+function drag(ev) {
+    if (isEditing) {
+        ev.dataTransfer.setData("text", ev.target.id);
+    }
+}
+
+function drop(ev) {
+    if (isEditing) {
+        ev.preventDefault();
+        var draggedId = ev.dataTransfer.getData("text");
+        var draggedData = document.getElementById(draggedId).textContent;
+
+        // ev.target    -> is div when dragging to empty slot
+        //             -> is p when dragging to occupied slot
+
+        var targetId;
+        if (ev.target.getElementsByTagName('p').length !== 0) {
+            targetId = ev.target.getElementsByTagName('p')[0].id;
+        } else {
+            targetId = ev.target.id;
+        }
+        var targetData = document.getElementById(targetId).textContent;
+
+        document.getElementById(draggedId).textContent = targetData;
+        document.getElementById(targetId).textContent = draggedData;
     }
 }
