@@ -562,7 +562,77 @@
                 src: ['sounds/moon.mp3']
             }),
             color: '#2c3e50'
+        }/*
+        1: {
+            shape: new String("roundedRectangle"),
+            sound: new Howl({
+                src: ['sounds/sol-stretched.wav']
+            }),
+            color: '#aaf812'
         }
+        2: {
+            shape: new String("roundedRectangle"),
+            sound: new Howl({
+                src: ['sounds/do-stretched.wav']
+            }),
+            color: '#a5643a'
+        }    
+        3: {
+            shape: new String("roundedRectangle"),
+            sound: new Howl({
+                src: ['sounds/do-stretched-octave.wav']
+            }),
+            color: '#068373'
+        }
+        4: {
+            shape: new String("roundedRectangle"),
+            sound: new Howl({
+                src: ['sounds/la-stretched.wav']
+            }),
+            color: '#cdbdd1'
+        }
+        5: {
+            shape: new String("roundedRectangle"),
+            sound: new Howl({
+                src: ['sounds/fa-stretched.wav']
+            }),
+            color: '#4a4e70'
+        }
+        6: {
+            shape: new String("roundedRectangle"),
+            sound: new Howl({
+                src: ['sounds/mi-stretched.wav']
+            }),
+            color: '#911aeb'
+        }
+        7: {
+            shape: new String("roundedRectangle"),
+            sound: new Howl({
+                src: ['sounds/re-stretched.wav']
+            }),
+            color: '#1667ba'
+        }
+        8: {
+            shape: new String("roundedRectangle"),
+            sound: new Howl({
+                src: ['sounds/si-stretched.wav']
+            }),
+            color: '#c0ebe1'
+        }
+        9: {
+            shape: new String("roundedRectangle"),
+            sound: new Howl({
+                src: ['sounds/stealth-bopper.wav']
+            }),
+            color: '#990f4e'
+        }
+        'space': {
+            shape: new String("roundedRectangle"),
+            sound: new Howl({
+                src: ['sounds/leafdriod_sodacan.mp3']
+            }),
+            color: '#a6b9b0'
+        }*/
     }
 
     var myCircles = [];
@@ -603,8 +673,8 @@
             newTriangle.selected = false;
             myTriangles.push(newTriangle);
         }
-
     }
+
     var triangleDestination = Point.random() * view.size;
     function onFrame(event){
 
