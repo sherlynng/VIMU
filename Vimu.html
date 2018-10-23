@@ -311,7 +311,52 @@
 
             <div class="row" id="customization-container">
                 <div class="col-6" id="audio">Sound Editor</div>
-                <div class="col-6" id="visuals">Visuals Editor</div>
+                <div class="col-6" id="visuals">Visuals Editor
+                    <div class="row">
+
+                        <div class="form-group">
+                          <label for="shape-select">Shape:</label>
+                          <select class="form-control" id="shape-select">
+                            <option>Circle</option>
+                            <option>Triangle</option>
+                            <option>Rounded Rectangle</option>
+                            <option>Square</option>
+                          </select>
+                        </div>
+
+                        <div class="form-group">
+                          <label for="position-select">Position:</label>
+                          <select class="form-control" id="position-select">
+                            <option>Random</option>
+                            <option>Top</option>
+                            <option>Bottom</option>
+                            <option>Left</option>
+                            <option>Right</option>
+                          </select>
+                        </div>
+
+                        <div class="form-group">
+                          <label for="size-select">Size:</label>
+                          <select class="form-control" id="size-select">
+                            <option>Random</option>
+                            <option>Small</option>
+                            <option>Medium</option>
+                            <option>Large</option>
+                          </select>
+                        </div>
+
+                        <div>
+                            <label for="colorWell">Color:</label>
+                            <input type="color" value="#ff0000" id="colorWell">
+                        </div>
+
+                        <div class="form-group">
+                          <label for="delay-select">Delay</label>
+                          <select class="form-control" id="delay-select">
+                            <option>None</option>
+                          </select>
+                        </div>
+                </div>
             </div>
         </div>
     </div>
@@ -322,9 +367,9 @@
 
 <script type="text/javascript" src="js/paper-full.js"></script>
 <script type="text/javascript" src="js/howler.core.min.js"></script>
-
 <script type="text/javascript" src="js/vimu.js"></script>
 
+    
 <script type="text/paperscript" canvas="myCanvas">
         var keyData = {
 
@@ -600,7 +645,6 @@
 
 
 </script>
-
 </body>
 
 </html>
