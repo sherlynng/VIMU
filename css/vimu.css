@@ -192,6 +192,208 @@ canvas {
 
 /*Audio*/
 
+/* https://codepen.io/noahblon/pen/OyajvN */
+
+.slider_square_container input[type="range"] { 
+    margin: auto;
+    -webkit-appearance: none;
+    position: relative;
+    overflow: hidden;
+    height: 36px;
+    width: 100px;
+    cursor: pointer;
+    border-radius: 0;
+    outline: none;
+}
+
+.slider_square::-webkit-slider-runnable-track {
+    background: #fff;
+}
+
+.slider_square::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 0px;
+    height: 40px;
+    background: #fff;
+    box-shadow: -100vw 0 0 100vw #70a943;
+}
+
+.slider_square::-moz-range-track {
+    height: 40px;
+    background: #fff;
+}
+
+.slider_square::-moz-range-thumb {
+    background: #fff;
+    height: 40px;
+    width: 20px;
+    border: 3px solid #999;
+    border-radius: 0 !important;
+    box-shadow: -100vw 0 0 100vw #70a943;
+    box-sizing: border-box;
+}
+
+.slider_square::-ms-fill-lower { 
+    background: #70a943;
+}
+
+.slider_square::-ms-thumb { 
+    background: #fff;
+    border: 2px solid #999;
+    height: 40px;
+    width: 20px;
+    box-sizing: border-box;
+}
+
+.slider_square::-ms-ticks-after { 
+    display: none; 
+}
+
+.slider_square::-ms-ticks-before { 
+    display: none; 
+}
+
+.slider_square::-ms-track { 
+    background: #fff;
+    color: transparent;
+    height: 40px;
+    border: none;
+}
+
+.slider_square::-ms-tooltip { 
+    display: none;
+}
+
+/* https://www.designlabthemes.com/css-toggle-switch/ */
+
+/* Checkbox switch */
+
+.checkbox-switch {
+    cursor: pointer;
+    display: inline-block;
+    overflow: hidden;
+    position: relative;
+    text-align: left;
+    width: 80px;
+    height: 30px;
+    -webkit-border-radius: 30px;
+    border-radius: 30px;
+    line-height: 1.2;
+    font-size: 14px;
+}
+
+.checkbox-switch input.input-checkbox {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 80px;
+    height: 30px;
+    padding: 0;
+    margin: 0;
+    opacity: 0;
+    z-index: 2;
+    cursor: pointer;
+}
+
+.checkbox-switch .checkbox-animate {
+    position: relative;
+    width: 80px;
+    height: 30px;
+    background-color: #95a5a6;
+    -webkit-transition: background 0.25s ease-out 0s;
+    transition: background 0.25s ease-out 0s;
+}
+
+.checkbox-switch .checkbox-animate:before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    background-color: #7f8c8d;
+    top: 5px;
+    left: 5px;
+     -webkit-transition: left 0.3s ease-out 0s;
+    transition: left 0.3s ease-out 0s;
+    z-index: 10;
+}
+
+.checkbox-switch input.input-checkbox:checked + .checkbox-animate {
+    background-color: #70a943;
+}
+
+.checkbox-switch input.input-checkbox:checked + .checkbox-animate:before {
+    left: 55px;
+    background-color: #548929;
+}
+
+.checkbox-switch .checkbox-off,
+.checkbox-switch .checkbox-on {
+    float: left;
+    color: #fff;
+    font-weight: 700;
+    padding-top: 6px;
+     -webkit-transition: all 0.3s ease-out 0s;
+    transition: all 0.3s ease-out 0s;
+}
+
+.checkbox-switch .checkbox-off {
+    margin-left: 30px;
+    opacity: 1;
+}
+
+.checkbox-switch .checkbox-on {
+    display: none;
+    float: right;
+    margin-right: 35px;
+    opacity: 0;
+}
+
+.checkbox-switch input.input-checkbox:checked + .checkbox-animate .checkbox-off {
+    display: none;
+    opacity: 0;
+}
+
+.checkbox-switch input.input-checkbox:checked + .checkbox-animate .checkbox-on {
+    display: block;
+    opacity: 1;
+}
+
+/* https://www.w3schools.com/howto/howto_js_rangeslider.asp */
+
+.slidecontainer {
+    width: 100%;
+}
+
+.slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 15px;
+    border-radius: 5px;
+    background: #d3d3d3;
+    outline: none;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #4CAF50;
+    cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #4CAF50;
+    cursor: pointer;
+}
+
 /* End Audio */
 
 
