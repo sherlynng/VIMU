@@ -313,58 +313,68 @@
 
             <div class="row" id="customization-container">
                 <div class="col-6" id="audio">
-                Sound Editor
+                    Sound Editor
                     <div class="container-fluid">
-                      <div class="row">
-                        <div class="col-sm-6" style="background-color:yellow;">
-                          <div id="waveform"></div>
-                          <button><i class="fa fa-search-plus"></i></button>
-                          <button><i class="fa fa-search-minus"></i></button>
-                          <button><i class="fa fa-scissors"></i></button>
-                          <button><i class="fa fa-pause-circle-o"></i></button>
-                          <button><i class="fa fa-play-circle-o"></i></button>
-                          <button><i class="fa fa-stop-circle-o"></i></button>
-                        </div>
+                        <div class="row">
+                            <div class="col-sm-6" style="background-color:yellow;">
+                                <div id="waveform"></div>
+                                <button><i class="fa fa-search-plus"></i></button>
+                                <button><i class="fa fa-search-minus"></i></button>
+                                <button><i class="fa fa-scissors"></i></button>
+                                <button><i class="fa fa-pause-circle-o"></i></button>
+                                <button><i class="fa fa-play-circle-o"></i></button>
+                                <button><i class="fa fa-stop-circle-o"></i></button>
+                            </div>
 
-                        <div class="col-sm-6" style="background-color:pink;">
-                          <form class="form-inline">
-                              <div class="form-group">
-                                <label for="quantization">Quantize to: </label>
-                                <select class="form-control" id="quantization">
-                                  <option>1</option>
-                                  <option>1/2</option>
-                                  <option>1/4</option>
-                                  <option>1/8</option>
-                                  <option>1/16</option>
-                                </select>
-                              </div>
+                            <div class="col-sm-6" style="background-color:pink;">
+                                <form class="form-inline">
+                                    <div class="form-group">
+                                        <label for="quantization">Quantize to:&nbsp;</label>
+                                        <select class="form-control" id="quantization">
+                                            <option>1</option>
+                                            <option>1/2</option>
+                                            <option>1/4</option>
+                                            <option>1/8</option>
+                                            <option>1/16</option>
+                                        </select>
+                                    </div><br/><br/>
 
-                              <div class="form-group slider_square_container">
-                                  <label for="quantization">Amount: </label>
-                                  <p><span id="value"></span></p>
-                                  <input type="range" min="1" max="100" value="60" class="slider_square" id="quantization">
-                              </div>
+                                    <div class="form-group slider-square-container">
+                                        <label for="amount" style="margin-right: 31px;">Amount:</label>
+                                        <p><span id="value-display" class="value-display"></span></p>
+                                        <input type="range" min="1" max="100" value="60" class="slider-square" id="amount">
+                                    </div><br/><br/>
 
-                              <div class="form-group">
-                                <label for="toolbar-active">Loop: </label>
-                                <div class="checkbox-switch">
-                                  <input type="checkbox" checked="" onchange="T.toggleToobarStatus()" value="1" name="status" class="input-checkbox" id="toolbar-active" data-com.agilebits.onepassword.user-edited="yes">
-                                    <div class="checkbox-animate">
-                                      <span class="checkbox-off">OFF</span>
-                                      <span class="checkbox-on">ON</span>
+                                    <div class="form-group">
+                                        <label for="toolbar-active" style="margin-right: 53px;">Loop:</label>
+                                        <div class="checkbox-switch">
+                                            <input type="checkbox" checked="" onchange="T.toggleToobarStatus()" value="1" name="status" class="input-checkbox" id="toolbar-active" data-com.agilebits.onepassword.user-edited="yes">
+                                            <div class="checkbox-animate">
+                                                <span class="checkbox-off">OFF</span>
+                                                <span class="checkbox-on">ON</span>
+                                            </div>
+                                        </div>
+                                    </div><br/><br/>
+
+                                    <div class="form-group slidecontainer">
+                                        <label for="volume"><i class="fa fa-volume-up"></i></label>
+                                        <input type="range" min="1" max="100" value="50" class="slider" id="volume">
+                                    </div>
+                                </form>
+                            </div>
+
+                            <div class="selected-key">
+                                Selected key:
+                                <div class="row justify-content-md-center">
+                                    <div class="keyboard-key row4 selected-key-size">
+                                        <h6>N</h6>
                                     </div>
                                 </div>
-                              </div>
-
-                              <div class="form-group slidecontainer">
-                                  <label for="volume"><i class="fa fa-volume-up"></i></label>
-                                  <input type="range" min="1" max="100" value="50" class="slider" id="volume">
-                              </div>
-                          </form>
+                            </div>
                         </div>
-                      </div>
-                  </div>
+                    </div>
                 </div>
+
                 <div class="col-6" id="visuals">Visuals Editor
                     <div class="row">
                         <div class="col-md-3">
@@ -799,12 +809,12 @@ $(function(){
 </script>
  
 <script>
-var slider = document.getElementById("quantization");
-var output = document.getElementById("value");
-output.innerHTML = slider.value;
+var slider = document.getElementById("amount");
+var output = document.getElementById("value-display");
+output.innerHTML = slider.value + "%";
 
 slider.oninput = function() {
-  output.innerHTML = this.value;
+  output.innerHTML = this.value + "%";
 }
 </script>
 </body>
