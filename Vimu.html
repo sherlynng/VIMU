@@ -15,6 +15,8 @@
 
     <!-- Custom styles for this template -->
     <link href="css/vimu.css" rel="stylesheet">
+
+    <script src="https://unpkg.com/wavesurfer.js"></script>
 </head>
 <body>
 <!--Navigation-->
@@ -312,7 +314,88 @@
             </div>
 
             <div class="row" id="customization-container">
-                <div class="col-6" id="audio">Sound Editor</div>
+                <!-- sound editor -->
+                <div class="col-6" id="audio">
+                    <h5>SOUND EDITOR</h5>
+                    <div class="row">
+                        <!-- waveform -->
+                        <div class="col-sm-6">
+                            <div class="row">
+                                <div class="col-sm-10 waveform-display">
+                                    <div id="waveform"></div>
+                                </div>
+
+                                <div class="col-sm-2">
+                                    <div class="row justify-vertical">
+                                        <div class="col">
+                                            <button class="control-buttons"><i class="fa fa-search-plus"></i></button>
+                                            <button class="control-buttons"><i class="fa fa-search-minus"></i></button>
+                                            <button class="control-buttons"><i class="fa fa-scissors"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <button id="btn-pause" class="control-buttons no-button-display"><i class="fa fa-pause-circle-o"></i></button>
+                            <button id="btn-play" class="control-buttons no-button-display"><i class="fa fa-play-circle-o"></i></button>
+                            <button id="btn-stop" class="control-buttons no-button-display"><i class="fa fa-stop-circle-o"></i></button>
+                            <span class="file-name">test.mp3</span>
+                        </div>
+
+                        <!-- settings -->
+                        <div class="col-sm-4">
+                            <form class="form-inline">
+                                <div class="form-group">
+                                    <label for="quantization" class="margin-10">Quantize to:</label>
+                                    <div class="styled-select">
+                                        <select id="quantization" class="styled-select">
+                                            <option>1</option>
+                                            <option>1/2</option>
+                                            <option>1/4</option>
+                                            <option>1/8</option>
+                                            <option>1/16</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="quantization-amount" class="margin-36">Amount:</label>
+                                    <p><span id="quantization-amount-value" class="quantization-amount-value"></span></p>
+                                    <div class="amount-slider">
+                                        <input type="range" min="1" max="100" value="60" class="amount-slider" id="quantization-amount">
+                                    </div>
+                                </div><br/>
+
+                                <div class="form-group">
+                                    <label for="loop" class="margin">Loop:</label>
+                                    <div class="checkbox-switch">
+                                        <input type="checkbox" checked="" onchange="T.toggleToobarStatus()" value="1" name="status" class="input-checkbox" id="toolbar-active" data-com.agilebits.onepassword.user-edited="yes">
+                                        <div class="checkbox-animate">
+                                            <span class="checkbox-off">OFF</span>
+                                            <span class="checkbox-on">ON</span>
+                                        </div>
+                                    </div>
+                                </div><br/>
+
+                                <div class="form-group" class="volume">
+                                    <i class="fa fa-volume-up margin-10"></i>
+                                    <div class="volume-slider">
+                                        <input type="range" min="0" max="100" value="30" class="volume-slider" id="volume">
+                                    </div>
+                                </div>
+                            </form> 
+                        </div>
+
+                        <!-- selected key -->
+                        <div class="col-sm-2">
+                            <p>Selected key:</p>
+                            <div class="selected-key">
+                                <h5>Q</h5>
+                            </div>
+                        </div>
+                      </div>
+                </div>
+
                 <div class="col-6" id="visuals">Visuals Editor
                     <div class="row">
                         <div class="col-md-3">
@@ -746,6 +829,66 @@ $(function(){
 });
 </script>
  
+<script>
+var slider = document.getElementById("quantization-amount");
+var output = document.getElementById("quantization-amount-value");
+output.innerHTML = slider.value + "%";
+
+slider.oninput = function() {
+  output.innerHTML = this.value + "%";
+}
+</script>
+
+<!-- wavesurfer: display waveform and allow audio playback -->
+<script>
+    // control buttons
+    var buttons = {
+        pause: document.getElementById("btn-pause"),
+        play: document.getElementById("btn-play"),
+        stop: document.getElementById("btn-stop"),
+    }
+
+    // create instance of wave surfer
+    var wavesurfer = WaveSurfer.create({
+        container: '#waveform',
+        height: '100',
+    });
+
+    // handle play button
+    buttons.play.addEventListener("click", function() {
+        wavesurfer.play();
+
+        buttons.stop.disable = false;
+        buttons.pause.disable = false;
+        buttons.play.disable = true;
+    }, false);
+
+    // handle pause button
+    buttons.pause.addEventListener("click", function() {
+        wavesurfer.pause();
+
+        buttons.pause.disable = true;
+        buttons.play.disable = false;
+    }, false);
+
+    // handle stop button
+    buttons.stop.addEventListener("click", function() {
+        wavesurfer.stop();
+
+        buttons.pause.disable = true;
+        buttons.play.disable = false;
+        buttons.stop.disable = true;
+    }, false);
+
+    // add listener to enable play
+    wavesurfer.on('ready', function() {
+        buttons.play.disabled = false;
+    });
+
+    // load audio
+    wavesurfer.load('./sounds/test.mp3');
+</script>
+
 </body>
 
 </html>
