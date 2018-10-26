@@ -460,6 +460,40 @@ canvas {
     height: 50px;
 }
 
+
+/* waveform */
+.waveform-display {
+    background-color: #eaf3db;
+    border: 2px solid #aed792;
+}
+
+.justify-vertical .col {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 126px;
+  align-items: center;
+}
+
+.control-buttons {
+    background-color: #eaf3db;
+    color: black;
+    text-align: center;
+    text-decoration: none;
+    border: 2px solid #aed792;
+    display: inline-block;
+    font-size: 20px;
+
+    width: 40px;
+    height: 40px;
+}
+
+.no-button-display {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    font-size: 36px;
+}
 /* End Audio */
 
 
