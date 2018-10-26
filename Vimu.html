@@ -319,13 +319,13 @@
                     <h5>SOUND EDITOR</h5>
                     <div class="row">
                         <!-- waveform -->
-                        <div class="col-sm-6" style="background-color:lavender;">
+                        <div class="col-sm-6">
                             <div class="row">
                                 <div class="col-sm-10 waveform-display">
                                     <div id="waveform"></div>
                                 </div>
 
-                                <div class="col-sm-2" style="background-color:beige;">
+                                <div class="col-sm-2">
                                     <div class="row justify-vertical">
                                         <div class="col">
                                             <button class="control-buttons"><i class="fa fa-search-plus"></i></button>
@@ -343,10 +343,51 @@
                         </div>
 
                         <!-- settings -->
-                        <div class="col-sm-4" style="background-color:lavenderblush;">.col-sm-4</div>
+                        <div class="col-sm-4">
+                            <form class="form-inline">
+                                <div class="form-group">
+                                    <label for="quantization" class="margin-10">Quantize to:</label>
+                                    <div class="styled-select">
+                                        <select id="quantization" class="styled-select">
+                                            <option>1</option>
+                                            <option>1/2</option>
+                                            <option>1/4</option>
+                                            <option>1/8</option>
+                                            <option>1/16</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="quantization-amount" class="margin-36">Amount:</label>
+                                    <p><span id="quantization-amount-value" class="quantization-amount-value"></span></p>
+                                    <div class="amount-slider">
+                                        <input type="range" min="1" max="100" value="60" class="amount-slider" id="quantization-amount">
+                                    </div>
+                                </div><br/>
+
+                                <div class="form-group">
+                                    <label for="loop" class="margin">Loop:</label>
+                                    <div class="checkbox-switch">
+                                        <input type="checkbox" checked="" onchange="T.toggleToobarStatus()" value="1" name="status" class="input-checkbox" id="toolbar-active" data-com.agilebits.onepassword.user-edited="yes">
+                                        <div class="checkbox-animate">
+                                            <span class="checkbox-off">OFF</span>
+                                            <span class="checkbox-on">ON</span>
+                                        </div>
+                                    </div>
+                                </div><br/>
+
+                                <div class="form-group" class="volume">
+                                    <i class="fa fa-volume-up margin-10"></i>
+                                    <div class="volume-slider">
+                                        <input type="range" min="0" max="100" value="30" class="volume-slider" id="volume">
+                                    </div>
+                                </div>
+                            </form> 
+                        </div>
 
                         <!-- selected key -->
-                        <div class="col-sm-2" style="background-color:lavender;">
+                        <div class="col-sm-2">
                             <p>Selected key:</p>
                             <div class="selected-key">
                                 <h5>Q</h5>
