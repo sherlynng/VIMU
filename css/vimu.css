@@ -200,13 +200,14 @@ canvas {
 .waveform-display {
     background-color: #eaf3db;
     border: 2px solid #aed792;
+    height: 100px;
 }
 
 .justify-vertical .col {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 126px;
+  height: 100px;
   align-items: center;
 }
 
@@ -219,15 +220,15 @@ canvas {
     display: inline-block;
     font-size: 20px;
 
-    width: 40px;
-    height: 40px;
+    width: 32px;
+    height: 32px;
 }
 
 .no-button-display {
     background-color: transparent;
     border: none;
     padding: 0;
-    font-size: 24px;
+    font-size: 36px;
     margin:;
 }
 
@@ -266,6 +267,16 @@ canvas {
 }
 
 /* quantization amount slider */
+.quantization-amount-value {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    padding: 44px 0 0 120px;
+
+    color: #548929;
+}
+
 /* src: https://codepen.io/noahblon/pen/OyajvN */
 .amount-slider input[type="range"] { 
     margin: auto;
@@ -402,7 +413,7 @@ canvas {
 .checkbox-switch .checkbox-off,
 .checkbox-switch .checkbox-on {
     float: left;
-    color: #fff;
+    color: #eaf3db;
     font-weight: 700;
     padding-top: 3px;
      -webkit-transition: all 0.3s ease-out 0s;
@@ -513,13 +524,6 @@ canvas {
 
     max-width: 50px;
     height: 50px;
-}
-
-.quantization-amount-value {
-    position: absolute;
-    z-index: 1;
-
-    color: white;
 }
 
 /* End Audio */
