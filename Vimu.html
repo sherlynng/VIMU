@@ -76,7 +76,31 @@
     <canvas id="myCanvas"></canvas>
     <div class="row components-container">
         <div class="col-2" id="file-directory">
-            File Directory
+            <h5>&nbsp;&nbsp;FILE DIRECTORY</h5>
+                <form class="search-form">
+                    <div class="form-group tg-inputwithicon">
+                        <i class="fa fa-search"></i>
+                        <input type="text" class="form-control" name="search" id="search" placeholder="Search">
+                    </div>
+                </form>
+            <ul>
+                <li class="folder tg-inputwithicon" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <i class="fa fa-folder"></i>
+                    <p class="foldername" draggable="false" ondragstart="drag(event)">dir1</p>
+                </li>
+                <li class="folder tg-inputwithicon" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <i class="fa fa-folder-open"></i>
+                    <p class="foldername" draggable="false" ondragstart="drag(event)">dir2</p>
+                </li>
+                <li class="sound tg-inputwithicon" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <i class="fa fa-play"></i>
+                    <p class="soundname" draggable="true" ondragstart="drag(event)">clap.mp3</p>
+                </li>
+                <li class="sound tg-inputwithicon" ondrop="drop(event)" ondragover="allowDrop(event)">
+                        <i class="fa fa-play"></i>
+                        <p class="soundname" draggable="true" ondragstart="drag(event)">drum.mp3</p>
+                </li>
+            </ul>
         </div>
         <div id="keyboard-audio-visual">
             <div id="keyboard">
@@ -953,7 +977,7 @@
 </script>
 
 <script type="text/javascript" src="js/jquery.minicolors.min.js"></script>
-    
+
 <script type="text/javascript">
 $(function(){
   var colpick = $('.demo').each( function() {

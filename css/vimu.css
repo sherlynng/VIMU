@@ -183,9 +183,73 @@ canvas {
 /* File Directory */
 #file-directory {
     background-color: #F7D5D6;
-    border: 1px solid hotpink;
+    border: 1px solid #F7A7B3;
     border-radius: 10px;
 }
+
+#file-directory h5 {
+    color: #943737;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: auto;
+}
+
+li {
+    display: block;
+    float: left;
+    clear: left;
+    border-radius: 15px;
+    height: 25px;
+    width: 100%;
+    margin: 2px;
+}
+
+li.selected {
+    background: #F7A7B3;
+}
+
+#search {
+    border-radius: 50px;
+    width: 90%;
+}
+
+.tg-inputwithicon {
+    position: relative;
+}
+
+.search-form .tg-inputwithicon i {
+    position: absolute;
+    right: 30px;
+    line-height: 35px;
+    color: #943737;
+}
+
+.folder.tg-inputwithicon i {
+    position: absolute;
+    left: 15px;
+    line-height: 25px;
+    color: #943737;
+}
+
+p.foldername {
+    padding-left: 35px;
+}
+
+.sound.tg-inputwithicon i {
+    position: absolute;
+    left: 40px;
+    line-height: 25px;
+    color: #943737;
+}
+
+p.soundname {
+    padding-left: 60px;
+}
+
 /* End File Directory */
 
 #customization-container {
