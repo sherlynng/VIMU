@@ -396,56 +396,68 @@
                       </div>
                 </div>
 
-                <div class="col-6" id="visuals">Visuals Editor
+                <!-- DEBOOOOOOOOOOOOOOOOOOOOOOOOOOOOO -->
+                <div class="col-6" id="visuals">
+                    <p class="visual-title">VISUALS EDITOR</p>
                     <div class="row">
-                        <div class="col-md-3">
-                            <p>Preview:</p>
-                            <img src="https://media1.tenor.com/images/8373dd8b18dacf6292f73f004e2ac454/tenor.gif?itemid=8025388" class="personal-photo" height="100" width="100">
+                        <div class="col-sm-3">
+                            <img src="https://media1.tenor.com/images/8373dd8b18dacf6292f73f004e2ac454/tenor.gif?itemid=8025388" class="preview-image" height="100" width="100">
+                            <label for="position-select" class="title-label">Preview</label>
                         </div>
-                        <div class="col-md-0"></div>
-                        <div class="col-md-3">
+                        <div class="col-sm-0"></div>
+                        <div class="col-sm-3">
                             <div class="form-group">
-                              <label for="shape-select">Shape:</label>
-                              <select class="form-control" id="shape-select">
-                                <option>Circle</option>
-                                <option>Triangle</option>
-                                <option>Rounded Rectangle</option>
-                                <option>Square</option>
+                              <label for="shape-select" class="title-label">Shape:</label>
+                                <div class="select-form">
+                                  <select class="form-control" id="shape-select">
+                                    <option>Circle</option>
+                                    <option>Triangle</option>
+                                    <option>Rounded Rectangle</option>
+                                    <option>Square</option>
                               </select>
+                                </div>
                             </div>
 
                             <div class="form-group">
-                              <label for="position-select">Position:</label>
-                              <select class="form-control" id="position-select">
-                                <option>Random</option>
-                                <option>Top</option>
-                                <option>Bottom</option>
-                                <option>Left</option>
-                                <option>Right</option>
-                              </select>
+                              <label for="position-select" class="title-label">Position:</label>
+                                <div class="select-form">
+                                  <select class="form-control" id="position-select">
+                                    <option>Random</option>
+                                    <option>Top</option>
+                                    <option>Bottom</option>
+                                    <option>Left</option>
+                                    <option>Right</option>
+                                    </select>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-sm-3">
                             <div class="form-group">
-                              <label for="size-select">Size:</label>
-                              <select class="form-control" id="size-select">
-                                <option>Random</option>
-                                <option>Small</option>
-                                <option>Medium</option>
-                                <option>Large</option>
-                              </select>
+                              <label for="size-select" class="title-label">Size:</label>
+                                <div class="select-form">
+                                  <select class="form-control" id="size-select">
+                                    <option>Random</option>
+                                    <option>Small</option>
+                                    <option>Medium</option>
+                                    <option>Large</option>
+                                  </select>
+                                </div>
                             </div>
                           <div class="form-group">
-                              <label for="hue-demo">Color:</label>
+                              <label for="hue-demo" class="title-label">Color:</label>
+                                <div class="select-form">
                               <input type="text" id="hue-demo" class="form-control demo" data-control="hue" value="#ff6161">
+                              </div>
                           </div>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-sm-3">
                             <div class="form-group">
-                              <label for="delay-select">Delay:</label>
-                              <select class="form-control" id="delay-select">
-                                <option>None</option>
-                              </select>
+                              <label for="delay-select" class="title-label">Delay:</label>
+                                <div class="select-form">
+                                  <select class="form-control" id="delay-select">
+                                    <option>None</option>
+                                  </select>
+                                </div>
                             </div>
                         </div>
                 </div>
@@ -823,7 +835,7 @@ $(function(){
         } catch(e) {}
         $(this).select();
       },
-      theme: 'bootstrap'
+      //theme: 'bootstrap'
     });
   });
 });

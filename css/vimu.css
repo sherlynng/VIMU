@@ -190,6 +190,8 @@ canvas {
     border-radius: 10px;
 }
 
+
+
 /*Audio*/
 
 #audio {
@@ -530,10 +532,40 @@ canvas {
 
 
 /* Visuals */
-legend {
-    background-color: #000;
-    color: #fff;
-    padding: 3px 6px;
+
+/* dropdown */
+.visual-title {
+    font-size: 26px;
+    color: #70a945;
+    letter-spacing: 3px;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.select-form {
+    background-color: #eaf3db;
+    color: #70a945;
+    margin-right: 10px;
+}
+
+.select-form select{
+   background: transparent;
+   border: 3px solid #aed792;
+}
+/*.form-control {
+    background-color: #eaf3db;
+    color: #70a945;
+    margin-right: 10px;
+}
+
+.form-control select {
+   background: transparent;
+   border: 3px solid #aed792;
+}*/
+
+.select-selected{
+   background: transparent;
+   border: 3px solid #aed792;
 }
 
 .output {
@@ -544,4 +576,8 @@ input {
     margin: .4rem;
 }
 
+.title-label{
+    color: #70a945;
+    margin-left: 30px;
+}
 /* End Visuals */
