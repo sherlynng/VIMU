@@ -69,6 +69,7 @@ function toggleEditing() {
         $('.keyboard-key').removeClass('keyboard-key').addClass('keyboard-key-edit');
         $('.keyboard-row').removeClass('keyboard-row').addClass('keyboard-row-edit');
         $('.ldBar-container').css("visibility", "collapse");
+        $('.ldBar').css("visibility", "hidden");
 
         // must show keyboard and letters in editing mode
         if (!showKeyboard) {
@@ -169,10 +170,11 @@ function handleKeyDown(event){
             // console.log(elementParent);
 
             addShadow(elementParent);
-            showLoadingBar(key);
+
+            if ($(element).text()) {
+                showLoadingBar(key);
+            }
         }
-
-
     }
 }
 
