@@ -113,6 +113,10 @@ canvas {
     padding-left: 10px;
 }
 
+.keyboard-key h6 {
+    margin: 0;
+}
+
 .keyboard-key p {
     text-align: center;
     background-color: transparent;
@@ -167,6 +171,11 @@ canvas {
     word-wrap: break-word;
     overflow-y: hidden;
     font-size: x-small;
+}
+
+.ldBar-obj {
+    width: 50%;
+    margin: 0 auto;
 }
 
 /* End Keyboard */
@@ -231,7 +240,7 @@ canvas {
     border: none;
     padding: 0;
     font-size: 36px;
-    margin:;
+    /*margin:;*/
 }
 
 .file-name {
