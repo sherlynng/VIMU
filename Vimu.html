@@ -396,32 +396,32 @@
                       </div>
                 </div>
 
-                <!-- DEBOOOOOOOOOOOOOOOOOOOOOOOOOOOOO -->
                 <div class="col-6" id="visuals">
                     <p class="visual-title">VISUALS EDITOR</p>
                     <div class="row">
-                        <div class="col-sm-3">
+                        <div class="col-md-3">
                             <img src="https://media1.tenor.com/images/8373dd8b18dacf6292f73f004e2ac454/tenor.gif?itemid=8025388" class="preview-image" height="100" width="100">
                             <label for="position-select" class="title-label">Preview</label>
                         </div>
-                        <div class="col-sm-0"></div>
-                        <div class="col-sm-3">
+                        <div class="col-md-3" id="visual-container-1">
+                          <form class="form-inline">
                             <div class="form-group">
                               <label for="shape-select" class="title-label">Shape:</label>
                                 <div class="select-form">
-                                  <select class="form-control" id="shape-select">
-                                    <option>Circle</option>
-                                    <option>Triangle</option>
-                                    <option>Rounded Rectangle</option>
-                                    <option>Square</option>
+                                  <select class="select-form" id="shape-select" onchange="changeData()" width="100" style="width: 100px">
+                                    <option value="circle">Circle</option>
+                                    <option value="triangle">Triangle</option>
+                                    <option value="roundedRectangle">Rounded Rectangle</option>
+                                    <option >Square</option>
                               </select>
                                 </div>
                             </div>
-
+                        </form>
+                           <form class="form-inline">
                             <div class="form-group">
                               <label for="position-select" class="title-label">Position:</label>
                                 <div class="select-form">
-                                  <select class="form-control" id="position-select">
+                                  <select class="select-form" id="position-select" width="100" style="width: 100px">
                                     <option>Random</option>
                                     <option>Top</option>
                                     <option>Bottom</option>
@@ -430,12 +430,12 @@
                                     </select>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-sm-3">
+                            </form>
+                           <form class="form-inline">
                             <div class="form-group">
                               <label for="size-select" class="title-label">Size:</label>
                                 <div class="select-form">
-                                  <select class="form-control" id="size-select">
+                                  <select class="select-form" id="size-select" width="100" style="width: 100px">
                                     <option>Random</option>
                                     <option>Small</option>
                                     <option>Medium</option>
@@ -443,22 +443,27 @@
                                   </select>
                                 </div>
                             </div>
+                            </form>
+                         </div>
+                        <div class="col-md-3" id="visual-container-2">
+                            <form class="form-inline">
                           <div class="form-group">
                               <label for="hue-demo" class="title-label">Color:</label>
                                 <div class="select-form">
-                              <input type="text" id="hue-demo" class="form-control demo" data-control="hue" value="#ff6161">
+                              <input type="text" id="hue-demo" class="form-control demo" data-control="hue" value="#ff6161" width="100" style="width: 100px">
                               </div>
                           </div>
-                        </div>
-                        <div class="col-sm-3">
+                            </form>
+                           <form class="form-inline">
                             <div class="form-group">
                               <label for="delay-select" class="title-label">Delay:</label>
                                 <div class="select-form">
-                                  <select class="form-control" id="delay-select">
+                                  <select class="select-form" id="delay-select" width="100" style="width: 100px">
                                     <option>None</option>
                                   </select>
                                 </div>
                             </div>
+                            </form>
                         </div>
                 </div>
             </div>
@@ -734,6 +739,14 @@
     var myRoundRectangles = [];
     var myTriangles = [];
 
+    function changeData(){
+        keyData[q] = {
+            shape: new String(document.getElementById("shape-select").value),
+            color: new String(document.getElementById("hue-demo").value),
+            sound: new Howl({ src: ['sounds/bubbles.mp3']})
+        }
+         
+    }
     function onKeyDown(event){
         if(keyData[event.key] && (keyData[event.key].shape =="circle")){
 

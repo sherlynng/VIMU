@@ -545,39 +545,34 @@ canvas {
 .select-form {
     background-color: #eaf3db;
     color: #70a945;
-    margin-right: 10px;
 }
 
-.select-form select{
+.select-form select {
    background: transparent;
    border: 3px solid #aed792;
 }
-/*.form-control {
-    background-color: #eaf3db;
+
+.form-control demo{
+   background: transparent;
+   border: 3px solid #aed792;
+   background-color: #eaf3db;
     color: #70a945;
-    margin-right: 10px;
 }
 
-.form-control select {
-   background: transparent;
-   border: 3px solid #aed792;
-}*/
-
-.select-selected{
-   background: transparent;
-   border: 3px solid #aed792;
-}
-
-.output {
-    font: 1rem 'Fira Sans', sans-serif;
-}
-
-input {
-    margin: .4rem;
-}
-
-.title-label{
+.title-label {
     color: #70a945;
-    margin-left: 30px;
+    margin-right: 5px;
+}
+
+#visual-container-1 {
+    border-color: darkcyan;
+    margin: 10px;
+}
+#visual-container-2 {
+    margin: 10px;
+}
+
+.form-inline {
+    margin-right: 10px;
 }
 /* End Visuals */
