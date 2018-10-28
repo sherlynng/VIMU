@@ -102,7 +102,7 @@
                     <div class="keyboard-key col-sm-1 mx-1 row1">
                         <h6>3</h6>
                         <div ondrop="drop(event)" ondragover="allowDrop(event)">
-                            <p draggable="true" ondragstart="drag(event)" id="3"></p>
+                            <p draggable="true" ondragstart="drag(event)" id="3">stealth-bopper.wav</p>
                         </div>
                         <div class="ldBar-container">
                             <div class="ldBar" data-value="0" id="ldBar3"></div>
@@ -416,10 +416,10 @@
                     <div class="keyboard-key col-sm-5 mx-1 row5">
                         <h6>SpaceBar</h6>
                         <div ondrop="drop(event)" ondragover="allowDrop(event)">
-                            <p draggable="true" ondragstart="drag(event)" id="spacebar"></p>
+                            <p draggable="true" ondragstart="drag(event)" id="spacebar">test.mp3</p>
                         </div>
                         <div class="ldBar-container">
-                            <div class="ldBar" data-value="0" id="ldBarspacebar"></div>
+                            <div class="ldBar ldBar-obj" data-value="0" id="ldBarspacebar"></div>
                         </div>
                     </div>
                 </div>
@@ -769,77 +769,77 @@
                 src: ['sounds/moon.mp3']
             }),
             color: '#2c3e50'
-        }/*
+        },
         1: {
             shape: new String("roundedRectangle"),
-            sound: new Howl({
+            /*sound: new Howl({
                 src: ['sounds/sol-stretched.wav']
-            }),
+            }),*/
             color: '#aaf812'
-        }
+        },
         2: {
             shape: new String("roundedRectangle"),
             sound: new Howl({
                 src: ['sounds/do-stretched.wav']
             }),
             color: '#a5643a'
-        }    
+        },
         3: {
             shape: new String("roundedRectangle"),
             sound: new Howl({
                 src: ['sounds/do-stretched-octave.wav']
             }),
             color: '#068373'
-        }
+        },
         4: {
             shape: new String("roundedRectangle"),
             sound: new Howl({
                 src: ['sounds/la-stretched.wav']
             }),
             color: '#cdbdd1'
-        }
+        },
         5: {
             shape: new String("roundedRectangle"),
             sound: new Howl({
                 src: ['sounds/fa-stretched.wav']
             }),
             color: '#4a4e70'
-        }
+        },
         6: {
             shape: new String("roundedRectangle"),
             sound: new Howl({
                 src: ['sounds/mi-stretched.wav']
             }),
             color: '#911aeb'
-        }
+        },
         7: {
             shape: new String("roundedRectangle"),
             sound: new Howl({
                 src: ['sounds/re-stretched.wav']
             }),
             color: '#1667ba'
-        }
+        },
         8: {
             shape: new String("roundedRectangle"),
             sound: new Howl({
                 src: ['sounds/si-stretched.wav']
             }),
             color: '#c0ebe1'
-        }
+        },
         9: {
             shape: new String("roundedRectangle"),
             sound: new Howl({
                 src: ['sounds/stealth-bopper.wav']
             }),
             color: '#990f4e'
-        }
+        },
         'space': {
             shape: new String("roundedRectangle"),
             sound: new Howl({
-                src: ['sounds/leafdriod_sodacan.mp3']
+                src: ['sounds/leafdroid__sodacan']
             }),
             color: '#a6b9b0'
-        }*/
+        },
     }
 
     var myCircles = [];
@@ -854,7 +854,7 @@
             var point = maxPoint*randomPt;
             var newCircle = new Path.Circle(point, 200);
             newCircle.fillColor = keyData[event.key].color;
-            keyData[event.key].sound.play();
+            //keyData[event.key].sound.play();
             myCircles.push(newCircle);
         }
 
@@ -866,7 +866,7 @@
             var cornerSize = new Size(20,20);
             var newRoundRec = new Path.RoundRectangle(rectangle, cornerSize);
             newRoundRec.fillColor = keyData[event.key].color;
-            keyData[event.key].sound.play();
+            //keyData[event.key].sound.play();
             myRoundRectangles.push(newRoundRec);
         }
 
@@ -876,7 +876,7 @@
             var randomPt = Point.random();
             var newTriangle = new Path.RegularPolygon(maxPoint*randomPt, 3, 70);
             newTriangle.fillColor = keyData[event.key].color;
-            keyData[event.key].sound.play();
+            //keyData[event.key].sound.play();
             newTriangle.selected = false;
             myTriangles.push(newTriangle);
         }

@@ -172,7 +172,7 @@ function handleKeyDown(event){
             addShadow(elementParent);
 
             if ($(element).text()) {
-                showLoadingBar(key);
+                playMusic($(element).text(), key);
             }
         }
     }
@@ -198,22 +198,21 @@ function addShadow(elementParent) {
     }
 }
 
-function showLoadingBar(key) {
+function showLoadingBar(key, duration) {
     $.getScript('js/loading-bar.js', function() {
         // script is now loaded and executed.
         // put your dependent JS here.
-
-        var duration = 3000; // it should finish in 3 seconds !
 
         var keyString = "#ldBar" + key;
         var loadingBar = $(keyString);
         if (loadingBar !== null) {
             var ldBarObj = new ldBar(keyString);
+            // $(loadingBar).attr('style','').attr('data-stroke-trail','red').attr('data-stroke-width',25);
             $(loadingBar).css("visibility", "visible");
             $(loadingBar).animate({
                 letterSpacing: 0 // dummy
             }, {
-                duration: duration,
+                duration: duration * 1000,
                 progress: function (promise, progress, ms) {
                     ldBarObj.set(progress * 100);
                 },
@@ -222,6 +221,21 @@ function showLoadingBar(key) {
                 }
             });
         }
+    });
+}
+
+function playMusic(track, key) {
+    $.getScript('js/howler.core.min.js', function() {
+        var sound = new Howl({
+            src: ['sounds/' + track],
+            onload: function() {
+                var duration = sound.duration();
+                // console.log(duration);
+                showLoadingBar(key, duration);
+            },
+        });
+
+        sound.play();
     });
 }
 
