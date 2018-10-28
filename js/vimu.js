@@ -8,6 +8,7 @@ var defaultColor = "#0000ff";
 $( document ).ready(function() {
     $('#customization-container').hide();
     $('#file-directory').hide();
+    $('.ldBar-container').css("visibility", "hidden");
 
     // settings popover
     $('#settings').popover({
@@ -34,6 +35,7 @@ function toggleEditing() {
         $('#keyboard-audio-visual').removeClass('col-10'); // make keyboard back to full width
         $('.keyboard-key-edit').removeClass('keyboard-key-edit').addClass('keyboard-key');
         $('.keyboard-row-edit').removeClass('keyboard-row-edit').addClass('keyboard-row');
+        $('.ldBar-container').css("visibility", "hidden");
 
         // return back to original settings
         if (!showKeyboard) {
@@ -66,6 +68,7 @@ function toggleEditing() {
         $('#keyboard-audio-visual').addClass('col-10'); // make keyboard smaller
         $('.keyboard-key').removeClass('keyboard-key').addClass('keyboard-key-edit');
         $('.keyboard-row').removeClass('keyboard-row').addClass('keyboard-row-edit');
+        $('.ldBar-container').css("visibility", "collapse");
 
         // must show keyboard and letters in editing mode
         if (!showKeyboard) {
@@ -142,53 +145,111 @@ function setTheme(colour) {
 }
 
 // add shadow lighting on keypress
-window.addEventListener("keydown", addShadow);
-window.addEventListener("keyup", removeShadow);
+window.addEventListener("keydown", handleKeyDown);
+window.addEventListener("keyup", handleKeyUp);
 
-function addShadow(event){
+function handleKeyDown(event){
     if (!isEditing) {
         var key = event.key.toUpperCase();
-        if (key === ' ') {
-            key = 'spacebar';
+        if (key.length > 1) { // not alphanumeric
+            return;
         }
-        var element = $('#' + key);
-        var elementParent = $(element).parent().parent()[0];
-        console.log(event.key);
-        console.log(elementParent);
 
-        $(elementParent).css('transition', 'opacity .2s');
-        $(elementParent).css('opacity', '1');
+        var code = key.charCodeAt(0);
+        if ((code > 47 && code < 58) || // numeric (0-9)
+            (code > 64 && code < 91) || // upper alpha (A-Z)
+            (code === 32)) { // space
 
-        switch (theme) {
-            case "blue":
-                $(elementParent).css('box-shadow', '0 0 15px 10px #89D8E7');
-                break;
-            case "green":
-                $(elementParent).css('box-shadow', '0 0 15px 10px #98DB76');
-                break;
-            case "red":
-                $(elementParent).css('box-shadow', '0 0 15px 10px #EBBAB9');
-                break;
-            case "orange":
-                $(elementParent).css('box-shadow', '0 0 15px 10px #F48255');
-                break;
+            if (key === ' ') {
+                key = 'spacebar';
+            }
+            var element = $('#' + key);
+            var elementParent = $(element).parent().parent()[0];
+            // console.log(event.key);
+            // console.log(elementParent);
+
+            addShadow(elementParent);
+            showLoadingBar(key);
+        }
+
+
+    }
+}
+
+function addShadow(elementParent) {
+    $(elementParent).css('transition', 'opacity .2s');
+    $(elementParent).css('opacity', '1');
+
+    switch (theme) {
+        case "blue":
+            $(elementParent).css('box-shadow', '0 0 15px 10px #89D8E7');
+            break;
+        case "green":
+            $(elementParent).css('box-shadow', '0 0 15px 10px #98DB76');
+            break;
+        case "red":
+            $(elementParent).css('box-shadow', '0 0 15px 10px #EBBAB9');
+            break;
+        case "orange":
+            $(elementParent).css('box-shadow', '0 0 15px 10px #F48255');
+            break;
+    }
+}
+
+function showLoadingBar(key) {
+    $.getScript('js/loading-bar.js', function() {
+        // script is now loaded and executed.
+        // put your dependent JS here.
+
+        var duration = 3000; // it should finish in 3 seconds !
+
+        var keyString = "#ldBar" + key;
+        var loadingBar = $(keyString);
+        if (loadingBar !== null) {
+            var ldBarObj = new ldBar(keyString);
+            $(loadingBar).css("visibility", "visible");
+            $(loadingBar).animate({
+                letterSpacing: 0 // dummy
+            }, {
+                duration: duration,
+                progress: function (promise, progress, ms) {
+                    ldBarObj.set(progress * 100);
+                },
+                complete: function () {
+                    $(loadingBar).css("visibility", "hidden");
+                }
+            });
+        }
+    });
+}
+
+function handleKeyUp(event) {
+    if (!isEditing) {
+        var key = event.key.toUpperCase();
+
+        if (key.length > 1) { // not alphanumeric
+            return;
+        }
+        var code = key.charCodeAt(0);
+        if ((code > 47 && code < 58) || // numeric (0-9)
+            (code > 64 && code < 91) || // upper alpha (A-Z)
+            (code === 32)) { // space
+
+            if (key === ' ') {
+                key = 'spacebar';
+            }
+            var element = $('#' + key);
+            var elementParent = $(element).parent().parent()[0];
+
+            removeShadow(elementParent);
         }
     }
 }
 
-function removeShadow(event){
-    if (!isEditing) {
-        var key = event.key.toUpperCase();
-        if (key === ' ') {
-            key = 'spacebar';
-        }
-        var element = $('#' + key);
-        var elementParent = $(element).parent().parent()[0];
-
-        $(elementParent).css('transition', 'opacity .2s');
-        $(elementParent).css('opacity', '');
-        $(elementParent).css('box-shadow', '');
-    }
+function removeShadow(elementParent){
+    $(elementParent).css('transition', 'opacity .2s');
+    $(elementParent).css('opacity', '');
+    $(elementParent).css('box-shadow', '');
 }
 
 // drag and drop
