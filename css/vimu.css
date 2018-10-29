@@ -212,6 +212,11 @@ li {
 li.selected {
     background-color: #F7A7B3;
     width: 100%;
+    height:25px;
+}
+
+li.sound-file {
+    height: 25px;
 }
 
 #search {
