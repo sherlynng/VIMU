@@ -326,3 +326,42 @@ function updateAll(event) {
     p.style.color = event.target.value;
   });
 }
+
+function toggleOpenFolder(element, event) {
+    if($(event.target).hasClass("foldername") || $(event.target).hasClass("folder") 
+        || $(event.target).hasClass("fa-folder") ||  $(event.target).hasClass("fa-folder-open"))
+    {
+        if ($(element).hasClass("folder-open")) {
+            $(element).addClass("folder-closed").removeClass("folder-open");
+            $(element).find("i.fa-folder-open").addClass('fa-folder').removeClass('fa-folder-open');
+            var files = $(element).find("ul.files li");
+            if (files.length > 0) {
+                $(files).each(function() {
+                    $(this).hide();
+                });
+            }
+        } else {
+            $(element).removeClass("folder-closed").addClass("folder-open");
+            $(element).find("i.fa-folder").removeClass('fa-folder').addClass('fa-folder-open');
+            var files = $(element).find("ul.files li");
+            if (files.length > 0) {
+                $(files).each(function() {
+                    $(this).show();
+                });
+            }
+        }
+    }
+}
+
+function togglePlaySoundInDir(element, event) {
+    $(element).find("i").toggleClass('fa-play');
+    $(element).find("i").toggleClass('fa-stop');
+    var selected = document.getElementsByClassName("selected");
+    $(selected).each(function() {
+        $(selected).removeClass('selected');
+        if ($(selected).hasClass("fa-stop")) { // stop the current playing
+            $(selected).removeClass('fa-stop').addClass('fa-play');
+        }
+    });
+    $(element).addClass('selected');
+}

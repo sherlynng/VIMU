@@ -196,20 +196,22 @@ ul {
     padding: 0;
     margin: 0;
     width: auto;
+    overflow: visible;
 }
 
 li {
-    display: block;
-    float: left;
+    display: inline-block;
     clear: left;
     border-radius: 15px;
-    height: 25px;
     width: 100%;
-    margin: 2px;
+    align-content: center;
+    position: relative;
+    padding: 0;
 }
 
 li.selected {
-    background: #F7A7B3;
+    background-color: #F7A7B3;
+    width: 100%;
 }
 
 #search {
@@ -231,23 +233,25 @@ li.selected {
 .folder.tg-inputwithicon i {
     position: absolute;
     left: 15px;
-    line-height: 25px;
+    line-height: 27px;
     color: #943737;
 }
 
 p.foldername {
-    padding-left: 35px;
+    padding-left: 40px;
+    margin-bottom: 0px;
 }
 
-.sound.tg-inputwithicon i {
+.sound-file.tg-inputwithicon i {
     position: absolute;
-    left: 40px;
-    line-height: 25px;
+    line-height: 27px;
     color: #943737;
+    padding-left: 30px;
 }
 
 p.soundname {
-    padding-left: 60px;
+    position: relative;
+    padding-left: 70px;
 }
 
 /* End File Directory */
