@@ -6,7 +6,7 @@ var colorWell;
 var defaultColor = "#0000ff";
 var selectedKey;
 
-$( document ).ready(function() {
+$(document).ready(function () {
     $('#customization-container').hide();
     $('#file-directory').hide();
     $('.ldBar-container').css("visibility", "hidden");
@@ -17,10 +17,11 @@ $( document ).ready(function() {
     // settings popover
     $('#settings').popover({
         html: true,
-        content: function() {
+        content: function () {
             return $('#settings-popover').html();
         }
-    }).on('shown.bs.popover', function() {});
+    }).on('shown.bs.popover', function () {
+    });
 });
 
 function toggleEditing() {
@@ -62,7 +63,7 @@ function toggleEditing() {
 
         // hide display for trash
         $('.trash-container').hide();
-        
+
     } else {
         // navigation bar
         isEditing = true;
@@ -92,7 +93,7 @@ function toggleEditing() {
 
         // set settings for selecting key
         $(selectedKey).css('border', '3px solid red');
-        $('.keyboard-key-edit').click(function() {
+        $('.keyboard-key-edit').click(function () {
             selectKey(this);
         });
 
@@ -169,7 +170,7 @@ function setTheme(colour) {
 window.addEventListener("keydown", handleKeyDown);
 window.addEventListener("keyup", handleKeyUp);
 
-function handleKeyDown(event){
+function handleKeyDown(event) {
     if (!isEditing) {
         var key = event.key.toUpperCase();
         if (key.length > 1) { // not alphanumeric
@@ -219,7 +220,7 @@ function addShadow(elementParent) {
 }
 
 function showLoadingBar(key, duration) {
-    $.getScript('js/loading-bar.js', function() {
+    $.getScript('js/loading-bar.js', function () {
         // script is now loaded and executed.
         // put your dependent JS here.
 
@@ -245,10 +246,10 @@ function showLoadingBar(key, duration) {
 }
 
 function playMusic(track, key) {
-    $.getScript('js/howler.core.min.js', function() {
+    $.getScript('js/howler.core.min.js', function () {
         var sound = new Howl({
             src: ['sounds/' + track],
-            onload: function() {
+            onload: function () {
                 var duration = sound.duration();
                 // console.log(duration);
                 showLoadingBar(key, duration);
@@ -282,7 +283,7 @@ function handleKeyUp(event) {
     }
 }
 
-function removeShadow(elementParent){
+function removeShadow(elementParent) {
     $(elementParent).css('transition', 'opacity .2s');
     $(elementParent).css('opacity', '');
     $(elementParent).css('box-shadow', '');
@@ -297,9 +298,13 @@ function allowDrop(ev) {
 
 function drag(ev) {
     if (isEditing) {
-        console.log(ev.target.id);
+        console.log(ev.target);
 
-        if (ev.target.id === "trash") {
+        var draggedElement = ev.target;
+
+        if ($(draggedElement).hasClass('soundname')) {
+            ev.dataTransfer.setData("text", 'library-' + $(draggedElement).text()); // hardcoded, cant think of a better way yet
+        } else if (ev.target.id === "trash") {
             ev.preventDefault();
         } else {
             ev.dataTransfer.setData("text", ev.target.id);
@@ -315,7 +320,15 @@ function drop(ev) {
             return; // trash cannot be dragged
         }
 
-        var draggedData = document.getElementById(draggedId).textContent;
+        var fromLibrary = false;
+        var draggedData;
+
+        if (draggedId.indexOf('library-') === 0) { // hardcoded
+            draggedData = draggedId.slice(8);
+            fromLibrary = true;
+        } else {
+            draggedData = document.getElementById(draggedId).textContent;
+        }
 
         // ev.target    -> is div when dragging to empty slot
         //             -> is p when dragging to occupied slot
@@ -328,17 +341,27 @@ function drop(ev) {
         }
         console.log(targetId);
 
-        if (targetId === "trash") {
-            document.getElementById(draggedId).textContent = "";
-
-            var targetElement = document.getElementById(targetId);
-            $(targetElement).css('background-color', '');
-            $(targetElement).css('transition', 'background-color 0.3s ease');
+        if (fromLibrary) {
+            if (targetId === "trash") { // cannot remove sound track from library
+                var targetElement = document.getElementById(targetId);
+                $(targetElement).css('background-color', '');
+                $(targetElement).css('transition', 'background-color 0.3s ease');
+            } else {
+                document.getElementById(targetId).textContent = draggedData;
+            }
         } else {
-            var targetData = document.getElementById(targetId).textContent;
+            if (targetId === "trash") {
+                document.getElementById(draggedId).textContent = "";
 
-            document.getElementById(draggedId).textContent = targetData;
-            document.getElementById(targetId).textContent = draggedData;
+                var targetElement = document.getElementById(targetId);
+                $(targetElement).css('background-color', '');
+                $(targetElement).css('transition', 'background-color 0.3s ease');
+            } else {
+                var targetData = document.getElementById(targetId).textContent;
+
+                document.getElementById(draggedId).textContent = targetData;
+                document.getElementById(targetId).textContent = draggedData;
+            }
         }
     }
 }
@@ -402,37 +425,36 @@ function selectKey(element) {
 window.addEventListener("load", startup, false);
 
 function startup() {
-  colorWell = document.querySelector("#colorWell");
-  colorWell.value = defaultColor;
-  colorWell.addEventListener("input", updateFirst, false);
-  colorWell.addEventListener("change", updateAll, false);
-  colorWell.select();
+    colorWell = document.querySelector("#colorWell");
+    colorWell.value = defaultColor;
+    colorWell.addEventListener("input", updateFirst, false);
+    colorWell.addEventListener("change", updateAll, false);
+    colorWell.select();
 }
 
 function updateFirst(event) {
-  var p = document.querySelector("p");
+    var p = document.querySelector("p");
 
-  if (p) {
-    p.style.color = event.target.value;
-  }
+    if (p) {
+        p.style.color = event.target.value;
+    }
 }
 
 function updateAll(event) {
-  document.querySelectorAll("p").forEach(function(p) {
-    p.style.color = event.target.value;
-  });
+    document.querySelectorAll("p").forEach(function (p) {
+        p.style.color = event.target.value;
+    });
 }
 
 function toggleOpenFolder(element, event) {
-    if($(event.target).hasClass("foldername") || $(event.target).hasClass("folder") 
-        || $(event.target).hasClass("fa-folder") ||  $(event.target).hasClass("fa-folder-open"))
-    {
+    if ($(event.target).hasClass("foldername") || $(event.target).hasClass("folder")
+        || $(event.target).hasClass("fa-folder") || $(event.target).hasClass("fa-folder-open")) {
         if ($(element).hasClass("folder-open")) {
             $(element).addClass("folder-closed").removeClass("folder-open");
             $(element).find("i.fa-folder-open").addClass('fa-folder').removeClass('fa-folder-open');
             var files = $(element).find("ul.files li");
             if (files.length > 0) {
-                $(files).each(function() {
+                $(files).each(function () {
                     $(this).hide();
                 });
             }
@@ -441,7 +463,7 @@ function toggleOpenFolder(element, event) {
             $(element).find("i.fa-folder").removeClass('fa-folder').addClass('fa-folder-open');
             var files = $(element).find("ul.files li");
             if (files.length > 0) {
-                $(files).each(function() {
+                $(files).each(function () {
                     $(this).show();
                 });
             }
@@ -453,7 +475,7 @@ function togglePlaySoundInDir(element, event) {
     $(element).find("i").toggleClass('fa-play');
     $(element).find("i").toggleClass('fa-stop');
     var selected = document.getElementsByClassName("selected");
-    $(selected).each(function() {
+    $(selected).each(function () {
         $(selected).removeClass('selected');
         if ($(selected).hasClass("fa-stop")) { // stop the current playing
             $(selected).removeClass('fa-stop').addClass('fa-play');
