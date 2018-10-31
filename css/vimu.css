@@ -212,8 +212,28 @@ canvas {
     height: inherit;
 }
 
+#file-directory p,
+#file-directory i,
 #file-directory h5 {
     color: #943737;
+}
+
+#drop-zone {
+    position: fixed;
+    bottom:0;
+    padding-top: 15px;
+    margin-bottom: 15px;
+    background-color: #FFE2E3;
+    border: 1px solid #F7A7B3;
+    border-radius: 10px;
+    text-align: center;
+}
+
+#drop-zone p {
+    font-size: 12px;
+    width: 100%;
+    padding-left:5px;
+    padding-right:5px;
 }
 
 ul {
@@ -257,14 +277,12 @@ li.sound-file {
     position: absolute;
     right: 30px;
     line-height: 35px;
-    color: #943737;
 }
 
 .folder.tg-inputwithicon i {
     position: absolute;
     left: 15px;
     line-height: 27px;
-    color: #943737;
 }
 
 p.foldername {
@@ -275,7 +293,6 @@ p.foldername {
 .sound-file.tg-inputwithicon i {
     position: absolute;
     line-height: 27px;
-    color: #943737;
     padding-left: 30px;
 }
 
