@@ -295,6 +295,37 @@ p.soundname {
     padding-left: 70px;
 }
 
+.scrollbar {
+    float: left;
+    height: auto;
+    width: inherit;
+    overflow-y: auto;
+    margin-bottom: 25px;
+}
+
+/* TODO: Fix min height */
+.force-overflow {
+    min-height: 100px;
+    width: inherit;
+}
+
+.scrollbar-primary::-webkit-scrollbar {
+    width: 12px;
+    background-color: #F7A7B3; 
+    border-radius: 10px; 
+}
+
+.scrollbar-primary::-webkit-scrollbar-track {
+    background-color: #FFE2E3;
+    border-radius: 10px; 
+}
+
+.scrollbar-primary::-webkit-scrollbar-thumb {
+    width: 12px;
+    background-color: #F7A7B3; 
+    border-radius: 10px;
+}
+
 /* End File Directory */
 
 #customization-container {
@@ -307,8 +338,6 @@ p.soundname {
     border: 1px solid forestgreen;
     border-radius: 10px;
 }
-
-
 
 /*Audio*/
 
