@@ -12,6 +12,7 @@ $( document ).ready(function() {
     $('.ldBar-container').css("visibility", "hidden");
     $('#audio-contents').contents().hide();
     $('#visuals-contents').contents().hide();
+    $('.trash-container').hide();
 
     // settings popover
     $('#settings').popover({
@@ -56,8 +57,11 @@ function toggleEditing() {
             $('#display-labels').attr("checked", true);
         }
 
-        // remove outline for selecged key
+        // remove outline for selected key
         $(selectedKey).css('border', '');
+
+        // hide display for trash
+        $('.trash-container').hide();
         
     } else {
         // navigation bar
@@ -91,6 +95,9 @@ function toggleEditing() {
         $('.keyboard-key-edit').click(function() {
             selectKey(this);
         });
+
+        // show display for trash
+        $('.trash-container').show();
     }
 }
 
@@ -290,7 +297,13 @@ function allowDrop(ev) {
 
 function drag(ev) {
     if (isEditing) {
-        ev.dataTransfer.setData("text", ev.target.id);
+        console.log(ev.target.id);
+
+        if (ev.target.id === "trash") {
+            ev.preventDefault();
+        } else {
+            ev.dataTransfer.setData("text", ev.target.id);
+        }
     }
 }
 
@@ -298,6 +311,10 @@ function drop(ev) {
     if (isEditing) {
         ev.preventDefault();
         var draggedId = ev.dataTransfer.getData("text");
+        if (draggedId === "trash") {
+            return; // trash cannot be dragged
+        }
+
         var draggedData = document.getElementById(draggedId).textContent;
 
         // ev.target    -> is div when dragging to empty slot
@@ -309,11 +326,49 @@ function drop(ev) {
         } else {
             targetId = ev.target.id;
         }
-        var targetData = document.getElementById(targetId).textContent;
+        console.log(targetId);
 
-        document.getElementById(draggedId).textContent = targetData;
-        document.getElementById(targetId).textContent = draggedData;
+        if (targetId === "trash") {
+            document.getElementById(draggedId).textContent = "";
+
+            var targetElement = document.getElementById(targetId);
+            $(targetElement).css('background-color', '');
+            $(targetElement).css('transition', 'background-color 0.3s ease');
+        } else {
+            var targetData = document.getElementById(targetId).textContent;
+
+            document.getElementById(draggedId).textContent = targetData;
+            document.getElementById(targetId).textContent = draggedData;
+        }
     }
+}
+
+function dragEnter(ev) {
+    var targetId;
+
+    if (ev.target.getElementsByTagName('p').length !== 0) {
+        targetId = ev.target.getElementsByTagName('p')[0].id;
+    } else {
+        targetId = ev.target.id;
+    }
+
+    var targetElement = document.getElementById(targetId);
+    $(targetElement).css('background-color', 'lightpink');
+    $(targetElement).css('transition', 'background-color 0.3s ease');
+}
+
+function dragLeave(ev) {
+    var targetId;
+
+    if (ev.target.getElementsByTagName('p').length !== 0) {
+        targetId = ev.target.getElementsByTagName('p')[0].id;
+    } else {
+        targetId = ev.target.id;
+    }
+
+    var targetElement = document.getElementById(targetId);
+    $(targetElement).css('background-color', '');
+    $(targetElement).css('transition', 'background-color 0.3s ease');
 }
 
 function selectKey(element) {

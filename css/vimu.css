@@ -187,6 +187,16 @@ canvas {
     margin: 0 auto;
 }
 
+.trash-container {
+    opacity: 0.8;
+}
+
+.trash-container i {
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
 /* End Keyboard */
 
 /* File Directory */

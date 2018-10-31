@@ -454,8 +454,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="keyboard-row row justify-content-md-center">
-                    <div class="keyboard-key col-sm-5 mx-1 row5">
+                <div class="keyboard-row row">
+                    <div class="offset-md-3 keyboard-key col-sm-5 row5">
                         <h6>spacebar</h6>
                         <div ondrop="drop(event)" ondragover="allowDrop(event)">
                             <p draggable="true" ondragstart="drag(event)" id="spacebar">test.mp3</p>
@@ -463,6 +463,12 @@
                         <div class="ldBar-container">
                             <div class="ldBar ldBar-obj" data-value="0" id="ldBarspacebar"></div>
                         </div>
+                    </div>
+                    <div class="offset-md-1 col-sm-3 trash-container text-center">
+                        <i class="fa fa-trash" style="font-size:50px" id="trash" draggable="false" ondrop="drop(event)"
+                           ondragover="allowDrop(event)" ondragenter="dragEnter(event)"
+                           ondragleave="dragLeave(event)" ondragstart="drag(event)"></i>
+                        <p>Drag here to remove audio</p>
                     </div>
                 </div>
             </div>
