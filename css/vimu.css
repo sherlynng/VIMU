@@ -220,6 +220,7 @@ canvas {
 
 #drop-zone {
     position: absolute;
+    /* position: fixed; */
     bottom:0;
     padding-top: 15px;
     margin-bottom: 15px;

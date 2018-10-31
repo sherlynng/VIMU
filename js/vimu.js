@@ -552,14 +552,13 @@ function toggleOpenFolder(element, event) {
 }
 
 function togglePlaySoundInDir(element, event) {
-    $(element).find("i").toggleClass('fa-play');
-    $(element).find("i").toggleClass('fa-stop');
+    $(element).find("i.fa").toggleClass('fa-play');
+    $(element).find("i.fa").toggleClass('fa-stop');
     var selected = document.getElementsByClassName("selected");
     $(selected).each(function () {
+        $(selected).find("i.fa").toggleClass('fa-play');
+        $(selected).find("i.fa").toggleClass('fa-stop');
         $(selected).removeClass('selected');
-        if ($(selected).hasClass("fa-stop")) { // stop the current playing
-            $(selected).removeClass('fa-stop').addClass('fa-play');
-        }
     });
     $(element).addClass('selected');
 }
