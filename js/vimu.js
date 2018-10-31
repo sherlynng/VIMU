@@ -4,11 +4,14 @@ var showLetters = true;
 var theme = "blue";
 var colorWell;
 var defaultColor = "#0000ff";
+var selectedKey;
 
 $( document ).ready(function() {
     $('#customization-container').hide();
     $('#file-directory').hide();
     $('.ldBar-container').css("visibility", "hidden");
+    $('#audio-contents').contents().hide();
+    $('#visuals-contents').contents().hide();
 
     // settings popover
     $('#settings').popover({
@@ -52,6 +55,10 @@ function toggleEditing() {
             $('.keyboard-key').contents().show();
             $('#display-labels').attr("checked", true);
         }
+
+        // remove outline for selecged key
+        $(selectedKey).css('border', '');
+        
     } else {
         // navigation bar
         isEditing = true;
@@ -78,6 +85,12 @@ function toggleEditing() {
         if (!showLetters) {
             $('.keyboard-key-edit').contents().show();
         }
+
+        // set settings for selecting key
+        $(selectedKey).css('border', '3px solid red');
+        $('.keyboard-key-edit').click(function() {
+            selectKey(this);
+        });
     }
 }
 
@@ -301,6 +314,34 @@ function drop(ev) {
         document.getElementById(draggedId).textContent = targetData;
         document.getElementById(targetId).textContent = draggedData;
     }
+}
+
+function selectKey(element) {
+    if (!isEditing) {
+        return;
+    }
+
+    if (typeof selectedKey === "undefined") {
+        $('#audio-contents').contents().show();
+        $('#visuals-contents').contents().show();
+        $('.select-placeholder').hide();
+    }
+
+    // remove prev selected first
+    $(selectedKey).css('border', '');
+
+    // set for new selected
+    selectedKey = element;
+    var key = $(element).find("h6").text();
+    console.log(key);
+
+    if (key === "spacebar") {
+        $('#selected-key').text('\u2423');
+    } else {
+        $('#selected-key').text(key);
+    }
+
+    $(element).css('border', '3px solid red');
 }
 
 window.addEventListener("load", startup, false);

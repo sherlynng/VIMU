@@ -77,38 +77,44 @@
     <div class="row components-container">
         <div class="col-2" id="file-directory">
             <h5>&nbsp;&nbsp;FILE DIRECTORY</h5>
-                <form class="search-form">
-                    <div class="form-group tg-inputwithicon">
-                        <i class="fa fa-search"></i>
-                        <input type="text" class="form-control" name="search" id="search" placeholder="Search">
-                    </div>
-                </form>
+            <form class="search-form">
+                <div class="form-group tg-inputwithicon">
+                    <i class="fa fa-search"></i>
+                    <input type="text" class="form-control" name="search" id="search" placeholder="Search">
+                </div>
+            </form>
             <ul class="directory">
-                <li class="folder folder-closed tg-inputwithicon" onclick="toggleOpenFolder(this, event)" ondrop="drop(event)" ondragover="allowDrop(event)">
+                <li class="folder folder-closed tg-inputwithicon" onclick="toggleOpenFolder(this, event)"
+                    ondrop="drop(event)" ondragover="allowDrop(event)">
                     <i class="fa fa-folder"></i>
                     <p class="foldername" draggable="false" ondragstart="drag(event)">dir1</p>
                     <ul class="files">
-                        <li class="sound-file tg-inputwithicon" onclick="togglePlaySoundInDir(this, event)" ondrop="drop(event)" ondragover="allowDrop(event)" style="display:none">
+                        <li class="sound-file tg-inputwithicon" onclick="togglePlaySoundInDir(this, event)"
+                            ondrop="drop(event)" ondragover="allowDrop(event)" style="display:none">
                             <i class="fa fa-play"></i>
                             <p class="soundname" draggable="true" ondragstart="drag(event)">sound1.mp3</p>
                         </li>
-                        <li class="sound-file tg-inputwithicon" onclick="togglePlaySoundInDir(this, event)" ondrop="drop(event)" ondragover="allowDrop(event)" style="display:none">
-                                <i class="fa fa-play"></i>
-                                <p class="soundname" draggable="true" ondragstart="drag(event)">sound2.mp3</p>
+                        <li class="sound-file tg-inputwithicon" onclick="togglePlaySoundInDir(this, event)"
+                            ondrop="drop(event)" ondragover="allowDrop(event)" style="display:none">
+                            <i class="fa fa-play"></i>
+                            <p class="soundname" draggable="true" ondragstart="drag(event)">sound2.mp3</p>
                         </li>
                     </ul>
                 </li>
-                <li class="folder folder-closed tg-inputwithicon" onclick="toggleOpenFolder(this, event)" ondrop="drop(event)" ondragover="allowDrop(event)">
+                <li class="folder folder-closed tg-inputwithicon" onclick="toggleOpenFolder(this, event)"
+                    ondrop="drop(event)" ondragover="allowDrop(event)">
                     <i class="fa fa-folder"></i>
                     <p class="foldername" draggable="false" ondragstart="drag(event)">dir2</p>
                     <ul class="files">
-                        <li class="sound-file tg-inputwithicon" onclick="togglePlaySoundInDir(this, event)" ondrop="drop(event)" ondragover="allowDrop(event)" style="display:none">
+                        <li class="sound-file tg-inputwithicon" onclick="togglePlaySoundInDir(this, event)"
+                            ondrop="drop(event)" ondragover="allowDrop(event)" style="display:none">
                             <i class="fa fa-play"></i>
                             <p class="soundname" draggable="true" ondragstart="drag(event)">sound3.mp3</p>
                         </li>
-                        <li class="sound-file tg-inputwithicon" onclick="togglePlaySoundInDir(this, event)" ondrop="drop(event)" ondragover="allowDrop(event)" style="display:none">
-                                <i class="fa fa-play"></i>
-                                <p class="soundname" draggable="true" ondragstart="drag(event)">sound4.mp3</p>
+                        <li class="sound-file tg-inputwithicon" onclick="togglePlaySoundInDir(this, event)"
+                            ondrop="drop(event)" ondragover="allowDrop(event)" style="display:none">
+                            <i class="fa fa-play"></i>
+                            <p class="soundname" draggable="true" ondragstart="drag(event)">sound4.mp3</p>
                         </li>
                     </ul>
                 </li>
@@ -450,7 +456,7 @@
                 </div>
                 <div class="keyboard-row row justify-content-md-center">
                     <div class="keyboard-key col-sm-5 mx-1 row5">
-                        <h6>SpaceBar</h6>
+                        <h6>spacebar</h6>
                         <div ondrop="drop(event)" ondragover="allowDrop(event)">
                             <p draggable="true" ondragstart="drag(event)" id="spacebar">test.mp3</p>
                         </div>
@@ -464,164 +470,181 @@
             <div class="row" id="customization-container">
                 <!-- sound editor -->
                 <div class="col-6" id="audio">
-                    <h5>SOUND EDITOR</h5>
-                    <div class="row">
-                        <!-- waveform -->
-                        <div class="col-sm-6">
-                            <div class="row">
-                                <div class="col-sm-10 waveform-display">
-                                    <div id="waveform"></div>
-                                </div>
+                    <p class="visual-title text-center select-placeholder">Select a Key to start</p>
+                    <div id="audio-contents">
+                        <p class="visual-title">SOUND EDITOR</p>
+                        <div class="row">
+                            <!-- waveform -->
+                            <div class="col-sm-6">
+                                <div class="row">
+                                    <div class="col-sm-10 waveform-display">
+                                        <div id="waveform"></div>
+                                    </div>
 
-                                <div class="col-sm-2">
-                                    <div class="row justify-vertical">
-                                        <div class="col">
-                                            <button class="control-buttons"><i class="fa fa-search-plus"></i></button>
-                                            <button class="control-buttons"><i class="fa fa-search-minus"></i></button>
-                                            <button class="control-buttons"><i class="fa fa-scissors"></i></button>
+                                    <div class="col-sm-2">
+                                        <div class="row justify-vertical">
+                                            <div class="col">
+                                                <button class="control-buttons"><i class="fa fa-search-plus"></i>
+                                                </button>
+                                                <button class="control-buttons"><i class="fa fa-search-minus"></i>
+                                                </button>
+                                                <button class="control-buttons"><i class="fa fa-scissors"></i></button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
+
+                                <button id="btn-pause" class="control-buttons no-button-display"><i
+                                        class="fa fa-pause-circle-o"></i></button>
+                                <button id="btn-play" class="control-buttons no-button-display"><i
+                                        class="fa fa-play-circle-o"></i></button>
+                                <button id="btn-stop" class="control-buttons no-button-display"><i
+                                        class="fa fa-stop-circle-o"></i></button>
+                                <span class="file-name">test.mp3</span>
                             </div>
 
-                            <button id="btn-pause" class="control-buttons no-button-display"><i
-                                    class="fa fa-pause-circle-o"></i></button>
-                            <button id="btn-play" class="control-buttons no-button-display"><i
-                                    class="fa fa-play-circle-o"></i></button>
-                            <button id="btn-stop" class="control-buttons no-button-display"><i
-                                    class="fa fa-stop-circle-o"></i></button>
-                            <span class="file-name">test.mp3</span>
-                        </div>
-
-                        <!-- settings -->
-                        <div class="col-sm-4">
-                            <form class="form-inline">
-                                <div class="form-group">
-                                    <label for="quantization" class="margin-10">Quantize to:</label>
-                                    <div class="styled-select">
-                                        <select id="quantization" class="styled-select">
-                                            <option>1</option>
-                                            <option>1/2</option>
-                                            <option>1/4</option>
-                                            <option>1/8</option>
-                                            <option>1/16</option>
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="quantization-amount" class="margin-36">Amount:</label>
-                                    <p><span id="quantization-amount-value" class="quantization-amount-value"></span>
-                                    </p>
-                                    <div class="amount-slider">
-                                        <input type="range" min="1" max="100" value="60" class="amount-slider"
-                                               id="quantization-amount">
-                                    </div>
-                                </div>
-                                <br/>
-
-                                <div class="form-group">
-                                    <label for="loop" class="margin">Loop:</label>
-                                    <div class="checkbox-switch">
-                                        <input type="checkbox" checked="" onchange="T.toggleToobarStatus()" value="1"
-                                               name="status" class="input-checkbox" id="toolbar-active"
-                                               data-com.agilebits.onepassword.user-edited="yes">
-                                        <div class="checkbox-animate">
-                                            <span class="checkbox-off">OFF</span>
-                                            <span class="checkbox-on">ON</span>
+                            <!-- settings -->
+                            <div class="col-sm-4">
+                                <form class="form-inline">
+                                    <div class="form-group">
+                                        <label for="quantization" class="margin-10">Quantize to:</label>
+                                        <div class="styled-select">
+                                            <select id="quantization" class="styled-select">
+                                                <option>1</option>
+                                                <option>1/2</option>
+                                                <option>1/4</option>
+                                                <option>1/8</option>
+                                                <option>1/16</option>
+                                            </select>
                                         </div>
                                     </div>
-                                </div>
-                                <br/>
 
-                                <div class="form-group" class="volume">
-                                    <i class="fa fa-volume-up margin-10"></i>
-                                    <div class="volume-slider">
-                                        <input type="range" min="0" max="100" value="30" class="volume-slider"
-                                               id="volume">
+                                    <div class="form-group">
+                                        <label for="quantization-amount" class="margin-36">Amount:</label>
+                                        <p><span id="quantization-amount-value"
+                                                 class="quantization-amount-value"></span>
+                                        </p>
+                                        <div class="amount-slider">
+                                            <input type="range" min="1" max="100" value="60" class="amount-slider"
+                                                   id="quantization-amount">
+                                        </div>
                                     </div>
-                                </div>
-                            </form>
-                        </div>
+                                    <br/>
 
-                        <!-- selected key -->
-                        <div class="col-sm-2">
-                            <p>Selected key:</p>
-                            <div class="selected-key">
-                                <h5>Q</h5>
+                                    <div class="form-group">
+                                        <label for="loop" class="margin">Loop:</label>
+                                        <div class="checkbox-switch">
+                                            <input type="checkbox" checked="" onchange="T.toggleToobarStatus()"
+                                                   value="1"
+                                                   name="status" class="input-checkbox" id="toolbar-active"
+                                                   data-com.agilebits.onepassword.user-edited="yes">
+                                            <div class="checkbox-animate">
+                                                <span class="checkbox-off">OFF</span>
+                                                <span class="checkbox-on">ON</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br/>
+
+                                    <div class="form-group" class="volume">
+                                        <i class="fa fa-volume-up margin-10"></i>
+                                        <div class="volume-slider">
+                                            <input type="range" min="0" max="100" value="30" class="volume-slider"
+                                                   id="volume">
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <!-- selected key -->
+                            <div class="col-sm-2">
+                                <p>Selected key:</p>
+                                <div class="text-center" id="selected-key-container">
+                                    <h5 id="selected-key">Q</h5>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="col-6" id="visuals">
-                    <p class="visual-title">VISUALS EDITOR</p>
-                    <div class="row">
-                        <div class="col-md-3">
-                            <img src="https://media1.tenor.com/images/8373dd8b18dacf6292f73f004e2ac454/tenor.gif?itemid=8025388" class="preview-image" height="100" width="100">
-                            <label for="position-select" class="title-label">Preview</label>
-                        </div>
-                        <div class="col-md-4" id="visual-container-1">
-                          <form class="form-inline">
-                            <div class="form-group">
-                              <label for="shape-select" class="title-label">Shape:</label>
-                                <div class="select-form">
-                                  <select class="select-form" id="shape-select" onchange="changeData()" width="100" style="width: 100px">
-                                    <option value="circle">Circle</option>
-                                    <option value="triangle">Triangle</option>
-                                    <option value="roundedRectangle">Rounded Rectangle</option>
-                                    <option >Square</option>
-                              </select>
-                                </div>
+                    <p class="visual-title text-center select-placeholder">Select a Key to start</p>
+                    <div id="visuals-contents">
+                        <p class="visual-title">VISUALS EDITOR</p>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <img src="https://media1.tenor.com/images/8373dd8b18dacf6292f73f004e2ac454/tenor.gif?itemid=8025388"
+                                     class="preview-image" height="100" width="100">
+                                <label for="position-select" class="title-label">Preview</label>
                             </div>
-                        </form>
-                           <form class="form-inline">
-                            <div class="form-group">
-                              <label for="position-select" class="title-label">Position:</label>
-                                <div class="select-form">
-                                  <select class="select-form" id="position-select" width="100" style="width: 100px">
-                                    <option>Random</option>
-                                    <option>Top</option>
-                                    <option>Bottom</option>
-                                    <option>Left</option>
-                                    <option>Right</option>
-                                    </select>
-                                </div>
+                            <div class="col-md-4" id="visual-container-1">
+                                <form class="form-inline">
+                                    <div class="form-group">
+                                        <label for="shape-select" class="title-label">Shape:</label>
+                                        <div class="select-form">
+                                            <select class="select-form" id="shape-select" onchange="changeData()"
+                                                    width="100" style="width: 100px">
+                                                <option value="circle">Circle</option>
+                                                <option value="triangle">Triangle</option>
+                                                <option value="roundedRectangle">Rounded Rectangle</option>
+                                                <option>Square</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </form>
+                                <form class="form-inline">
+                                    <div class="form-group">
+                                        <label for="position-select" class="title-label">Position:</label>
+                                        <div class="select-form">
+                                            <select class="select-form" id="position-select" width="100"
+                                                    style="width: 100px">
+                                                <option>Random</option>
+                                                <option>Top</option>
+                                                <option>Bottom</option>
+                                                <option>Left</option>
+                                                <option>Right</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </form>
+                                <form class="form-inline">
+                                    <div class="form-group">
+                                        <label for="size-select" class="title-label">Size:</label>
+                                        <div class="select-form">
+                                            <select class="select-form" id="size-select" width="100"
+                                                    style="width: 100px">
+                                                <option>Random</option>
+                                                <option>Small</option>
+                                                <option>Medium</option>
+                                                <option>Large</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
-                            </form>
-                           <form class="form-inline">
-                            <div class="form-group">
-                              <label for="size-select" class="title-label">Size:</label>
-                                <div class="select-form">
-                                  <select class="select-form" id="size-select" width="100" style="width: 100px">
-                                    <option>Random</option>
-                                    <option>Small</option>
-                                    <option>Medium</option>
-                                    <option>Large</option>
-                                  </select>
-                                </div>
+                            <div class="col-md-4" id="visual-container-2">
+                                <form class="form-inline">
+                                    <div class="form-group">
+                                        <label for="hue-demo" class="title-label">Color:</label>
+                                        <div class="select-form">
+                                            <input type="text" id="hue-demo" class="form-control demo"
+                                                   data-control="hue"
+                                                   value="#ff6161" width="100" style="width: 100px">
+                                        </div>
+                                    </div>
+                                </form>
+                                <form class="form-inline">
+                                    <div class="form-group">
+                                        <label for="delay-select" class="title-label">Delay:</label>
+                                        <div class="select-form">
+                                            <select class="select-form" id="delay-select" width="100"
+                                                    style="width: 100px">
+                                                <option>None</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
-                            </form>
-                         </div>
-                        <div class="col-md-4" id="visual-container-2">
-                            <form class="form-inline">
-                          <div class="form-group">
-                              <label for="hue-demo" class="title-label">Color:</label>
-                                <div class="select-form">
-                              <input type="text" id="hue-demo" class="form-control demo" data-control="hue" value="#ff6161" width="100" style="width: 100px">
-                              </div>
-                          </div>
-                            </form>
-                           <form class="form-inline">
-                            <div class="form-group">
-                              <label for="delay-select" class="title-label">Delay:</label>
-                                <div class="select-form">
-                                  <select class="select-form" id="delay-select" width="100" style="width: 100px">
-                                    <option>None</option>
-                                  </select>
-                                </div>
-                            </div>
-                            </form>
                         </div>
                     </div>
                 </div>
@@ -986,50 +1009,53 @@
         }
     }
 
-</script>
 
-<script type="text/javascript" src="js/jquery.minicolors.min.js"></script>
 
-<script type="text/javascript">
-$(function(){
-  var colpick = $('.demo').each( function() {
-    $(this).minicolors({
-      control: $(this).attr('data-control') || 'hue',
-      inline: $(this).attr('data-inline') === 'true',
-      letterCase: 'lowercase',
-      opacity: false,
-      change: function(hex, opacity) {
-        if(!hex) return;
-        if(opacity) hex += ', ' + opacity;
-        try {
-          console.log(hex);
-        } catch(e) {}
-        $(this).select();
-      },
-      //theme: 'bootstrap'
-    });
-  });
-});
-</script>
- 
-<script>
-var slider = document.getElementById("quantization-amount");
-var output = document.getElementById("quantization-amount-value");
-output.innerHTML = slider.value + "%";
+    </script>
 
-slider.oninput = function() {
-  output.innerHTML = this.value + "%";
-}
-</script>
+    <script type="text/javascript" src="js/jquery.minicolors.min.js"></script>
 
-<!-- wavesurfer: display waveform and allow audio playback -->
-<script>
-    // control buttons
-    var buttons = {
-        pause: document.getElementById("btn-pause"),
-        play: document.getElementById("btn-play"),
-        stop: document.getElementById("btn-stop"),
-    }
+    <script type="text/javascript">
+        $(function () {
+            var colpick = $('.demo').each(function () {
+                $(this).minicolors({
+                    control: $(this).attr('data-control') || 'hue',
+                    inline: $(this).attr('data-inline') === 'true',
+                    letterCase: 'lowercase',
+                    opacity: false,
+                    change: function (hex, opacity) {
+                        if (!hex) return;
+                        if (opacity) hex += ', ' + opacity;
+                        try {
+                            console.log(hex);
+                        } catch (e) {
+                        }
+                        $(this).select();
+                    },
+                    //theme: 'bootstrap'
+                });
+            });
+        });
+    </script>
+
+    <script>
+        var slider = document.getElementById("quantization-amount");
+        var output = document.getElementById("quantization-amount-value");
+        output.innerHTML = slider.value + "%";
+
+        slider.oninput = function () {
+            output.innerHTML = this.value + "%";
+        }
+    </script>
+
+    <!-- wavesurfer: display waveform and allow audio playback -->
+    <script>
+        // control buttons
+        var buttons = {
+            pause: document.getElementById("btn-pause"),
+            play: document.getElementById("btn-play"),
+            stop: document.getElementById("btn-stop"),
+        }
 
         // create instance of wave surfer
         var wavesurfer = WaveSurfer.create({

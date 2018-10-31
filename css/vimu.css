@@ -106,7 +106,7 @@ canvas {
 
 .keyboard-key {
     opacity: 0.6;
-    border: 1px solid black;
+    /*border: 1px solid black;*/
     border-radius: 25px;
     color: black;
     padding-top: 10px;
@@ -124,11 +124,12 @@ canvas {
 
 .keyboard-key-edit {
     opacity: 0.7;
-    border: 1px solid black;
+    /*border: 1px solid black;*/
     border-radius: 15px;
     color: black;
     padding-left: 3px;
     padding-right: 3px;
+    cursor: pointer;
 }
 
 .keyboard-key-edit h6 {
@@ -141,6 +142,14 @@ canvas {
     font-size: xx-small;
     text-align: center;
     background-color: papayawhip;
+}
+
+.keyboard-key-edit:hover {
+    border: 3px solid red;
+    opacity: 1;
+    /*background-color: #70a945;*/
+    transition: border 0.1s ease;
+    transition: opacity 0.1s ease;
 }
 
 .row1 {
@@ -600,14 +609,19 @@ p.soundname {
 }
 
 /* selected key */
-.selected-key {
+#selected-key-container {
     background-color: #70a945;
     border-radius: 10px;
     color: #eaf3db;
-    padding: 5px 0px 0px 10px;
-
+    /*padding: 5px 0px 0px 10px;*/
     max-width: 50px;
     height: 50px;
+}
+
+#selected-key {
+    text-align: center;
+    vertical-align: middle;
+    line-height: 50px;
 }
 
 /* End Audio */
