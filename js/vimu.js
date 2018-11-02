@@ -5,6 +5,7 @@ var theme = "blue";
 var colorWell;
 var defaultColor = "#0000ff";
 var selectedKey;
+var wavesurfer;
 
 $(document).ready(function () {
     $('#customization-container').hide();
@@ -21,6 +22,13 @@ $(document).ready(function () {
             return $('#settings-popover').html();
         }
     }).on('shown.bs.popover', function () {
+    });
+
+    $.getScript('js/wavesurfer.min.js', function () {
+        wavesurfer = WaveSurfer.create({
+            container: '#waveform',
+            height: '100',
+        });
     });
 });
 
@@ -411,15 +419,45 @@ function selectKey(element) {
     // set for new selected
     selectedKey = element;
     var key = $(element).find("h6").text();
+    console.log(element);
     console.log(key);
 
+    // set css on keyboard
+    $(element).css('border', '3px solid red');
+
+    // set in sound editor
+    setAudio(element, key);
+}
+
+function setAudio(element, key) {
+    // set key value
     if (key === "spacebar") {
         $('#selected-key').text('\u2423');
     } else {
         $('#selected-key').text(key);
     }
 
-    $(element).css('border', '3px solid red');
+    // set song
+     var audio = $(element).find('p').text();
+    if (audio) {
+        $.getScript('js/wavesurfer.min.js', function () {
+            wavesurfer.load('./sounds/' + audio);
+        });
+        $('#audio-track').text(audio);
+    }
+
+}
+
+function playAudio() {
+    wavesurfer.play();
+}
+
+function pauseAudio() {
+    wavesurfer.pause();
+}
+
+function stopAudio() {
+    wavesurfer.stop();
 }
 
 window.addEventListener("load", startup, false);

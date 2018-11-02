@@ -17,7 +17,6 @@
     <!-- Custom styles for this template -->
     <link href="css/vimu.css" rel="stylesheet">
 
-    <script src="https://unpkg.com/wavesurfer.js"></script>
 </head>
 <body>
 <!--Navigation-->
@@ -498,13 +497,13 @@
                                     </div>
                                 </div>
 
-                                <button id="btn-pause" class="control-buttons no-button-display"><i
+                                <button id="btn-pause" class="control-buttons no-button-display" onclick="pauseAudio()"><i
                                         class="fa fa-pause-circle-o"></i></button>
-                                <button id="btn-play" class="control-buttons no-button-display"><i
+                                <button id="btn-play" class="control-buttons no-button-display" onclick="playAudio()"><i
                                         class="fa fa-play-circle-o"></i></button>
-                                <button id="btn-stop" class="control-buttons no-button-display"><i
+                                <button id="btn-stop" class="control-buttons no-button-display" onclick="stopAudio()"><i
                                         class="fa fa-stop-circle-o"></i></button>
-                                <span class="file-name">test.mp3</span>
+                                <span id="audio-track">test.mp3</span>
                             </div>
 
                             <!-- settings -->
@@ -662,6 +661,7 @@
     <script type="text/javascript" src="js/paper-full.js"></script>
     <script type="text/javascript" src="js/howler.core.min.js"></script>
     <script type="text/javascript" src="js/loading-bar.js"></script>
+    <script type="text/javascript" src="js/wavesurfer.min.js"></script>
     <script type="text/javascript" src="js/vimu.js"></script>
 
     <script type="text/paperscript" canvas="myCanvas">
@@ -1050,56 +1050,6 @@
         slider.oninput = function () {
             output.innerHTML = this.value + "%";
         }
-    </script>
-
-    <!-- wavesurfer: display waveform and allow audio playback -->
-    <script>
-        // control buttons
-        var buttons = {
-            pause: document.getElementById("btn-pause"),
-            play: document.getElementById("btn-play"),
-            stop: document.getElementById("btn-stop"),
-        }
-
-        // create instance of wave surfer
-        var wavesurfer = WaveSurfer.create({
-            container: '#waveform',
-            height: '100',
-        });
-
-        // handle play button
-        buttons.play.addEventListener("click", function () {
-            wavesurfer.play();
-
-            buttons.stop.disable = false;
-            buttons.pause.disable = false;
-            buttons.play.disable = true;
-        }, false);
-
-        // handle pause button
-        buttons.pause.addEventListener("click", function () {
-            wavesurfer.pause();
-
-            buttons.pause.disable = true;
-            buttons.play.disable = false;
-        }, false);
-
-        // handle stop button
-        buttons.stop.addEventListener("click", function () {
-            wavesurfer.stop();
-
-            buttons.pause.disable = true;
-            buttons.play.disable = false;
-            buttons.stop.disable = true;
-        }, false);
-
-        // add listener to enable play
-        wavesurfer.on('ready', function () {
-            buttons.play.disabled = false;
-        });
-
-        // load audio
-        wavesurfer.load('./sounds/test.mp3');
     </script>
 
 </body>
