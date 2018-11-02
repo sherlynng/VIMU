@@ -24,12 +24,16 @@ $(document).ready(function () {
     }).on('shown.bs.popover', function () {
     });
 
+    // set audio
     $.getScript('js/wavesurfer.min.js', function () {
         wavesurfer = WaveSurfer.create({
             container: '#waveform',
             height: '100',
         });
     });
+
+    // set color picker
+    colorPicker();
 });
 
 function toggleEditing() {
@@ -531,4 +535,23 @@ function togglePlaySoundInDir(element, event) {
         }
     });
     $(element).addClass('selected');
+}
+
+function colorPicker() {
+    $('#hue-demo').minicolors({
+        control: $(this).attr('data-control') || 'hue',
+        inline: $(this).attr('data-inline') === 'true',
+        letterCase: 'lowercase',
+        opacity: false,
+        change: function (hex, opacity) {
+            if (!hex) return;
+            if (opacity) hex += ', ' + opacity;
+            try {
+                console.log(hex);
+            } catch (e) {
+            }
+            $(this).select();
+        },
+        //theme: 'bootstrap'
+    });
 }

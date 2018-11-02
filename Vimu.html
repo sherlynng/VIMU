@@ -651,6 +651,7 @@
             </div>
         </div>
     </div>
+</div>
 
     <script src="library/jquery/jquery.min.js"></script>
     <script src="library/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -658,33 +659,10 @@
     <script type="text/javascript" src="js/paper-full.js"></script>
     <script type="text/javascript" src="js/howler.core.min.js"></script>
     <script type="text/javascript" src="js/loading-bar.js"></script>
+    <script type="text/javascript" src="js/jquery.minicolors.min.js"></script>
     <script type="text/javascript" src="js/wavesurfer.min.js"></script>
     <script type="text/javascript" src="js/vimu.js"></script>
-    <script type="text/paperscript" src="js/visuals.js" canvas="myCanvas">
-    <script type="text/javascript" src="js/jquery.minicolors.min.js"></script>
-
-    <script type="text/javascript">
-        $(function () {
-            var colpick = $('.demo').each(function () {
-                $(this).minicolors({
-                    control: $(this).attr('data-control') || 'hue',
-                    inline: $(this).attr('data-inline') === 'true',
-                    letterCase: 'lowercase',
-                    opacity: false,
-                    change: function (hex, opacity) {
-                        if (!hex) return;
-                        if (opacity) hex += ', ' + opacity;
-                        try {
-                            console.log(hex);
-                        } catch (e) {
-                        }
-                        $(this).select();
-                    },
-                    //theme: 'bootstrap'
-                });
-            });
-        });
-    </script>
+    <script type="text/paperscript" src="js/visuals.js" canvas="myCanvas"></script>
 
     <script>
         var slider = document.getElementById("quantization-amount");
