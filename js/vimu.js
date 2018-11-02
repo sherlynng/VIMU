@@ -408,9 +408,9 @@ function selectKey(element) {
     }
 
     if (typeof selectedKey === "undefined") {
-        $('#audio-contents').contents().show();
+        // $('#audio-contents').contents().show();
         $('#visuals-contents').contents().show();
-        $('.select-placeholder').hide();
+        $('#visual-placeholder').hide();
     }
 
     // remove prev selected first
@@ -430,22 +430,33 @@ function selectKey(element) {
 }
 
 function setAudio(element, key) {
-    // set key value
-    if (key === "spacebar") {
-        $('#selected-key').text('\u2423');
-    } else {
-        $('#selected-key').text(key);
-    }
+    var audio = $(element).find('p').text();
 
-    // set song
-     var audio = $(element).find('p').text();
+    // set audio
     if (audio) {
         $.getScript('js/wavesurfer.min.js', function () {
+            // load audio
             wavesurfer.load('./sounds/' + audio);
         });
-        $('#audio-track').text(audio);
-    }
 
+        // set audio text
+        $('#audio-track').text(audio);
+
+        // set key value
+        if (key === "spacebar") {
+            $('#selected-key').text('\u2423');
+        } else {
+            $('#selected-key').text(key);
+        }
+
+        // show container
+        $('#audio-contents').contents().show();
+        $('#audio-placeholder').hide();
+    } else { // no audio selected
+        $('#audio-contents').contents().hide();
+        $('#audio-placeholder').show();
+        $('#audio-placeholder').text('NO AUDIO MAPPED');
+    }
 }
 
 function playAudio() {
