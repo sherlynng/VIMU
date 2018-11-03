@@ -85,23 +85,23 @@ canvas {
 
 #keyboard-audio-visual {
     width: inherit;
-    height: inherit;
+    height: 75%;
     z-index: 2;
 }
 
 /* Keyboard */
 #keyboard {
-    height: 65%;
+    height: 80%;
 }
 
 .keyboard-row {
-    margin: 20px auto;
-    height: 20%;
+    margin: 10px auto;
+    height: 25%;
 }
 
 .keyboard-row-edit {
-    margin: 15px auto;
-    height: 16%;
+    margin: 8px auto;
+    height: 18%;
 }
 
 .keyboard-key {
@@ -179,7 +179,7 @@ canvas {
 #keyboard div {
     word-wrap: break-word;
     overflow-y: hidden;
-    font-size: x-small;
+    font-size: xx-small;
 }
 
 .ldBar-obj {
@@ -282,7 +282,7 @@ p.soundname {
 
 #customization-container {
     margin-top: 10px;
-    height: 30%;
+    height: 48%;
 }
 
 #audio, #visuals {
@@ -290,8 +290,6 @@ p.soundname {
     border: 1px solid forestgreen;
     border-radius: 10px;
 }
-
-
 
 /*Audio*/
 
