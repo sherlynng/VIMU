@@ -483,34 +483,8 @@ function stopAudio() {
 }
 
 function setVisuals(element, key) {
-    // key = key.toUpperCase();
-    // console.log(key);
     var color = keyData[key].color;
-    $('#hue-demo').val(color);
-}
-
-window.addEventListener("load", startup, false);
-
-function startup() {
-    colorWell = document.querySelector("#colorWell");
-    colorWell.value = defaultColor;
-    colorWell.addEventListener("input", updateFirst, false);
-    colorWell.addEventListener("change", updateAll, false);
-    colorWell.select();
-}
-
-function updateFirst(event) {
-    var p = document.querySelector("p");
-
-    if (p) {
-        p.style.color = event.target.value;
-    }
-}
-
-function updateAll(event) {
-    document.querySelectorAll("p").forEach(function (p) {
-        p.style.color = event.target.value;
-    });
+    $('#hue-demo').minicolors('value', color);
 }
 
 function toggleOpenFolder(element, event) {
