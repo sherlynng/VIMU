@@ -6,6 +6,7 @@ var colorWell;
 var defaultColor = "#0000ff";
 var selectedKey;
 var wavesurfer;
+var firstTimeEditing = true;
 
 $(document).ready(function () {
     $('#customization-container').hide();
@@ -105,9 +106,14 @@ function toggleEditing() {
 
         // set settings for selecting key
         $(selectedKey).css('border', '3px solid red');
-        $('.keyboard-key-edit').click(function () {
-            selectKey(this);
-        });
+
+        // only register listener once
+        if (firstTimeEditing) {
+            firstTimeEditing = false;
+            $('.keyboard-key-edit').click(function () {
+                selectKey(this);
+            });
+        }
 
         // show display for trash
         $('.trash-container').show();
@@ -195,7 +201,7 @@ function handleKeyDown(event) {
             (code === 32)) { // space
 
             if (key === ' ') {
-                key = 'spacebar';
+                key = 'SPACE';
             }
             var element = $('#' + key);
             var elementParent = $(element).parent().parent()[0];
@@ -285,7 +291,7 @@ function handleKeyUp(event) {
             (code === 32)) { // space
 
             if (key === ' ') {
-                key = 'spacebar';
+                key = 'SPACE';
             }
             var element = $('#' + key);
             var elementParent = $(element).parent().parent()[0];
@@ -431,6 +437,7 @@ function selectKey(element) {
 
     // set in sound editor
     setAudio(element, key);
+    setVisuals(element, key);
 }
 
 function setAudio(element, key) {
@@ -447,7 +454,7 @@ function setAudio(element, key) {
         $('#audio-track').text(audio);
 
         // set key value
-        if (key === "spacebar") {
+        if (key === "SPACE") {
             $('#selected-key').text('\u2423');
         } else {
             $('#selected-key').text(key);
@@ -473,6 +480,13 @@ function pauseAudio() {
 
 function stopAudio() {
     wavesurfer.stop();
+}
+
+function setVisuals(element, key) {
+    // key = key.toUpperCase();
+    // console.log(key);
+    var color = keyData[key].color;
+    $('#hue-demo').val(color);
 }
 
 window.addEventListener("load", startup, false);
@@ -547,11 +561,11 @@ function colorPicker() {
             if (!hex) return;
             if (opacity) hex += ', ' + opacity;
             try {
-                console.log(hex);
+                // console.log(hex);
+                var key = $(selectedKey).find("h6").text();
+                keyData[key].color = hex;
             } catch (e) {
             }
-            $(this).select();
         },
-        //theme: 'bootstrap'
     });
 }

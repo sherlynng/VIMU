@@ -3,36 +3,33 @@ var myRoundRectangles = [];
 var myTriangles = [];
 
 function onKeyDown(event) {
-    var key = event.key;
+    var key = event.key.toUpperCase();
     var shape = '';
     var color;
 
-    $.getScript('js/key-data.js', function () {
-        shape = keyData[key].shape;
-        color = keyData[key].color;
+    shape = keyData[key].shape;
+    color = keyData[key].color;
 
-        switch (shape) {
-            case "circle":
-                displayCircle(color);
-                break;
-            case "roundedRectangle":
-                displayRect(color);
-                break;
-            case "triangle":
-                displayTriangle(color);
-                break;
-        }
-    });
+    // console.log(keyData[key].color);
+    switch (shape) {
+        case "circle":
+            displayCircle(color);
+            break;
+        case "roundedRectangle":
+            displayRect(color);
+            break;
+        case "triangle":
+            displayTriangle(color);
+            break;
+    }
 }
 
 function displayCircle(color) {
-    console.log("in circle");
     var maxPoint = new Point(view.size.width, view.size.height);
     var randomPt = Point.random();
     var point = maxPoint * randomPt;
     var newCircle = new Path.Circle(point, 200);
     newCircle.fillColor = color;
-    console.log(newCircle);
     myCircles.push(newCircle);
 }
 
