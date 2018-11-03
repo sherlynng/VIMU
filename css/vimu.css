@@ -652,11 +652,8 @@ p.soundname {
 
 /* dropdown */
 .visual-title {
-    font-size: 26px;
-    color: #70a945;
+    color: #62933C;
     letter-spacing: 3px;
-    margin-top: 10px;
-    /*margin-left: 10px;*/
 }
 
 .select-form {
@@ -677,7 +674,6 @@ p.soundname {
 }
 
 .title-label {
-    color: #70a945;
     margin-right: 5px;
 }
 
@@ -733,7 +729,6 @@ p.soundname {
     background: #aed792;
     border: 1px solid #ddd;
     text-align: center;
-    color: #000;
     text-decoration: none;
 }
 #tab-button li:not(:first-child) a {
@@ -743,6 +738,7 @@ p.soundname {
 #tab-button .is-active a {
     border-bottom-color: transparent;
     background: #D6EACC;
+    color: #70a945;
 }
 .tab-contents {
     padding-top: 0.3em;
