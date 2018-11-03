@@ -714,14 +714,13 @@ p.soundname {
 #tab-button {
     display: table;
     table-layout: fixed;
-    width: 100%;
     margin: 0;
     padding: 0;
     list-style: none;
 }
 #tab-button li {
     display: table-cell;
-    width: 20%;
+    width: 40%;
 }
 #tab-button li a {
     display: block;
@@ -730,6 +729,8 @@ p.soundname {
     border: 1px solid #ddd;
     text-align: center;
     text-decoration: none;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
 }
 #tab-button li:not(:first-child) a {
     border-left: none;
@@ -758,6 +759,7 @@ p.soundname {
         position: relative;
         z-index: 2;
         display: block;
+        background-color: white;
     }
     .tab-select-outer {
         display: none;
