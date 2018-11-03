@@ -2,14 +2,12 @@ var isEditing = false;
 var showKeyboard = true;
 var showLetters = true;
 var theme = "blue";
-var colorWell;
-var defaultColor = "#0000ff";
 var selectedKey;
 var wavesurfer;
 var firstTimeEditing = true;
 
 $(document).ready(function () {
-    $('#customization-container').hide();
+    $('#tab-container').hide();
     $('#file-directory').hide();
     $('.ldBar-container').css("visibility", "hidden");
     $('#audio-contents').contents().hide();
@@ -33,9 +31,15 @@ $(document).ready(function () {
         });
     });
 
-    // set color picker
-    colorPicker();
+    // set tabbing
+    setTabbing();
 
+    // set color picker
+    setColorPicker();
+
+});
+
+function setTabbing() {
     var $tabButtonItem = $('#tab-button li'),
         $tabSelect = $('#tab-select'),
         $tabContents = $('.tab-contents'),
@@ -47,24 +51,30 @@ $(document).ready(function () {
     $tabButtonItem.find('a').on('click', function(e) {
         var target = $(this).attr('href');
 
+        console.log(target);
+
         $tabButtonItem.removeClass(activeClass);
         $(this).parent().addClass(activeClass);
         $tabSelect.val(target);
         $tabContents.hide();
         $(target).show();
         e.preventDefault();
-    });
 
-    $tabSelect.on('change', function() {
-        var target = $(this).val(),
-            targetSelectNum = $(this).prop('selectedIndex');
+        if (target === "#tab01") { // audio tab
+            if (selectedKey) {
+                var audio = $(selectedKey).find('p').text();
 
-        $tabButtonItem.removeClass(activeClass);
-        $tabButtonItem.eq(targetSelectNum).addClass(activeClass);
-        $tabContents.hide();
-        $(target).show();
+                // set audio
+                if (audio) {
+                    $.getScript('js/wavesurfer.min.js', function () {
+                        // load audio
+                        wavesurfer.load('./sounds/' + audio);
+                    });
+                }
+            }
+        }
     });
-});
+}
 
 function toggleEditing() {
     if (isEditing) {
@@ -77,7 +87,7 @@ function toggleEditing() {
 
         // layout
         $('#myCanvas').show();
-        $('#customization-container').hide();
+        $('#tab-container').hide();
         $('#file-directory').hide();
         $('#keyboard-audio-visual').removeClass('col-10'); // make keyboard back to full width
         $('.keyboard-key-edit').removeClass('keyboard-key-edit').addClass('keyboard-key');
@@ -117,7 +127,7 @@ function toggleEditing() {
 
         // layout
         $('#myCanvas').hide();
-        $('#customization-container').show();
+        $('#tab-container').show();
         $('#file-directory').show();
         $('#keyboard-audio-visual').addClass('col-10'); // make keyboard smaller
         $('.keyboard-key').removeClass('keyboard-key').addClass('keyboard-key-edit');
@@ -554,7 +564,7 @@ function togglePlaySoundInDir(element, event) {
     $(element).addClass('selected');
 }
 
-function colorPicker() {
+function setColorPicker() {
     $('#hue-demo').minicolors({
         control: $(this).attr('data-control') || 'hue',
         inline: $(this).attr('data-inline') === 'true',

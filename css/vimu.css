@@ -96,7 +96,7 @@ canvas {
 
 .keyboard-row {
     margin: 10px auto;
-    height: 25%;
+    height: 30%;
 }
 
 .keyboard-row-edit {
@@ -692,13 +692,26 @@ p.soundname {
     margin-top: 10px;
 }
 
+#hue-demo {
+    width: 120px;
+    height: 30px;
+    background-color: #eaf3db;
+    color: #70a945;
+    border: 3px solid #aed792;
+}
+
 .form-inline {
     margin-right: 10px;
 }
 /* End Visuals */
 
+/* Tabbing */
+/*From https://bootsnipp.com/snippets/mMV9Z*/
+#tab-container {
+    background-color: #D6EACC;
+}
+
 .tabs {
-    /*max-width: 640px;*/
     background-color: #D6EACC;
     margin: 0 auto;
 }
@@ -732,15 +745,11 @@ p.soundname {
     background: #D6EACC;
 }
 .tab-contents {
-    /*padding: .5em 2em 1em;*/
     padding-top: 0.3em;
-    /*padding-right: 2em;*/
     padding-bottom: 1em;
     padding-left: 2em;
     border: 1px solid #ddd;
 }
-
-
 
 .tab-button-outer {
     display: none;
@@ -774,3 +783,5 @@ p.soundname {
 #tab-container {
     margin-top: 35px;
 }
+
+/* End Tabbing */
