@@ -153,6 +153,10 @@ canvas {
     transition: opacity 0.1s ease;
 }
 
+.keyboard-key:hover .keyboard-key-edit {
+    margin: -3px;
+}
+
 .row1 {
     background-color: #62C9D3;
 }
