@@ -297,7 +297,7 @@ function showLoadingBar(key, duration) {
     loadingBarLoop.hide();
 
     $.getScript('js/loading-bar.js', function () {
-        console.log('create loading');
+        // console.log('create loading');
         var keyString = "#ldBar" + key;
         var loadingBar = $(keyString);
         $(loadingBar).show();
@@ -312,13 +312,14 @@ function showLoadingBar(key, duration) {
                 duration: duration * 1000,
                 progress: function (promise, progress, ms) {
                     if(keyData[key].id !== currentId) {
-                        console.log("NewId = " + keyData[key].id);
+                        // console.log("NewId = " + keyData[key].id);
                         $(loadingBar).stop();
-                        console.log('stop loading');
+                        // console.log('stop loading');
                         // console.log(progress);
                         $(loadingBar).css("visibility", "hidden");
                     } else {
                         ldBarObj.set(progress * 100);
+                        $(loadingBar).css("visibility", "visible");
                     }
                 },
             });
