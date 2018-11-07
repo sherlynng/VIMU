@@ -158,6 +158,9 @@ function toggleEditing() {
 
         // show display for trash
         $('.trash-container').show();
+
+        // stop all sound
+        stopAllMusic();
     }
 }
 

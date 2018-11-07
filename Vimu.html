@@ -952,7 +952,7 @@
                     // console.log(sound.playing(id));
                     keyData[key].id = id;
                     keyData[key].sound = sound1;
-                    console.log(keyData[key].id);
+                    // console.log(keyData[key].id);
                     if (keyData[key].loop) {
                         sound1.loop(true, id);
                         showLoadingBarLoop(key, duration);
@@ -971,7 +971,17 @@
             });
         }
     }
-
+    function stopAllMusic() {
+        for(var key in keyData) {
+            if (keyData[key].id !== '') { // is playing
+                // console.log("stop = " + key);
+                var currentSound = keyData[key].sound;
+                currentSound.stop();
+                keyData[key].id = '';
+                keyData[key].sound = '';
+            }
+        }
+    }
 
 </script>
 
