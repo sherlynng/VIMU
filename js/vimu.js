@@ -15,6 +15,8 @@ $(document).ready(function () {
     $('.trash-container').hide();
 
     // settings popover
+    $('#display-keyboard').attr("checked", true);
+    $('#display-labels').attr("checked", true);
     $('#settings').popover({
         html: true,
         content: function () {
@@ -156,6 +158,19 @@ function toggleEditing() {
 
         // show display for trash
         $('.trash-container').show();
+    }
+}
+
+function setSettings() {
+    if (showKeyboard) {
+        $('#display-keyboard').attr("checked", true);
+    } else {
+        $('#display-keyboard').attr("checked", false);
+    }
+    if (showLetters) {
+        $('#display-labels').attr("checked", true);
+    } else {
+        $('#display-labels').attr("checked", false);
     }
 }
 
