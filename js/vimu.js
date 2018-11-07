@@ -297,13 +297,13 @@ function showLoadingBar(key, duration) {
     loadingBarLoop.hide();
 
     $.getScript('js/loading-bar.js', function () {
-        // script is now loaded and executed.
-        // put your dependent JS here.
-
+        console.log('create loading');
         var keyString = "#ldBar" + key;
         var loadingBar = $(keyString);
         $(loadingBar).show();
         if (loadingBar !== null) {
+            var currentId = keyData[key].id;
+            // console.log("CurrentId = " + currentId);
             var ldBarObj = new ldBar(keyString);
             $(loadingBar).css("visibility", "visible");
             $(loadingBar).animate({
@@ -311,11 +311,16 @@ function showLoadingBar(key, duration) {
             }, {
                 duration: duration * 1000,
                 progress: function (promise, progress, ms) {
-                    ldBarObj.set(progress * 100);
+                    if(keyData[key].id !== currentId) {
+                        console.log("NewId = " + keyData[key].id);
+                        $(loadingBar).stop();
+                        console.log('stop loading');
+                        // console.log(progress);
+                        $(loadingBar).css("visibility", "hidden");
+                    } else {
+                        ldBarObj.set(progress * 100);
+                    }
                 },
-                complete: function () {
-                    $(loadingBar).css("visibility", "hidden");
-                }
             });
         }
     });
@@ -327,14 +332,13 @@ function showLoadingBarLoop(key, duration) {
     loadingBarLine.hide();
 
     $.getScript('js/loading-bar.js', function () {
-        // script is now loaded and executed.
-        // put your dependent JS here.
 
         var keyString = "#ldBar" + key + 'loop';
         var loadingBar = $(keyString);
         $(loadingBar).css('height', '30px');
         $(loadingBar).css('width', '30px');
         $(loadingBar).show();
+
         if (loadingBar !== null) {
             var ldBarObj = new ldBar(keyString);
             $(loadingBar).css("visibility", "visible");
@@ -343,10 +347,15 @@ function showLoadingBarLoop(key, duration) {
             }, {
                 duration: duration * 1000,
                 progress: function (promise, progress, ms) {
-                    ldBarObj.set(progress * 100);
+                    if(keyData[key].id === '') {
+                        $(loadingBar).stop();
+                        $(loadingBar).css("visibility", "hidden");
+                    } else {
+                        ldBarObj.set(progress * 100);
+                    }
                 },
                 complete: function () {
-                    $(loadingBar).css("visibility", "hidden");
+                    // $(loadingBar).css("visibility", "hidden");
                 }
             });
         }

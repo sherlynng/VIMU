@@ -914,22 +914,62 @@
 
 <script type='text/javascript'>
     function playMusic(track, key) {
-        var sound = new Howl({
-            src: ['sounds/' + track],
-            onload: function () {
-                var duration = sound.duration();
-                // console.log(duration);
+        if (keyData[key].id !== '') { // is playing
 
-                var id = sound.play();
-                keyData[key].id = id;
-                if (keyData[key].loop) {
-                    sound.loop(true, id);
-                    showLoadingBarLoop(key, duration);
-                } else {
-                    showLoadingBar(key, duration);
+            var currentSound = keyData[key].sound;
+            currentSound.stop();
+            keyData[key].id = '';
+            // console.log("stop audio");
+
+            if (!keyData[key].loop) { // if non loop, create new track
+                var sound = new Howl({
+                    src: ['sounds/' + track],
+                    onload: function () {
+                        var duration = sound.duration();
+                        // console.log(duration);
+
+                        var id = sound.play();
+                        keyData[key].id = id;
+                        keyData[key].sound = sound;
+                        console.log(keyData[key].id);
+
+                        showLoadingBar(key, duration);
+                    },
+                    onend: function () {
+                        keyData[key].id = ''; // set track ended
+                    }
+                });
+            } // if loop, just stop playing
+
+        } else { // not playing
+            var sound1 = new Howl({
+                src: ['sounds/' + track],
+                onload: function () {
+                    var duration = sound1.duration();
+                    // console.log(duration);
+
+                    var id = sound1.play();
+                    // console.log(sound.playing(id));
+                    keyData[key].id = id;
+                    keyData[key].sound = sound1;
+                    console.log(keyData[key].id);
+                    if (keyData[key].loop) {
+                        sound1.loop(true, id);
+                        showLoadingBarLoop(key, duration);
+                    } else {
+                        showLoadingBar(key, duration);
+                    }
+                },
+                onend: function () {
+                    if (keyData[key].loop) { // if loop, create another progress bar
+                        var duration = sound1.duration(keyData[key].id);
+                        showLoadingBarLoop(key, duration);
+                    } else {
+                        keyData[key].id = ''; // if non loop, set track ended
+                    }
                 }
-            },
-        });
+            });
+        }
     }
 
 
@@ -943,6 +983,7 @@
             color: "#FF16CC",
             id: '',
             loop: false,
+            sound: '',
         },
 
         W: {
@@ -950,210 +991,245 @@
             color: '#2ecc71',
             id: '',
             loop: false,
+            sound: '',
         },
         E: {
             shape: 'triangle',
             color: '#3498db',
             id: '',
             loop: false,
+            sound: '',
         },
         R: {
             shape: 'circle',
             color: '#9b59b6',
             id: '',
             loop: false,
+            sound: '',
         },
         T: {
             shape: 'triangle',
             color: '#34495e',
             id: '',
             loop: false,
+            sound: '',
         },
         Y: {
             shape: 'circle',
             color: '#16a085',
             id: '',
             loop: false,
+            sound: '',
         },
         U: {
             shape: 'circle',
             color: '#27ae60',
             id: '',
             loop: false,
+            sound: '',
         },
         I: {
             shape: 'circle',
             color: '#2980b9',
             id: '',
             loop: false,
+            sound: '',
         },
         O: {
             shape: 'triangle',
             color: '#8e44ad',
             id: '',
             loop: false,
+            sound: '',
         },
         P: {
             shape: 'circle',
             color: '#2c3e50',
             id: '',
             loop: false,
+            sound: '',
         },
         A: {
             shape: 'circle',
             color: '#f1c40f',
             id: '',
             loop: false,
+            sound: '',
         },
         S: {
             shape: 'circle',
             color: '#e67e22',
             id: '',
             loop: false,
+            sound: '',
         },
         D: {
             shape: 'roundedRectangle',
             color: '#e74c3c',
             id: '',
             loop: false,
+            sound: '',
         },
         F: {
             shape: 'triangle',
             color: '#95a5a6',
             id: '',
             loop: false,
+            sound: '',
         },
         G: {
             shape: 'roundedRectangle',
             color: '#f39c12',
             id: '',
             loop: false,
+            sound: '',
         },
         H: {
             shape: 'roundedRectangle',
             color: '#d35400',
             id: '',
             loop: false,
+            sound: '',
         },
         J: {
             shape: 'roundedRectangle',
             color: '#1abc9c',
             id: '',
             loop: false,
+            sound: '',
         },
         K: {
             shape: 'roundedRectangle',
             color: '#2ecc71',
             id: '',
             loop: false,
+            sound: '',
         },
         L: {
             shape: 'roundedRectangle',
             color: '#3498db',
             id: '',
             loop: false,
+            sound: '',
         },
         Z: {
             shape: 'roundedRectangle',
             color: '#9b59b6',
             id: '',
             loop: false,
+            sound: '',
         },
         X: {
             shape: 'triangle',
             color: '#34495e',
             id: '',
             loop: false,
+            sound: '',
         },
         C: {
             shape: 'circle',
             color: '#16a085',
             id: '',
             loop: false,
+            sound: '',
         },
         V: {
             shape: 'circle',
             color: '#27ae60',
             id: '',
             loop: false,
+            sound: '',
         },
         B: {
             shape: 'circle',
             color: '#2980b9',
             id: '',
             loop: false,
+            sound: '',
         },
         N: {
             shape: 'triangle',
             color: '#8e44ad',
             id: '',
             loop: false,
+            sound: '',
         },
         M: {
             shape: 'roundedRectangle',
             color: '#2c3e50',
             id: '',
             loop: false,
+            sound: '',
         },
         1: {
             shape: 'roundedRectangle',
             color: '#aaf812',
             id: '',
             loop: false,
+            sound: '',
         },
         2: {
             shape: 'roundedRectangle',
             color: '#a5643a',
             id: '',
             loop: true,
+            sound: '',
         },
         3: {
             shape: 'roundedRectangle',
             color: '#068373',
             id: '',
             loop: false,
+            sound: '',
         },
         4: {
             shape: 'roundedRectangle',
             color: '#cdbdd1',
             id: '',
             loop: false,
+            sound: '',
         },
         5: {
             shape: 'roundedRectangle',
             color: '#4a4e70',
             id: '',
             loop: false,
+            sound: '',
         },
         6: {
             shape: 'roundedRectangle',
             color: '#911aeb',
             id: '',
             loop: false,
+            sound: '',
         },
         7: {
             shape: 'roundedRectangle',
             color: '#1667ba',
             id: '',
             loop: false,
+            sound: '',
         },
         8: {
             shape: 'roundedRectangle',
             color: '#c0ebe1',
             id: '',
             loop: false,
+            sound: '',
         },
         9: {
             shape: 'roundedRectangle',
             color: '#990f4e',
             id: '',
             loop: false,
+            sound: '',
         },
         'SPACE': {
             shape: 'roundedRectangle',
             color: '#a6b9b0',
             id: '',
             loop: true,
+            sound: '',
         },
     };
 </script>
