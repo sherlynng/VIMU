@@ -121,6 +121,7 @@ canvas {
 .keyboard-key p {
     text-align: center;
     background-color: transparent;
+    margin-bottom: 5px;
 }
 
 .keyboard-key-edit {

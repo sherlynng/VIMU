@@ -292,15 +292,51 @@ function addShadow(elementParent) {
 }
 
 function showLoadingBar(key, duration) {
+    var keyStringLoop = "#ldBar" + key + 'loop';
+    var loadingBarLoop = $(keyStringLoop);
+    loadingBarLoop.hide();
+
     $.getScript('js/loading-bar.js', function () {
         // script is now loaded and executed.
         // put your dependent JS here.
 
         var keyString = "#ldBar" + key;
         var loadingBar = $(keyString);
+        $(loadingBar).show();
         if (loadingBar !== null) {
             var ldBarObj = new ldBar(keyString);
-            // $(loadingBar).attr('style','').attr('data-stroke-trail','red').attr('data-stroke-width',25);
+            $(loadingBar).css("visibility", "visible");
+            $(loadingBar).animate({
+                letterSpacing: 0 // dummy
+            }, {
+                duration: duration * 1000,
+                progress: function (promise, progress, ms) {
+                    ldBarObj.set(progress * 100);
+                },
+                complete: function () {
+                    $(loadingBar).css("visibility", "hidden");
+                }
+            });
+        }
+    });
+}
+
+function showLoadingBarLoop(key, duration) {
+    var keyStringLine = "#ldBar" + key;
+    var loadingBarLine = $(keyStringLine);
+    loadingBarLine.hide();
+
+    $.getScript('js/loading-bar.js', function () {
+        // script is now loaded and executed.
+        // put your dependent JS here.
+
+        var keyString = "#ldBar" + key + 'loop';
+        var loadingBar = $(keyString);
+        $(loadingBar).css('height', '30px');
+        $(loadingBar).css('width', '30px');
+        $(loadingBar).show();
+        if (loadingBar !== null) {
+            var ldBarObj = new ldBar(keyString);
             $(loadingBar).css("visibility", "visible");
             $(loadingBar).animate({
                 letterSpacing: 0 // dummy
