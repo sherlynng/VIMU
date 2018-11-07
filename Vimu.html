@@ -806,8 +806,8 @@
                                     <div class="form-group" class="volume">
                                         <div class="volume-slider">
                                             <i class="fa fa-volume-up margin-10"></i>
-                                            <input type="range" min="0" max="100" value="30" class="volume-slider"
-                                                   id="volume">
+                                            <input type="range" min="0" max="100" value="50" class="volume-slider"
+                                                   id="volume" onchange="setVolume(this.value)">
                                         </div>
                                     </div>
                                 </div>
@@ -929,6 +929,7 @@
                         // console.log(duration);
 
                         var id = sound.play();
+                        sound.volume(keyData[key].volume, id);
                         keyData[key].id = id;
                         keyData[key].sound = sound;
                         // console.log(keyData[key].id);
@@ -949,6 +950,7 @@
                     // console.log(duration);
 
                     var id = sound1.play();
+                    sound1.volume(keyData[key].volume, id);
                     // console.log(sound.playing(id));
                     keyData[key].id = id;
                     keyData[key].sound = sound1;
@@ -983,6 +985,17 @@
         }
     }
 
+    function setVolume(val) {
+        var volume = val / 100;
+        // console.log(val);
+        // console.log(volume);
+
+        var key = $(selectedKey).find("h6").text();
+        keyData[key].volume = volume;
+
+        setWavesurferVolume(volume, key);
+    }
+
 </script>
 
 <script type='text/javascript'>
@@ -994,6 +1007,7 @@
             id: '',
             loop: false,
             sound: '',
+            volume: '0.5',
         },
 
         W: {
@@ -1002,6 +1016,7 @@
             id: '',
             loop: false,
             sound: '',
+            volume: '0.5',
         },
         E: {
             shape: 'triangle',
@@ -1009,6 +1024,7 @@
             id: '',
             loop: false,
             sound: '',
+            volume: '0.5',
         },
         R: {
             shape: 'circle',
@@ -1016,6 +1032,7 @@
             id: '',
             loop: false,
             sound: '',
+            volume: '0.5',
         },
         T: {
             shape: 'triangle',
@@ -1023,6 +1040,7 @@
             id: '',
             loop: false,
             sound: '',
+            volume: '0.5',
         },
         Y: {
             shape: 'circle',
@@ -1030,6 +1048,7 @@
             id: '',
             loop: false,
             sound: '',
+            volume: '0.5',
         },
         U: {
             shape: 'circle',
@@ -1037,6 +1056,7 @@
             id: '',
             loop: false,
             sound: '',
+            volume: '0.5',
         },
         I: {
             shape: 'circle',
@@ -1044,6 +1064,7 @@
             id: '',
             loop: false,
             sound: '',
+            volume: '0.5',
         },
         O: {
             shape: 'triangle',
@@ -1051,6 +1072,7 @@
             id: '',
             loop: false,
             sound: '',
+            volume: '0.5',
         },
         P: {
             shape: 'circle',
@@ -1058,6 +1080,7 @@
             id: '',
             loop: false,
             sound: '',
+            volume: '0.5',
         },
         A: {
             shape: 'circle',
@@ -1065,6 +1088,7 @@
             id: '',
             loop: false,
             sound: '',
+            volume: '0.5',
         },
         S: {
             shape: 'circle',
@@ -1072,6 +1096,7 @@
             id: '',
             loop: false,
             sound: '',
+            volume: '0.5',
         },
         D: {
             shape: 'roundedRectangle',
@@ -1079,6 +1104,7 @@
             id: '',
             loop: false,
             sound: '',
+            volume: '0.5',
         },
         F: {
             shape: 'triangle',
@@ -1086,6 +1112,7 @@
             id: '',
             loop: false,
             sound: '',
+            volume: '0.5',
         },
         G: {
             shape: 'roundedRectangle',
@@ -1093,6 +1120,7 @@
             id: '',
             loop: false,
             sound: '',
+            volume: '0.5',
         },
         H: {
             shape: 'roundedRectangle',
@@ -1100,6 +1128,7 @@
             id: '',
             loop: false,
             sound: '',
+            volume: '0.5',
         },
         J: {
             shape: 'roundedRectangle',
@@ -1107,6 +1136,7 @@
             id: '',
             loop: false,
             sound: '',
+            volume: '0.5',
         },
         K: {
             shape: 'roundedRectangle',
@@ -1114,6 +1144,7 @@
             id: '',
             loop: false,
             sound: '',
+            volume: '0.5',
         },
         L: {
             shape: 'roundedRectangle',
@@ -1121,6 +1152,7 @@
             id: '',
             loop: false,
             sound: '',
+            volume: '0.5',
         },
         Z: {
             shape: 'roundedRectangle',
@@ -1128,6 +1160,7 @@
             id: '',
             loop: false,
             sound: '',
+            volume: '0.5',
         },
         X: {
             shape: 'triangle',
@@ -1135,6 +1168,7 @@
             id: '',
             loop: false,
             sound: '',
+            volume: '0.5',
         },
         C: {
             shape: 'circle',
@@ -1142,6 +1176,7 @@
             id: '',
             loop: false,
             sound: '',
+            volume: '0.5',
         },
         V: {
             shape: 'circle',
@@ -1149,6 +1184,7 @@
             id: '',
             loop: false,
             sound: '',
+            volume: '0.5',
         },
         B: {
             shape: 'circle',
@@ -1156,6 +1192,7 @@
             id: '',
             loop: false,
             sound: '',
+            volume: '0.5',
         },
         N: {
             shape: 'triangle',
@@ -1163,6 +1200,7 @@
             id: '',
             loop: false,
             sound: '',
+            volume: '0.5',
         },
         M: {
             shape: 'roundedRectangle',
@@ -1170,6 +1208,7 @@
             id: '',
             loop: false,
             sound: '',
+            volume: '0.5',
         },
         1: {
             shape: 'roundedRectangle',
@@ -1177,6 +1216,7 @@
             id: '',
             loop: false,
             sound: '',
+            volume: '0.5',
         },
         2: {
             shape: 'roundedRectangle',
@@ -1184,6 +1224,7 @@
             id: '',
             loop: false,
             sound: '',
+            volume: '0.5',
         },
         3: {
             shape: 'roundedRectangle',
@@ -1191,6 +1232,7 @@
             id: '',
             loop: false,
             sound: '',
+            volume: '0.5',
         },
         4: {
             shape: 'roundedRectangle',
@@ -1198,6 +1240,7 @@
             id: '',
             loop: false,
             sound: '',
+            volume: '0.5',
         },
         5: {
             shape: 'roundedRectangle',
@@ -1205,6 +1248,7 @@
             id: '',
             loop: false,
             sound: '',
+            volume: '0.5',
         },
         6: {
             shape: 'roundedRectangle',
@@ -1212,6 +1256,7 @@
             id: '',
             loop: false,
             sound: '',
+            volume: '0.5',
         },
         7: {
             shape: 'roundedRectangle',
@@ -1219,6 +1264,7 @@
             id: '',
             loop: false,
             sound: '',
+            volume: '0.5',
         },
         8: {
             shape: 'roundedRectangle',
@@ -1226,6 +1272,7 @@
             id: '',
             loop: false,
             sound: '',
+            volume: '0.5',
         },
         9: {
             shape: 'roundedRectangle',
@@ -1233,13 +1280,15 @@
             id: '',
             loop: false,
             sound: '',
+            volume: '0.5',
         },
         'SPACE': {
             shape: 'roundedRectangle',
             color: '#a6b9b0',
             id: '',
-            loop: true,
+            loop: false,
             sound: '',
+            volume: '0.5',
         },
     };
 </script>

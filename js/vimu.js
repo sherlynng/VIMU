@@ -553,6 +553,15 @@ function selectKey(element) {
     // set in sound editor
     setAudio(element, key);
     setVisuals(element, key);
+    setVolumeValue(element, key);
+}
+
+function setVolumeValue(element, key) {
+    $('#volume').val(keyData[key].volume * 100);
+}
+
+function setWavesurferVolume(volume, key) {
+    wavesurfer.setVolume(keyData[key].volume);
 }
 
 function setAudio(element, key) {
