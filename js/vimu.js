@@ -97,17 +97,17 @@ function toggleEditing() {
         // return back to original settings
         if (!showKeyboard) {
             $('#keyboard').hide();
-            $('#display-keyboard').attr("checked", false);
+            $('#display-keyboard').prop("checked", false);
         } else {
             $('#keyboard').show();
-            $('#display-keyboard').attr("checked", true);
+            $('#display-keyboard').prop("checked", true);
         }
         if (!showLetters) {
             $('.keyboard-key').contents().hide();
-            $('#display-labels').attr("checked", false);
+            $('#display-labels').prop("checked", false);
         } else {
             $('.keyboard-key').contents().show();
-            $('#display-labels').attr("checked", true);
+            $('#display-labels').prop("checked", true);
         }
 
         // remove outline for selected key
@@ -302,20 +302,24 @@ function showLoadingBar(key, duration) {
     });
 }
 
-function playMusic(track, key) {
-    $.getScript('js/howler.core.min.js', function () {
-        var sound = new Howl({
-            src: ['sounds/' + track],
-            onload: function () {
-                var duration = sound.duration();
-                // console.log(duration);
-                showLoadingBar(key, duration);
-            },
-        });
-
-        sound.play();
-    });
-}
+// function playMusic(track, key) {
+//     $.getScript('js/howler.js', function () {
+//         var sound = new Howl({
+//             src: ['sounds/' + track],
+//             onload: function () {
+//                 var duration = sound.duration();
+//                 // console.log(duration);
+//                 showLoadingBar(key, duration);
+//             },
+//         });
+//
+//         var id = sound.play();
+//         console.log(id);
+//         var id2 = sound.play();
+//         console.log(id2);
+//         // sound.loop(true, id);
+//     });
+// }
 
 function handleKeyUp(event) {
     if (!isEditing) {
@@ -499,6 +503,25 @@ function setAudio(element, key) {
             $('#selected-key').text(key);
         }
 
+        // set looping
+        var isLooping = keyData[key].loop;
+        var checked = $('#loop').is(':checked');
+        // console.log("looping = " + isLooping);
+        // console.log("checked = " + checked);
+        if (isLooping) {
+            if (!checked) {
+                // console.log("enable check");
+                $('#loop').prop("checked", true);
+                // console.log("checked = " + $('#loop').is(':checked'));
+            }
+        } else {
+            if (checked) {
+                // console.log("disable check");
+                $('#loop').prop("checked", false);
+                // console.log("checked = " + $('#loop').is(':checked'));
+            }
+        }
+
         // show container
         $('#audio-contents').contents().show();
         $('#audio-placeholder').hide();
@@ -511,6 +534,16 @@ function setAudio(element, key) {
 
 function playAudio() {
     wavesurfer.play();
+    // var checked = $('#loop').is(':checked');
+    // console.log(checked);
+    // if (checked) {
+    //     console.log("set false");
+    //     $('#loop').prop("checked", false);
+    //
+    // } else {
+    //     console.log("set true");
+    //     $('#loop').prop("checked", true);
+    // }
 }
 
 function pauseAudio() {
@@ -519,6 +552,35 @@ function pauseAudio() {
 
 function stopAudio() {
     wavesurfer.stop();
+}
+
+// function toggleLoop() {
+//     // wavesurfer.play();
+//     var checked = $('#loop').is(':checked');
+//     console.log(checked);
+//     if (checked) {
+//         console.log("set true");
+//         $('#loop').prop("checked", true);
+//
+//     } else {
+//         console.log("set false");
+//         $('#loop').prop("checked", false);
+//     }
+// }
+
+function toggleLoop(element) {
+    console.log("pressed loop");
+    var key = $(selectedKey).find("h6").text();
+
+    if (element.checked) {
+        console.log("looping");
+        keyData[key].loop = true;
+        $('#loop').prop("checked", true);
+    } else {
+        console.log("not loop");
+        keyData[key].loop = false;
+        $('#loop').prop("checked", false);
+    }
 }
 
 function setVisuals(element, key) {

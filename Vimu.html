@@ -583,10 +583,12 @@
                                         <div class="form-group">
                                             <label for="loop" class="margin">Loop:</label>
                                             <div class="checkbox-switch">
-                                                <input type="checkbox" class="input-checkbox" id="loop">
+                                                <!--<input type="checkbox" class="input-checkbox" id="loop" onchange="loop()">-->
+                                                <input class="input-checkbox" type="checkbox" id="loop"
+                                                       onchange="toggleLoop(this)">
                                                 <div class="checkbox-animate">
-                                                    <span class="checkbox-off">OFF</span>
-                                                    <span class="checkbox-on">ON</span>
+                                                    <span class="checkbox-off" id="loop-off">OFF</span>
+                                                    <span class="checkbox-on" id="loop-on">ON</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -725,152 +727,246 @@
 <script type="text/javascript" src="js/wavesurfer.min.js"></script>
 
 <script type='text/javascript'>
+    function playMusic(track, key) {
+        var sound = new Howl({
+            src: ['sounds/' + track],
+            onload: function () {
+                var duration = sound.duration();
+                // console.log(duration);
+
+                var id = sound.play();
+                keyData[key].id = id;
+                if (keyData[key].loop) {
+                    sound.loop(true, id);
+                } else {
+                    showLoadingBar(key, duration);
+                }
+            },
+        });
+    }
+
+
+</script>
+
+<script type='text/javascript'>
     var keyData = {
 
         Q: {
             shape: 'roundedRectangle',
             color: "#FF16CC",
+            id: '',
+            loop: false,
         },
 
         W: {
             shape: 'circle',
-            color: '#2ecc71'
+            color: '#2ecc71',
+            id: '',
+            loop: false,
         },
         E: {
             shape: 'triangle',
-            color: '#3498db'
+            color: '#3498db',
+            id: '',
+            loop: false,
         },
         R: {
             shape: 'circle',
-            color: '#9b59b6'
+            color: '#9b59b6',
+            id: '',
+            loop: false,
         },
         T: {
             shape: 'triangle',
-            color: '#34495e'
+            color: '#34495e',
+            id: '',
+            loop: false,
         },
         Y: {
             shape: 'circle',
-            color: '#16a085'
+            color: '#16a085',
+            id: '',
+            loop: false,
         },
         U: {
             shape: 'circle',
-            color: '#27ae60'
+            color: '#27ae60',
+            id: '',
+            loop: false,
         },
         I: {
             shape: 'circle',
-            color: '#2980b9'
+            color: '#2980b9',
+            id: '',
+            loop: false,
         },
         O: {
             shape: 'triangle',
-            color: '#8e44ad'
+            color: '#8e44ad',
+            id: '',
+            loop: false,
         },
         P: {
             shape: 'circle',
-            color: '#2c3e50'
+            color: '#2c3e50',
+            id: '',
+            loop: false,
         },
         A: {
             shape: 'circle',
-            color: '#f1c40f'
+            color: '#f1c40f',
+            id: '',
+            loop: false,
         },
         S: {
             shape: 'circle',
-            color: '#e67e22'
+            color: '#e67e22',
+            id: '',
+            loop: false,
         },
         D: {
             shape: 'roundedRectangle',
-            color: '#e74c3c'
+            color: '#e74c3c',
+            id: '',
+            loop: false,
         },
         F: {
             shape: 'triangle',
-            color: '#95a5a6'
+            color: '#95a5a6',
+            id: '',
+            loop: false,
         },
         G: {
             shape: 'roundedRectangle',
-            color: '#f39c12'
+            color: '#f39c12',
+            id: '',
+            loop: false,
         },
         H: {
             shape: 'roundedRectangle',
-            color: '#d35400'
+            color: '#d35400',
+            id: '',
+            loop: false,
         },
         J: {
             shape: 'roundedRectangle',
-            color: '#1abc9c'
+            color: '#1abc9c',
+            id: '',
+            loop: false,
         },
         K: {
             shape: 'roundedRectangle',
-            color: '#2ecc71'
+            color: '#2ecc71',
+            id: '',
+            loop: false,
         },
         L: {
             shape: 'roundedRectangle',
-            color: '#3498db'
+            color: '#3498db',
+            id: '',
+            loop: false,
         },
         Z: {
             shape: 'roundedRectangle',
-            color: '#9b59b6'
+            color: '#9b59b6',
+            id: '',
+            loop: false,
         },
         X: {
             shape: 'triangle',
-            color: '#34495e'
+            color: '#34495e',
+            id: '',
+            loop: false,
         },
         C: {
             shape: 'circle',
-            color: '#16a085'
+            color: '#16a085',
+            id: '',
+            loop: false,
         },
         V: {
             shape: 'circle',
-            color: '#27ae60'
+            color: '#27ae60',
+            id: '',
+            loop: false,
         },
         B: {
             shape: 'circle',
-            color: '#2980b9'
+            color: '#2980b9',
+            id: '',
+            loop: false,
         },
         N: {
             shape: 'triangle',
-            color: '#8e44ad'
+            color: '#8e44ad',
+            id: '',
+            loop: false,
         },
         M: {
             shape: 'roundedRectangle',
-            color: '#2c3e50'
+            color: '#2c3e50',
+            id: '',
+            loop: false,
         },
         1: {
             shape: 'roundedRectangle',
-            color: '#aaf812'
+            color: '#aaf812',
+            id: '',
+            loop: false,
         },
         2: {
             shape: 'roundedRectangle',
-            color: '#a5643a'
+            color: '#a5643a',
+            id: '',
+            loop: true,
         },
         3: {
             shape: 'roundedRectangle',
-            color: '#068373'
+            color: '#068373',
+            id: '',
+            loop: false,
         },
         4: {
             shape: 'roundedRectangle',
-            color: '#cdbdd1'
+            color: '#cdbdd1',
+            id: '',
+            loop: false,
         },
         5: {
             shape: 'roundedRectangle',
-            color: '#4a4e70'
+            color: '#4a4e70',
+            id: '',
+            loop: false,
         },
         6: {
             shape: 'roundedRectangle',
-            color: '#911aeb'
+            color: '#911aeb',
+            id: '',
+            loop: false,
         },
         7: {
             shape: 'roundedRectangle',
-            color: '#1667ba'
+            color: '#1667ba',
+            id: '',
+            loop: false,
         },
         8: {
             shape: 'roundedRectangle',
-            color: '#c0ebe1'
+            color: '#c0ebe1',
+            id: '',
+            loop: false,
         },
         9: {
             shape: 'roundedRectangle',
-            color: '#990f4e'
+            color: '#990f4e',
+            id: '',
+            loop: false,
         },
         'SPACE': {
             shape: 'roundedRectangle',
-            color: '#a6b9b0'
+            color: '#a6b9b0',
+            id: '',
+            loop: false,
         },
     };
 </script>
@@ -879,13 +975,13 @@
 <script type="text/paperscript" src="js/visuals.js" canvas="myCanvas"></script>
 
 <script>
-    var slider = document.getElementById("quantization-amount");
-    var output = document.getElementById("quantization-amount-value");
-    output.innerHTML = slider.value + "%";
-
-    slider.oninput = function () {
-        output.innerHTML = this.value + "%";
-    }
+    // var slider = document.getElementById("quantization-amount");
+    // var output = document.getElementById("quantization-amount-value");
+    // output.innerHTML = slider.value + "%";
+    //
+    // slider.oninput = function () {
+    //     output.innerHTML = this.value + "%";
+    // }
 </script>
 
 </body>
