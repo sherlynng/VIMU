@@ -828,12 +828,12 @@
                                         <div class="form-group">
                                             <label for="shape-select" class="title-label">Shape:</label>
                                             <div class="select-form">
-                                                <select class="select-form" id="shape-select" onchange="changeData()"
+                                                <select class="select-form" id="shape-select" onchange="editShape(this.id)"
                                                         width="100" style="width: 100px">
                                                     <option value="circle">Circle</option>
                                                     <option value="triangle">Triangle</option>
                                                     <option value="roundedRectangle">Rounded Rectangle</option>
-                                                    <option>Square</option>
+                                                    <option value="">None</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -884,7 +884,7 @@
                                 <div class="col-md-3" id="visual-container-3">
                                     <form class="form-inline">
                                         <div class="form-group">
-                                            <label for="hue-demo" class="title-label">Color:</label>
+                                            <label for="hue-demo" class="title-label">Colour:</label>
                                             <div class="select-form">
                                                 <input type="text" id="hue-demo" class="form-control demo"
                                                        data-control="hue"
