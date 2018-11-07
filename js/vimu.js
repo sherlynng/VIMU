@@ -5,6 +5,7 @@ var theme = "blue";
 var selectedKey;
 var wavesurfer;
 var firstTimeEditing = true;
+var zoomLevel = 0;
 
 $(document).ready(function () {
     $('#tab-container').hide();
@@ -605,16 +606,6 @@ function setAudio(element, key) {
 
 function playAudio() {
     wavesurfer.play();
-    // var checked = $('#loop').is(':checked');
-    // console.log(checked);
-    // if (checked) {
-    //     console.log("set false");
-    //     $('#loop').prop("checked", false);
-    //
-    // } else {
-    //     console.log("set true");
-    //     $('#loop').prop("checked", true);
-    // }
 }
 
 function pauseAudio() {
@@ -625,19 +616,19 @@ function stopAudio() {
     wavesurfer.stop();
 }
 
-// function toggleLoop() {
-//     // wavesurfer.play();
-//     var checked = $('#loop').is(':checked');
-//     console.log(checked);
-//     if (checked) {
-//         console.log("set true");
-//         $('#loop').prop("checked", true);
-//
-//     } else {
-//         console.log("set false");
-//         $('#loop').prop("checked", false);
-//     }
-// }
+function zoomIn() {
+    if(zoomLevel < 100) {
+        zoomLevel += 10;
+        wavesurfer.zoom(zoomLevel);
+    }
+}
+
+function zoomOut() {
+    if(zoomLevel > 0) {
+        zoomLevel -= 10;
+        wavesurfer.zoom(zoomLevel);
+    }
+}
 
 function toggleLoop(element) {
     console.log("pressed loop");
