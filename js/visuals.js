@@ -2,7 +2,7 @@ var myCircles = [];
 var myRoundRectangles = [];
 var myTriangles = [];
 
-function onKeyDown(event) {
+function onKeyUp(event) {
     var key = event.key.toUpperCase();
     var shape = '';
     var color;

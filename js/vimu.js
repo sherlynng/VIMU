@@ -267,9 +267,6 @@ function handleKeyDown(event) {
 
             addShadow(elementParent);
 
-            if ($(element).text()) {
-                playMusic($(element).text(), key);
-            }
         }
     }
 }
@@ -410,6 +407,10 @@ function handleKeyUp(event) {
             var elementParent = $(element).parent().parent()[0];
 
             removeShadow(elementParent);
+
+            if ($(element).text()) {
+                playMusic($(element).text(), key);
+            }
         }
     }
 }
