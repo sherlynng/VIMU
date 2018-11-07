@@ -325,6 +325,12 @@ function showLoadingBar(key, duration) {
                         $(loadingBar).css("visibility", "visible");
                     }
                 },
+                complete: function () {
+                    $(loadingBar).css("visibility", "hidden");
+                },
+                done: function () {
+                    $(loadingBar).css("visibility", "hidden");
+                }
             });
         }
     });
