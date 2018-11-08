@@ -40,6 +40,10 @@ $(document).ready(function () {
     // set color picker
     setColorPicker();
 
+    // disable zoom out button
+    $('#zoomOut-btn').prop('disabled', true);
+    $('#zoomOut-btn').css('color', 'lightgrey');
+
 });
 
 function setTabbing() {
@@ -629,6 +633,13 @@ function zoomIn() {
     if(zoomLevel < 100) {
         zoomLevel += 10;
         wavesurfer.zoom(zoomLevel);
+        $('#zoomOut-btn').prop('disabled', false);
+        $('#zoomOut-btn').css('color', '');
+    }
+    
+    if(zoomLevel >= 100) {
+        $('#zoomIn-btn').prop('disabled', true);
+        $('#zoomIn-btn').css('color', 'lightgrey');
     }
 }
 
@@ -636,6 +647,13 @@ function zoomOut() {
     if(zoomLevel > 0) {
         zoomLevel -= 10;
         wavesurfer.zoom(zoomLevel);
+        $('#zoomIn-btn').prop('disabled', false);
+        $('#zoomIn-btn').css('color', '');
+    }
+
+    if(zoomLevel <= 0) {
+        $('#zoomOut-btn').prop('disabled', true);
+        $('#zoomOut-btn').css('color', 'lightgrey');
     }
 }
 
