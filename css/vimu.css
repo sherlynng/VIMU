@@ -146,6 +146,20 @@ canvas {
     background-color: papayawhip;
 }
 
+.keyboard-key-edit p:hover {
+    cursor: -webkit-grab;
+    cursor: -moz-grab;
+    cursor: grab;
+    background-color: darksalmon;
+}
+
+.keyboard-key-edit p:active {
+    /*cursor: -webkit-grabbing;*/
+    /*cursor: -moz-grabbing;*/
+    /*cursor: grabbing;*/
+    /*background-color: red;*/
+}
+
 .keyboard-key-edit:hover {
     border: 3px solid red;
     opacity: 1;
@@ -300,6 +314,12 @@ p.foldername {
 p.soundname {
     position: relative;
     padding-left: 70px;
+}
+
+.soundname:hover {
+    cursor: -webkit-grab;
+    cursor: -moz-grab;
+    cursor: grab;
 }
 
 .scrollbar {
