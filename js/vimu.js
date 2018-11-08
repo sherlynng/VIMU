@@ -6,6 +6,7 @@ var selectedKey;
 var wavesurfer;
 var firstTimeEditing = true;
 var zoomLevel = 0;
+var currKey;
 
 $(document).ready(function () {
     $('#tab-container').hide();
@@ -558,6 +559,10 @@ function selectKey(element) {
     setAudio(element, key);
     setVisuals(element, key);
     setVolumeValue(element, key);
+
+   //set and edit in visual editor
+   currKey = key;
+   setShapes(element, key);
 }
 
 function setVolumeValue(element, key) {
@@ -677,6 +682,20 @@ function setVisuals(element, key) {
     $('#hue-demo').minicolors('value', color);
 }
 
+function setShapes(element, key){
+    var newShape = keyData[key].shape;
+    if(newShape == "roundedRectangle"){
+        $("#shape-select option[value=roundedRectangle]").prop("selected", "selected")
+    }
+    else if(newShape == "triangle"){
+        $("#shape-select option[value=triangle]").prop("selected", "selected")
+    }
+    else if (newShape == "circle"){
+        $("#shape-select option[value=circle]").prop("selected", "selected")
+    }
+ }
+
+
 function toggleOpenFolder(element, event) {
     if ($(event.target).hasClass("foldername") || $(event.target).hasClass("folder")
         || $(event.target).hasClass("fa-folder") || $(event.target).hasClass("fa-folder-open")) {
@@ -733,3 +752,11 @@ function setColorPicker() {
         },
     });
 }
+
+function editShape(selectedShape){
+    var shapeType = document.getElementById(selectedShape).value;
+    console.log(shapeType);
+    console.log(currKey);
+    keyData[currKey].shape = shapeType;
+ }
+ 
