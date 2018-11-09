@@ -61,11 +61,16 @@ $(document).ready(function () {
         }
     });
 
-    // hide nav bar after 2 seconds
-    $(".navbar").slideUp();
+    // hide nav bar after 4 seconds
+    $(".navbar .container").slideUp();
+    $(".navbar .icons").slideUp();
+    $("#logo").slideUp();
 
-    $("html").mousemove(function( event ) {
-        $(".navbar").slideDown();
+    // $("html").mousemove(function( event ) {
+    $(".navbar").hover(function( event ) {
+        $(".navbar .container").slideDown();
+        $(".navbar .icons").slideDown();
+        $("#logo").slideDown();
 
         clearNavBarTimeout();
         hideNavBar();
@@ -74,8 +79,10 @@ $(document).ready(function () {
 
 function hideNavBar() {
     hideNav = setTimeout(function(){
-        $(".navbar").slideUp();
-    }, 2000);
+        $(".navbar .container").slideUp();
+        $(".navbar .icons").slideUp();
+        $("#logo").slideUp();
+    }, 4000);
 }
 
 function clearNavBarTimeout() {
