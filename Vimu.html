@@ -27,9 +27,18 @@
             <button type="button" onclick="toggleEditing()" id="lock">
                 <i class="fa fa-lock fa-2x"></i>
             </button>
-            <button type="button">
+            <button type=type="button" id="info" data-toggle="popover" data-html="true" data-placement="bottom">
                 <i class="fa fa-info-circle fa-2x"></i>
             </button>
+            <div id="info-popover">
+                <h5>VIMU</h5>
+                <div class="information">
+                    <p>Vimu is an visual sound kit and music editing website. Each letter or number typed corresponds to a 
+                        certain sound clip and visual. </p>
+                    <p>Start customising your own keyboard sound mappings by dragging an audio file onto a key of your choice!<br>
+                    </p>
+                </div>
+            </div>
             <button type="button" id="settings" data-toggle="popover" data-html="true" data-placement="bottom"
                     onclick="setSettings()">
                 <i class="fa fa-cog fa-2x"></i>
@@ -893,6 +902,11 @@
                                     <img src="https://media1.tenor.com/images/8373dd8b18dacf6292f73f004e2ac454/tenor.gif?itemid=8025388"
                                          class="preview-image" height="100" width="100">
                                     <label for="position-select" class="title-label">Preview</label>
+                                    <div id="theShape">
+                                        <div class="triangle" id="styled-triangle"></div>
+                                        <div class="circle" id="styled-circle"></div>
+                                        <div class="roundedRectangle" id="styled-roundedRectangle"></div>
+                                    </div>
                                 </div>
                                 <div class="col-md-3" id="visual-container-1">
                                     <form class="form-inline">
@@ -970,6 +984,12 @@
                     </div>
                 </div>
             </div>
+            <div>
+                <div id="tip-popup" style="transform-origin: center center 0px; left: 50%; top: 50%; display:none" class="overlay-content centered-x centered-y active">
+                    <h2 class="tip-style">Tip</h2>
+                    <p class="message">Drag audio files into key to map an audio to a key.</p>
+                    <button class="button expand large js-close-overlay">Close</button>
+                </div>
         </div>
     </div>
 </div>

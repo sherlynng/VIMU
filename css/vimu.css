@@ -83,6 +83,11 @@ canvas {
     z-index: 2;
 }
 
+#info-popover {
+    display: none;
+    width: 200px;
+}
+
 #settings-popover {
     display: none;
     width: 200px;
