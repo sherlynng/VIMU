@@ -840,13 +840,16 @@ function toggleOpenFolder(element, event) {
 function togglePlaySoundInDir(element, event) {
     $(element).find("i.fa").toggleClass('fa-play');
     $(element).find("i.fa").toggleClass('fa-stop');
-    var selected = document.getElementsByClassName("selected");
-    $(selected).each(function () {
-        $(selected).find("i.fa").toggleClass('fa-play');
-        $(selected).find("i.fa").toggleClass('fa-stop');
-        $(selected).removeClass('selected');
-    });
-    $(element).addClass('selected');
+
+    if (!$(element).hasClass("selected")) {
+        var selected = document.getElementsByClassName("selected");
+        $(selected).each(function () {
+            $(selected).find("i.fa").toggleClass('fa-play');
+            $(selected).find("i.fa").toggleClass('fa-stop');
+            $(selected).removeClass('selected');
+        });
+        $(element).addClass('selected');
+    }
 }
 
 function setColorPicker() {
