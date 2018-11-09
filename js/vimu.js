@@ -582,7 +582,8 @@ function selectKey(element) {
     }
 
     if (typeof selectedKey === "undefined") {
-        // $('#audio-contents').contents().show();
+        $('#audio-contents').contents().show();
+        $('#audio-placeholder').hide();
         $('#visuals-contents').contents().show();
         $('#visual-placeholder').hide();
     }
@@ -658,11 +659,17 @@ function setAudio(element, key) {
 
         // show container
         $('#audio-contents').contents().show();
-        $('#audio-placeholder').hide();
+        $('#wave').show();
+        $('#no-audio').hide();
+        $('.audio-settings').attr('disabled', false);
+        $('.audio-settings').css('color', '');
+        $('#volume').removeClass('volume-slider-disabled');
     } else { // no audio selected
-        $('#audio-contents').contents().hide();
-        $('#audio-placeholder').show();
-        $('#audio-placeholder').text('NO AUDIO MAPPED');
+        $('#wave').hide();
+        $('#no-audio').show();
+        $('.audio-settings').attr('disabled', true);
+        $('.audio-settings').css('color', '#A0A0A0');
+        $('#volume').addClass('volume-slider-disabled');
     }
 }
 

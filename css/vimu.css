@@ -654,6 +654,11 @@ p.soundname {
     border: 1px solid #eaf3db;
 }
 
+.volume-slider-disabled::-webkit-slider-thumb {
+    background: #A0A0A0;
+    box-shadow: -100vw 0 0 99.8vw #A0A0A0;
+}
+
 .volume-slider::-moz-range-track {
     height: 40px;
     background: #eaf3db;

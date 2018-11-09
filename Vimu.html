@@ -703,35 +703,41 @@
                     </div>
 
                     <div id="tab01" class="tab-contents">
-                        <p class="visual-title text-center" id="audio-placeholder">Select a Key to start</p>
+                        <p class="visual-title text-center" id="audio-placeholder">SELECT A KEY TO START</p>
                         <div id="audio-contents">
                             <div class="row">
                                 <!-- waveform -->
-                                <div class="col-sm-6">
-                                    <div class="row">
-                                        <div class="col-sm-10 waveform-display">
-                                            <div id="waveform"></div>
 
-                                            <button id="btn-pause" class="control-buttons no-button-display"
-                                                    onclick="pauseAudio()">
-                                                <i class="fa fa-pause-circle-o"></i></button>
-                                            <button id="btn-play" class="control-buttons no-button-display"
-                                                    onclick="playAudio()"><i
-                                                    class="fa fa-play-circle-o"></i></button>
-                                            <button id="btn-stop" class="control-buttons no-button-display"
-                                                    onclick="stopAudio()"><i
-                                                    class="fa fa-stop-circle-o"></i></button>
-                                            <span id="audio-track"></span>
-                                        </div>
-                                        <div class="col-sm-2">
-                                            <div class="row justify-vertical">
-                                                <div class="col">
-                                                    <button class="control-buttons" onclick="zoomIn()" id="zoomIn-btn"><i class="fa fa-search-plus"></i>
-                                                    </button>
-                                                    <button class="control-buttons" onclick="zoomOut()" id="zoomOut-btn"><i class="fa fa-search-minus"></i>
-                                                    </button>
-                                                    <button class="control-buttons"><i class="fa fa-scissors"></i>
-                                                    </button>
+                                <div class="col-sm-6">
+                                    <p class="visual-title text-center" id="no-audio">NO AUDIO MAPPED</p>
+                                    <div id="wave">
+                                        <div class="row">
+                                            <div class="col-sm-10 waveform-display">
+                                                <div id="waveform"></div>
+
+                                                <button id="btn-pause" class="control-buttons no-button-display"
+                                                        onclick="pauseAudio()">
+                                                    <i class="fa fa-pause-circle-o"></i></button>
+                                                <button id="btn-play" class="control-buttons no-button-display"
+                                                        onclick="playAudio()"><i
+                                                        class="fa fa-play-circle-o"></i></button>
+                                                <button id="btn-stop" class="control-buttons no-button-display"
+                                                        onclick="stopAudio()"><i
+                                                        class="fa fa-stop-circle-o"></i></button>
+                                                <span id="audio-track"></span>
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <div class="row justify-vertical">
+                                                    <div class="col">
+                                                        <button class="control-buttons" onclick="zoomIn()"
+                                                                id="zoomIn-btn"><i class="fa fa-search-plus"></i>
+                                                        </button>
+                                                        <button class="control-buttons" onclick="zoomOut()"
+                                                                id="zoomOut-btn"><i class="fa fa-search-minus"></i>
+                                                        </button>
+                                                        <button class="control-buttons"><i class="fa fa-scissors"></i>
+                                                        </button>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -742,9 +748,10 @@
                                 <div class="col-sm-3">
                                     <form class="form-inline">
                                         <div class="form-group">
-                                            <label for="quantization" class="margin-10">Quantize to:</label>
+                                            <label for="quantization" class="margin-10 audio-settings">Quantize
+                                                to:</label>
                                             <div class="styled-select">
-                                                <select id="quantization" class="styled-select">
+                                                <select id="quantization" class="styled-select audio-settings">
                                                     <option>1</option>
                                                     <option>1/2</option>
                                                     <option>1/4</option>
@@ -767,10 +774,10 @@
                                         <br> -->
 
                                         <div class="form-group">
-                                            <label for="loop" class="margin">Loop:</label>
+                                            <label for="loop" class="margin audio-settings">Loop:</label>
                                             <div class="checkbox-switch">
                                                 <!--<input type="checkbox" class="input-checkbox" id="loop" onchange="loop()">-->
-                                                <input class="input-checkbox" type="checkbox" id="loop"
+                                                <input class="input-checkbox audio-settings" type="checkbox" id="loop"
                                                        onchange="toggleLoop(this)">
                                                 <div class="checkbox-animate">
                                                     <span class="checkbox-off" id="loop-off">OFF</span>
@@ -781,9 +788,11 @@
                                         <br/>
 
                                         <div class="form-group">
-                                            <label for="hold-to-play" class="margin">Hold To Play:</label>
+                                            <label for="hold-to-play" class="margin audio-settings">Hold To
+                                                Play:</label>
                                             <div class="checkbox-switch">
-                                                <input type="checkbox" class="input-checkbox" id="hold-to-play">
+                                                <input type="checkbox" class="input-checkbox audio-settings"
+                                                       id="hold-to-play">
                                                 <div class="checkbox-animate">
                                                     <span class="checkbox-off">OFF</span>
                                                     <span class="checkbox-on">ON</span>
@@ -805,8 +814,9 @@
 
                                     <div class="form-group" class="volume">
                                         <div class="volume-slider">
-                                            <i class="fa fa-volume-up margin-10"></i>
-                                            <input type="range" min="0" max="100" value="50" class="volume-slider"
+                                            <i class="fa fa-volume-up margin-10 audio-settings"></i>
+                                            <input type="range" min="0" max="100" value="50"
+                                                   class="volume-slider audio-settings"
                                                    id="volume" onchange="setVolume(this.value)">
                                         </div>
                                     </div>
@@ -815,7 +825,7 @@
                         </div>
                     </div>
                     <div id="tab02" class="tab-contents">
-                        <p class="visual-title text-center" id="visual-placeholder">Select a Key to start</p>
+                        <p class="visual-title text-center" id="visual-placeholder">SELECT A KEY TO START</p>
                         <div id="visuals-contents">
                             <div class="row">
                                 <div class="col-md-3">
@@ -828,7 +838,8 @@
                                         <div class="form-group">
                                             <label for="shape-select" class="title-label">Shape:</label>
                                             <div class="select-form">
-                                                <select class="select-form" id="shape-select" onchange="editShape(this.id)"
+                                                <select class="select-form" id="shape-select"
+                                                        onchange="editShape(this.id)"
                                                         width="100" style="width: 100px">
                                                     <option value="circle">Circle</option>
                                                     <option value="triangle">Triangle</option>
@@ -973,8 +984,9 @@
             });
         }
     }
+
     function stopAllMusic() {
-        for(var key in keyData) {
+        for (var key in keyData) {
             if (keyData[key].id !== '') { // is playing
                 // console.log("stop = " + key);
                 var currentSound = keyData[key].sound;
