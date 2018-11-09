@@ -252,13 +252,15 @@ canvas {
 
 #file-directory p,
 #file-directory i,
-#file-directory h5 {
+#file-directory h5,
+#file-directory span {
     color: #943737;
 }
 
 #drop-zone {
     position: absolute;
-    bottom:0;
+    bottom: 0;
+    float: left;
     width: 85%;
     padding-top: 15px;
     margin-bottom: 15px;
@@ -273,6 +275,15 @@ canvas {
     width: 100%;
     padding-left:5px;
     padding-right:5px;
+}
+
+#new-folder {
+    float: right;
+    background-color: #FFE2E3;
+    border: 1px solid #F7A7B3;
+    border-radius: 10px;
+    padding: 0 10px;
+    cursor: pointer;
 }
 
 ul {
@@ -291,6 +302,7 @@ li {
     align-content: center;
     position: relative;
     padding: 0;
+    cursor: pointer;
 }
 
 li.selected {
@@ -348,9 +360,10 @@ p.soundname {
 
 .scrollbar {
     float: left;
-    height: 250px;
-    width: inherit;
+    height: 300px;
+    width: 100%;
     overflow-y: auto;
+    margin-bottom: 30px;
     /* margin-bottom: 25px; */
 }
 
@@ -420,8 +433,8 @@ p.soundname {
     display: inline-block;
     font-size: 20px;
 
-    width: 32px;
-    height: 32px;
+    width: 35px;
+    height: 35px;
 }
 
 .no-button-display {
@@ -811,7 +824,15 @@ p.soundname {
     height: 30%;
     position: absolute;
     width: 100%;
+    float: right;
 }
+
+/* #tab-container {
+    margin-top: 35px;
+    bottom: 0;
+    position: fixed;
+    width: 90%;
+} */
 
 .tabs {
     background-color: #D6EACC;
@@ -883,11 +904,6 @@ p.soundname {
     color: grey;
 }
 
-#tab-container {
-    margin-top: 35px;
-    bottom: 0;
-    position: fixed;
-    width: 90%;
-}
+
 
 /* End Tabbing */

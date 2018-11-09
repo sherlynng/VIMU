@@ -10,7 +10,8 @@
     <title>VIMU</title>
 
     <link href="library/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" media="all" href="css/jquery.minicolors.css">
     <link rel="stylesheet" type="text/css" href="css/loading-bar.css"/>
 
@@ -83,8 +84,10 @@
                     <input type="text" class="form-control" name="search" id="search" placeholder="Search">
                 </div>
             </form>
-            <div class="row" style="padding-right:10px;">
-                <div class="scrollbar-container">
+            <span id="new-folder"><i class="fas fa-plus"></i>&nbsp; New Folder</span>
+            <br />
+            <br />
+            <div class="row" style="padding-right: 10px;">
                 <div class="scrollbar scrollbar-primary force-overflow">
                     <ul class="directory">
                         <li class="folder folder-closed tg-inputwithicon" onclick="toggleOpenFolder(this, event)">
@@ -203,7 +206,6 @@
                         </li>
                     </ul>
                 </div>
-            </div>
             </div>
             <div class="d-block mx-auto" id="drop-zone">
                 <i class="fa fa-upload fa-2x"></i>
@@ -775,19 +777,19 @@
                                     <p class="visual-title text-center" id="no-audio">NO AUDIO MAPPED</p>
                                     <div id="wave">
                                         <div class="row">
-                                            <div class="col-sm-10 waveform-display">
-                                                <div id="waveform"></div>
+                                            <div class="col-sm-10 waveform-display" >
+                                                <div id="waveform" style="vertical-align: middle;"></div>
 
                                                 <button id="btn-pause" class="control-buttons no-button-display"
                                                         onclick="pauseAudio()">
-                                                    <i class="fa fa-pause-circle-o"></i></button>
+                                                    <i class="far fa-pause-circle"></i></button>
                                                 <button id="btn-play" class="control-buttons no-button-display"
                                                         onclick="playAudio()"><i
-                                                        class="fa fa-play-circle-o"></i></button>
+                                                        class="far fa-play-circle"></i></button>
                                                 <button id="btn-stop" class="control-buttons no-button-display"
                                                         onclick="stopAudio()"><i
-                                                        class="fa fa-stop-circle-o"></i></button>
-                                                <span id="audio-track"></span>
+                                                        class="far fa-stop-circle"></i></button>
+                                                <span id="audio-track" style="display: inline-block; padding-left: 5px;"></span>
                                             </div>
                                             <div class="col-sm-2">
                                                 <div class="row justify-vertical">
@@ -798,7 +800,7 @@
                                                         <button class="control-buttons" onclick="zoomOut()"
                                                                 id="zoomOut-btn"><i class="fa fa-search-minus"></i>
                                                         </button>
-                                                        <button class="control-buttons"><i class="fa fa-scissors"></i>
+                                                        <button class="control-buttons"><i class="fas fa-cut"></i>
                                                         </button>
                                                     </div>
                                                 </div>

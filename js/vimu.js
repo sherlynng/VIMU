@@ -82,7 +82,6 @@ $(document).ready(function () {
 function hideNavBar() {
     hideNav = setTimeout(function(){
         if (!$('#settings').hasClass('active-btn-blue')) {
-            console.log("settings should be closed");
             $(".navbar .container").slideUp();
             $(".navbar .icons").slideUp();
             $("#logo").slideUp();
