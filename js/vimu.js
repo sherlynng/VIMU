@@ -62,10 +62,10 @@ $(document).ready(function () {
     });
 
     // hide nav bar after 2 seconds
-    $(".navbar").hide();
+    $(".navbar").slideUp();
 
     $("html").mousemove(function( event ) {
-        $(".navbar").show();
+        $(".navbar").slideDown();
 
         clearNavBarTimeout();
         hideNavBar();
@@ -74,9 +74,10 @@ $(document).ready(function () {
 
 function hideNavBar() {
     hideNav = setTimeout(function(){
-        $(".navbar").hide();
+        $(".navbar").slideUp();
     }, 2000);
 }
+
 function clearNavBarTimeout() {
     if(typeof hideNav != 'undefined'){
         clearTimeout(hideNav);
