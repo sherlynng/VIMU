@@ -277,6 +277,7 @@ canvas {
     border: 1px solid #F7A7B3;
     border-radius: 10px;
     text-align: center;
+    cursor: pointer;
 }
 
 #drop-zone p {
