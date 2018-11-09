@@ -250,6 +250,10 @@ function setSettings() {
     }
 }
 
+function setInfo() {
+    $('#info').toggleClass('active-btn-green');
+}
+
 function toggleLabels(element) {
     if (element.checked) {
         $('.keyboard-key').contents().show();

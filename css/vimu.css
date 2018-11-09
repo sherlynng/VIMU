@@ -47,6 +47,9 @@ nav button {
     color: lightskyblue;
 }
 
+.active-btn-green {
+    color: lightgreen;
+}
 /* End Navigation Bar */
 
 /* Settings */
