@@ -768,15 +768,28 @@ function setShapes(element, key){
     var newShape = keyData[key].shape;
     if(newShape == "roundedRectangle"){
         $("#shape-select option[value=roundedRectangle]").prop("selected", "selected")
+        document.getElementById("styled-roundedRectangle").style.display="block";
+        document.getElementById("styled-circle").style.display="none";
+        document.getElementById("styled-triangle").style.display="none";
     }
     else if(newShape == "triangle"){
         $("#shape-select option[value=triangle]").prop("selected", "selected")
+        document.getElementById("styled-roundedRectangle").style.display="none";
+        document.getElementById("styled-circle").style.display="none";
+        document.getElementById("styled-triangle").style.display="block";
     }
     else if (newShape == "circle"){
         $("#shape-select option[value=circle]").prop("selected", "selected")
+        document.getElementById("styled-roundedRectangle").style.display="none";
+        document.getElementById("styled-circle").style.display="block";
+        document.getElementById("styled-triangle").style.display="none";
+    }
+    else {
+        document.getElementById("styled-roundedRectangle").style.display="none";
+        document.getElementById("styled-circle").style.display="none";
+        document.getElementById("styled-triangle").style.display="none";
     }
  }
-
 
 function toggleOpenFolder(element, event) {
     if ($(event.target).hasClass("foldername") || $(event.target).hasClass("folder")
@@ -854,6 +867,11 @@ function editShape(selectedShape){
        document.getElementById("styled-roundedRectangle").style.display="block";
        document.getElementById("styled-circle").style.display="none";
        document.getElementById("styled-triangle").style.display="none";
+   }
+   else {
+    document.getElementById("styled-roundedRectangle").style.display="none";
+    document.getElementById("styled-circle").style.display="none";
+    document.getElementById("styled-triangle").style.display="none";
    }
 }
  

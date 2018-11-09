@@ -809,15 +809,17 @@ p.soundname {
 	border-right: 25px solid transparent;
     border-bottom: 50px solid #555;
     display:none;
+    margin: auto;
 }
  .circle {
     height: 50px;
     width: 50px;
-    height: 30px;
-    width: 30px;
+    height: 50px;
+    width: 50px;
     background-color: #555;
     border-radius: 50%;
     display:none;
+    margin: auto;
   }
 
 .roundedRectangle{
@@ -830,6 +832,7 @@ p.soundname {
     width: 80px;
     background-color: #555;
     display:none;
+    margin: auto;
 }
 /* End Visuals */
 
