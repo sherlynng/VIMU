@@ -145,7 +145,6 @@ function toggleEditing() {
         // navigation bar
         isEditing = false;
         $('#lock').removeClass('active-btn-pink');
-        $('#lock > i').removeClass('fa-unlock').addClass('fa-lock');
         $('#settings').prop('disabled', false);
         $('#settings').css('color', '');
 
@@ -184,7 +183,6 @@ function toggleEditing() {
         // navigation bar
         isEditing = true;
         $('#lock').addClass('active-btn-pink');
-        $('#lock > i').removeClass('fa-lock').addClass('fa-unlock');
         $('#settings').prop('disabled', true);
         $('#settings').popover('hide');
         $('#settings').css('color', 'lightgrey');
