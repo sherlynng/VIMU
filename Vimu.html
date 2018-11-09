@@ -24,14 +24,14 @@
     <div class="container">
         <div class="navbar-brand" id="logo">VIMU</div>
         <div class="icons">
-            <button type="button" onclick="toggleEditing()" id="lock">
+            <button type="button" onclick="toggleEditing(); tutorial()" id="lock">
                 <i class="fa fa-lock fa-2x"></i>
             </button>
-            <button type=type="button" id="info" data-toggle="popover" data-html="true" data-placement="bottom">
+            <button type="button" id="info" data-toggle="popover" data-html="true" data-placement="bottom">
                 <i class="fa fa-info-circle fa-2x"></i>
             </button>
             <div id="info-popover">
-                <h5>VIMU</h5>
+                <h5 class="info-title">VIMU</h5>
                 <div class="information">
                     <p>Vimu is an visual sound kit and music editing website. Each letter or number typed corresponds to a 
                         certain sound clip and visual. </p>
@@ -899,13 +899,15 @@
                         <div id="visuals-contents">
                             <div class="row">
                                 <div class="col-md-3">
-                                    <img src="https://media1.tenor.com/images/8373dd8b18dacf6292f73f004e2ac454/tenor.gif?itemid=8025388"
-                                         class="preview-image" height="100" width="100">
-                                    <label for="position-select" class="title-label">Preview</label>
-                                    <div id="theShape">
-                                        <div class="triangle" id="styled-triangle"></div>
-                                        <div class="circle" id="styled-circle"></div>
-                                        <div class="roundedRectangle" id="styled-roundedRectangle"></div>
+                                    <div>
+                                        <label for="position-select" class="title-label">Preview</label>
+                                    </div>
+                                    <div class="preview-container" >
+                                        <div class="preview-shape-container"id="theShape" width="100" height="100">
+                                            <div class="triangle" id="styled-triangle" width="100" height="100"></div>
+                                            <div class="circle" id="styled-circle" width="100" height="100"></div>
+                                            <div class="roundedRectangle" id="styled-roundedRectangle" width="100" height="100"></div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-md-3" id="visual-container-1">

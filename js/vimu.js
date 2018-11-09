@@ -7,6 +7,7 @@ var wavesurfer;
 var firstTimeEditing = true;
 var zoomLevel = 0;
 var currKey;
+var tip = 0;
 var hideNav;
 
 $(document).ready(function () {
@@ -24,6 +25,15 @@ $(document).ready(function () {
         html: true,
         content: function () {
             return $('#settings-popover').html();
+        }
+    }).on('shown.bs.popover', function () {
+    });
+
+    //info popover
+    $('#info').popover({
+        html: true,
+        content: function () {
+            return $('#info-popover').html();
         }
     }).on('shown.bs.popover', function () {
     });
@@ -170,12 +180,14 @@ function toggleEditing() {
 
     } else {
         // navigation bar
+        tip = 1;
         isEditing = true;
         $('#lock').addClass('active-btn');
         $('#lock > i').removeClass('fa-lock').addClass('fa-unlock');
         $('#settings').prop('disabled', true);
         $('#settings').popover('hide');
         $('#settings').css('color', 'lightgrey');
+        $('#info').popover('hide');
 
         // layout
         $('#myCanvas').hide();
@@ -742,6 +754,14 @@ function toggleLoop(element) {
 function setVisuals(element, key) {
     var color = keyData[key].color;
     $('#hue-demo').minicolors('value', color);
+    updatePreviewColour(color);
+}
+
+ function updatePreviewColour(colour){
+    console.log(colour);
+    document.getElementById("styled-triangle").style.borderBottom="50px solid "+ colour;
+    document.getElementById("styled-circle").style.backgroundColor=colour;
+    document.getElementById("styled-roundedRectangle").style.backgroundColor=colour;
 }
 
 function setShapes(element, key){
@@ -817,8 +837,38 @@ function setColorPicker() {
 
 function editShape(selectedShape){
     var shapeType = document.getElementById(selectedShape).value;
-    console.log(shapeType);
-    console.log(currKey);
-    keyData[currKey].shape = shapeType;
- }
+   console.log(shapeType);
+   console.log(currKey);
+   keyData[currKey].shape = shapeType;
+    if(shapeType == "circle"){
+       document.getElementById("styled-roundedRectangle").style.display="none";
+       document.getElementById("styled-circle").style.display="block";
+       document.getElementById("styled-triangle").style.display="none";
+   }
+   else if(shapeType == "triangle"){
+       document.getElementById("styled-roundedRectangle").style.display="none";
+       document.getElementById("styled-circle").style.display="none";
+       document.getElementById("styled-triangle").style.display="block";
+   }
+   else if(shapeType == "roundedRectangle"){
+       document.getElementById("styled-roundedRectangle").style.display="block";
+       document.getElementById("styled-circle").style.display="none";
+       document.getElementById("styled-triangle").style.display="none";
+   }
+}
  
+ function tutorial() {
+    console.log(tip);
+     if(localStorage.getItem('popState') != 'shown' && tip == 1){
+        $("#tip-popup").fadeIn();
+        localStorage.setItem('popState','shown')
+    }
+     $('#tip-popup-close').click(function(e) // You are clicking the close button
+    {
+    $('#tip-popup').fadeOut();
+    });
+    $('#tip-popup').click(function(e) 
+    {
+    $('#tip-popup').fadeOut(); 
+    });
+} 
