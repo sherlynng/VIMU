@@ -50,6 +50,7 @@ nav button {
 .active-btn-green {
     color: lightgreen;
 }
+
 /* End Navigation Bar */
 
 /* Settings */
@@ -966,7 +967,9 @@ p.soundname {
     text-align: center;
     margin-bottom: 16px;
     line-height: 18px;
+
 }
+
  .tip-style{
     color: #EDB323;
  }
@@ -1019,12 +1022,15 @@ p.soundname {
     filter: none;
     margin-left: 0;
     margin-right: 0 !important;
+
 }
 .overlay-content {
     z-index: 9;
     position: fixed;
     padding: 40px;
     background: #FFFFB2;
+    border-style: solid;
+    border-color: #EDB323;
     border-radius: 4px;
     -webkit-transform: scale(.2,.2);
     -moz-transform: scale(.2,.2);
