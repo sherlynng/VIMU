@@ -7,6 +7,7 @@ var wavesurfer;
 var firstTimeEditing = true;
 var zoomLevel = 0;
 var currKey;
+var hideNav;
 
 $(document).ready(function () {
     $('#tab-container').hide();
@@ -60,7 +61,27 @@ $(document).ready(function () {
         }
     });
 
+    // hide nav bar after 2 seconds
+    $(".navbar").hide();
+
+    $("html").mousemove(function( event ) {
+        $(".navbar").show();
+
+        clearNavBarTimeout();
+        hideNavBar();
+    });
 });
+
+function hideNavBar() {
+    hideNav = setTimeout(function(){
+        $(".navbar").hide();
+    }, 2000);
+}
+function clearNavBarTimeout() {
+    if(typeof hideNav != 'undefined'){
+        clearTimeout(hideNav);
+    }
+}
 
 function playMusicPerformance(element) {
     if (!isEditing) {
