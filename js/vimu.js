@@ -45,7 +45,30 @@ $(document).ready(function () {
     $('#zoomOut-btn').prop('disabled', true);
     $('#zoomOut-btn').css('color', 'lightgrey');
 
+    // allow clicking on performance mode
+    $('.keyboard-key').click(function () {
+        playMusicPerformance(this);
+    });
+    $('.keyboard-key').mousedown(function () {
+        if (!isEditing) {
+            addShadow(this);
+        }
+    });
+    $('.keyboard-key').mouseup(function () {
+        if (!isEditing) {
+            removeShadow(this);
+        }
+    });
+
 });
+
+function playMusicPerformance(element) {
+    if (!isEditing) {
+        var key = $(element).find("h6").text();
+        var track = $(element).find("p").text();
+        playMusic(track, key);
+    }
+}
 
 function setTabbing() {
     var $tabButtonItem = $('#tab-button li'),

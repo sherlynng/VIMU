@@ -114,6 +114,15 @@ canvas {
     padding-left: 10px;
 }
 
+.keyboard-key:hover {
+    opacity: 1;
+    cursor: pointer;
+}
+
+.keyboard-key:active {
+    opacity: 1;
+}
+
 .keyboard-key h6 {
     margin: 0;
 }
