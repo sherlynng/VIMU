@@ -541,6 +541,10 @@ function drop(ev) {
                 var targetElement = document.getElementById(targetId);
                 $(targetElement).css('background-color', '');
                 $(targetElement).css('transition', 'background-color 0.3s ease');
+
+                var draggedElement = document.getElementById(draggedId);
+                var elementParent = $(draggedElement).parent().parent()[0];
+                selectKey(elementParent);
             } else {
                 var targetData = document.getElementById(targetId).textContent;
 
