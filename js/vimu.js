@@ -17,7 +17,9 @@ $(document).ready(function () {
     $('#audio-contents').contents().hide();
     $('#visuals-contents').contents().hide();
     $('.trash-container').hide();
-
+    $('#selected-key-container').hide();
+    $('#selected-key-text').hide();
+    
     // settings popover
     $('#display-keyboard').attr("checked", true);
     $('#display-labels').attr("checked", true);
@@ -188,7 +190,9 @@ function toggleEditing() {
 
         // hide display for trash
         $('.trash-container').hide();
-
+        $('#selected-key-container').hide();
+        $('#selected-key-text').hide();
+        
     } else {
         // navigation bar
         tip = 1;
@@ -230,6 +234,8 @@ function toggleEditing() {
 
         // show display for trash
         $('.trash-container').show();
+        $('#selected-key-container').show();
+        $('#selected-key-text').show();
 
         // stop all sound
         stopAllMusic();

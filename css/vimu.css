@@ -135,6 +135,7 @@ canvas {
     color: black;
     padding-top: 10px;
     padding-left: 10px;
+    width: 33%
 }
 
 .keyboard-key:hover {
@@ -241,12 +242,11 @@ canvas {
 
 .trash-container {
     opacity: 0.8;
+    width: 33%;
 }
 
 .trash-container i {
     padding-top: 10px;
-    padding-left: 10px;
-    padding-right: 10px;
 }
 
 /* End Keyboard */
@@ -744,29 +744,31 @@ p.soundname {
 
 /* selected key */
 #selected-key-wrapper {
-    display: flex;
-    padding-bottom: 20px;
+    width: 29%;
 }
 
-#selected-key-text {
+#keyboard div #selected-key-text {
     /*width: 200px;*/
-    padding-right: 20px;
+    font-size: medium;
+    text-align: center;
 }
 
 #selected-key-container {
-    flex-grow: 1;
+    /* flex-grow: 1; */
     background-color: #70a945;
     border-radius: 10px;
     color: #eaf3db;
+    margin: auto;
     /*padding: 5px 0px 0px 10px;*/
-    max-width: 50px;
-    height: 50px;
+
+    height: 40px;
+    width: 40px;
 }
 
 #selected-key {
     text-align: center;
     vertical-align: middle;
-    line-height: 50px;
+    line-height: 200%;
 }
 
 /* End Audio */

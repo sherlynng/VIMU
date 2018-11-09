@@ -736,7 +736,14 @@
                     </div>
                 </div>
                 <div class="keyboard-row row">
-                    <div class="offset-md-3 keyboard-key col-sm-5 row5" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <!-- selected key -->
+                    <div id="selected-key-wrapper">
+                        <div class="text-center" id="selected-key-container">
+                            <h5 id="selected-key"></h5>
+                        </div>
+                        <div id="selected-key-text">Selected Key</div>
+                    </div>
+                    <div class="keyboard-key col-sm-5 row5" ondrop="drop(event)" ondragover="allowDrop(event)">
                         <h6>SPACE</h6>
                         <div>
                             <p draggable="true" ondragstart="drag(event)" id="SPACE">happy-music.wav</p>
@@ -750,11 +757,11 @@
                                  data-stroke-width="10" data-stroke-trail-width="10" id="ldBarSPACEloop"></div>
                         </div>
                     </div>
-                    <div class="offset-md-1 col-sm-3 trash-container text-center">
+                    <div class="col-sm-3 trash-container text-center">
                         <i class="fa fa-trash" style="font-size:30px" id="trash" draggable="false" ondrop="drop(event)"
                            ondragover="allowDrop(event)" ondragenter="dragEnter(event)"
                            ondragleave="dragLeave(event)" ondragstart="drag(event)"></i>
-                        <p>Drag here to remove audio</p>
+                        <p style="font-size: medium;">Drag here to remove audio</p>
                     </div>
                 </div>
             </div>
@@ -874,16 +881,6 @@
                                         <br/>
                                     </form>
                                 </div>
-
-                                <!-- selected key -->
-                                <div class="col-sm-3">
-                                    <div id="selected-key-wrapper">
-                                        <div id="selected-key-text">Selected key:</div>
-                                        <div class="text-center" id="selected-key-container">
-                                            <h5 id="selected-key">Q</h5>
-                                        </div>
-                                    </div>
-
                                     <div class="form-group" class="volume">
                                         <div class="volume-slider">
                                             <i class="fa fa-volume-up"></i>
