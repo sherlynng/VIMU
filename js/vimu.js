@@ -530,6 +530,9 @@ function drop(ev) {
                 $(targetElement).css('transition', 'background-color 0.3s ease');
             } else {
                 document.getElementById(targetId).textContent = draggedData;
+                var targetElement = document.getElementById(targetId);
+                var elementParent = $(targetElement).parent().parent()[0];
+                selectKey(elementParent);
             }
         } else {
             if (targetId === "trash") {
@@ -543,6 +546,10 @@ function drop(ev) {
 
                 document.getElementById(draggedId).textContent = targetData;
                 document.getElementById(targetId).textContent = draggedData;
+
+                var targetElement = document.getElementById(targetId);
+                var elementParent = $(targetElement).parent().parent()[0];
+                selectKey(elementParent);
             }
         }
     }
@@ -600,6 +607,13 @@ function selectKey(element) {
     // set css on keyboard
     $(element).css('border', '3px solid red');
 
+    // set key value
+    if (key === "SPACE") {
+        $('#selected-key').text('\u2423');
+    } else {
+        $('#selected-key').text(key);
+    }
+
     // set in sound editor
     setAudio(element, key);
     setVisuals(element, key);
@@ -630,13 +644,6 @@ function setAudio(element, key) {
 
         // set audio text
         $('#audio-track').text(audio);
-
-        // set key value
-        if (key === "SPACE") {
-            $('#selected-key').text('\u2423');
-        } else {
-            $('#selected-key').text(key);
-        }
 
         // set looping
         var isLooping = keyData[key].loop;
