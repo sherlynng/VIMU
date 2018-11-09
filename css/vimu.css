@@ -381,6 +381,12 @@ p.soundname {
     color: #70a945;
 }
 
+.audio-settings {
+    text-align: left;
+    float: left;
+    width: 50%;
+}
+
 /* waveform */
 .waveform-display {
     background-color: #eaf3db;
