@@ -10,7 +10,8 @@
     <title>VIMU</title>
 
     <link href="library/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" media="all" href="css/jquery.minicolors.css">
     <link rel="stylesheet" type="text/css" href="css/loading-bar.css"/>
 
@@ -21,11 +22,11 @@
 <body>
 <!--Navigation-->
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
-    <div class="container">
-        <div class="navbar-brand" id="logo">VIMU</div>
-        <div class="icons">
+    <div class="container" style="height:40px;">
+        <div class="navbar-brand" id="logo" style="left: 30px; top: 15px; position: absolute;">VIMU</div>
+        <div class="icons" style="right: 30px; top: 15px; position: absolute;">
             <button type="button" onclick="toggleEditing(); tutorial()" id="lock">
-                <i class="fa fa-lock fa-2x"></i>
+                <i class="fas fa-edit fa-2x"></i>
             </button>
             <button type="button" id="info" data-toggle="popover" data-html="true" data-placement="bottom">
                 <i class="fa fa-info-circle fa-2x"></i>
@@ -92,7 +93,10 @@
                     <input type="text" class="form-control" name="search" id="search" placeholder="Search">
                 </div>
             </form>
-            <div class="row" style="padding-right:10px;">
+            <span id="new-folder"><i class="fas fa-plus"></i>&nbsp; New Folder</span>
+            <br />
+            <br />
+            <div class="row" style="padding-right: 10px;">
                 <div class="scrollbar scrollbar-primary force-overflow">
                     <ul class="directory">
                         <li class="folder folder-closed tg-inputwithicon" onclick="toggleOpenFolder(this, event)">
@@ -212,7 +216,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="upload d-block mx-auto" id="drop-zone">
+            <div class="d-block mx-auto" id="drop-zone">
                 <i class="fa fa-upload fa-2x"></i>
                 <p>Drag files here/Click to Upload</p>
             </div>
@@ -782,19 +786,19 @@
                                     <p class="visual-title text-center" id="no-audio">NO AUDIO MAPPED</p>
                                     <div id="wave">
                                         <div class="row">
-                                            <div class="col-sm-10 waveform-display">
-                                                <div id="waveform"></div>
+                                            <div class="col-sm-10 waveform-display" >
+                                                <div id="waveform" style="vertical-align: middle;"></div>
 
                                                 <button id="btn-pause" class="control-buttons no-button-display"
                                                         onclick="pauseAudio()">
-                                                    <i class="fa fa-pause-circle-o"></i></button>
+                                                    <i class="far fa-pause-circle"></i></button>
                                                 <button id="btn-play" class="control-buttons no-button-display"
                                                         onclick="playAudio()"><i
-                                                        class="fa fa-play-circle-o"></i></button>
+                                                        class="far fa-play-circle"></i></button>
                                                 <button id="btn-stop" class="control-buttons no-button-display"
                                                         onclick="stopAudio()"><i
-                                                        class="fa fa-stop-circle-o"></i></button>
-                                                <span id="audio-track"></span>
+                                                        class="far fa-stop-circle"></i></button>
+                                                <span id="audio-track" style="display: inline-block; padding-left: 5px;"></span>
                                             </div>
                                             <div class="col-sm-2">
                                                 <div class="row justify-vertical">
@@ -805,7 +809,7 @@
                                                         <button class="control-buttons" onclick="zoomOut()"
                                                                 id="zoomOut-btn"><i class="fa fa-search-minus"></i>
                                                         </button>
-                                                        <button class="control-buttons"><i class="fa fa-scissors"></i>
+                                                        <button class="control-buttons"><i class="fas fa-cut"></i>
                                                         </button>
                                                     </div>
                                                 </div>
@@ -817,11 +821,11 @@
                                 <!-- settings -->
                                 <div class="col-sm-3">
                                     <form class="form-inline">
-                                        <div class="form-group">
-                                            <label for="quantization" class="margin-10 audio-settings">Quantize
+                                        <div class="form-group" style="width:100%;">
+                                            <label for="quantization" class="audio-settings">Quantize
                                                 to:</label>
                                             <div class="styled-select">
-                                                <select id="quantization" class="styled-select audio-settings">
+                                                <select id="quantization" class="styled-select">
                                                     <option>1</option>
                                                     <option>1/2</option>
                                                     <option>1/4</option>
@@ -840,34 +844,32 @@
                                                 <input type="range" min="1" max="100" value="60" class="amount-slider"
                                                        id="quantization-amount">
                                             </div>
-                                        </div>
-                                        <br> -->
+                                        </div> -->
 
-                                        <div class="form-group">
-                                            <label for="loop" class="margin audio-settings">Loop:</label>
-                                            <div class="checkbox-switch">
+                                        <div class="form-group" style="width:100%;">
+                                            <label for="loop" class="audio-settings">Loop:</label>
+                                            <span class="checkbox-switch">
                                                 <!--<input type="checkbox" class="input-checkbox" id="loop" onchange="loop()">-->
-                                                <input class="input-checkbox audio-settings" type="checkbox" id="loop"
+                                                <input class="input-checkbox" type="checkbox" id="loop"
                                                        onchange="toggleLoop(this)">
                                                 <div class="checkbox-animate">
                                                     <span class="checkbox-off" id="loop-off">OFF</span>
                                                     <span class="checkbox-on" id="loop-on">ON</span>
                                                 </div>
-                                            </div>
+                                            </span>
                                         </div>
-                                        <br/>
 
-                                        <div class="form-group">
-                                            <label for="hold-to-play" class="margin audio-settings">Hold To
+                                        <div class="form-group" style="width:100%;">
+                                            <label for="hold-to-play" class="audio-settings">Hold To
                                                 Play:</label>
-                                            <div class="checkbox-switch">
-                                                <input type="checkbox" class="input-checkbox audio-settings"
+                                            <span class="checkbox-switch">
+                                                <input type="checkbox" class="input-checkbox"
                                                        id="hold-to-play">
                                                 <div class="checkbox-animate">
                                                     <span class="checkbox-off">OFF</span>
                                                     <span class="checkbox-on">ON</span>
                                                 </div>
-                                            </div>
+                                            </span>
                                         </div>
                                         <br/>
                                     </form>
@@ -884,9 +886,9 @@
 
                                     <div class="form-group" class="volume">
                                         <div class="volume-slider">
-                                            <i class="fa fa-volume-up margin-10 audio-settings"></i>
+                                            <i class="fa fa-volume-up"></i>
                                             <input type="range" min="0" max="100" value="50"
-                                                   class="volume-slider audio-settings"
+                                                   class="volume-slider"
                                                    id="volume" onchange="setVolume(this.value)">
                                         </div>
                                     </div>

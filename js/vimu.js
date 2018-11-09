@@ -71,11 +71,18 @@ $(document).ready(function () {
         }
     });
 
-    // hide nav bar after 2 seconds
-    $(".navbar").hide();
+    // hide nav bar after 3 seconds
+    if (!$('settings').hasClass('active-btn-blue')) {
+        $(".navbar .container").slideDown();
+        $(".navbar .icons").slideDown();
+        $("#logo").slideDown();
+    }
+    hideNavBar();
 
-    $("html").mousemove(function( event ) {
-        $(".navbar").show();
+    $(".navbar").hover(function( event ) {
+        $(".navbar .container").slideDown();
+        $(".navbar .icons").slideDown();
+        $("#logo").slideDown();
 
         clearNavBarTimeout();
         hideNavBar();
@@ -84,9 +91,14 @@ $(document).ready(function () {
 
 function hideNavBar() {
     hideNav = setTimeout(function(){
-        $(".navbar").hide();
-    }, 2000);
+        if (!$('#settings').hasClass('active-btn-blue')) {
+            $(".navbar .container").slideUp();
+            $(".navbar .icons").slideUp();
+            $("#logo").slideUp();
+        }
+    }, 3000);
 }
+
 function clearNavBarTimeout() {
     if(typeof hideNav != 'undefined'){
         clearTimeout(hideNav);
@@ -142,8 +154,7 @@ function toggleEditing() {
     if (isEditing) {
         // navigation bar
         isEditing = false;
-        $('#lock').removeClass('active-btn');
-        $('#lock > i').removeClass('fa-unlock').addClass('fa-lock');
+        $('#lock').removeClass('active-btn-pink');
         $('#settings').prop('disabled', false);
         $('#settings').css('color', '');
 
@@ -182,8 +193,7 @@ function toggleEditing() {
         // navigation bar
         tip = 1;
         isEditing = true;
-        $('#lock').addClass('active-btn');
-        $('#lock > i').removeClass('fa-lock').addClass('fa-unlock');
+        $('#lock').addClass('active-btn-pink');
         $('#settings').prop('disabled', true);
         $('#settings').popover('hide');
         $('#settings').css('color', 'lightgrey');
@@ -227,6 +237,7 @@ function toggleEditing() {
 }
 
 function setSettings() {
+    $('#settings').toggleClass('active-btn-blue');
     if (showKeyboard) {
         $('#display-keyboard').attr("checked", true);
     } else {
