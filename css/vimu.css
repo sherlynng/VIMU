@@ -16,6 +16,10 @@ body, html {
     }
 }
 
+button {
+    cursor: pointer;
+}
+
 /* Navigation Bar */
 nav {
     background-color: ghostwhite;
@@ -35,9 +39,14 @@ nav button {
     color: grey;
 }
 
-.active-btn {
+.active-btn-pink {
     color: lightpink;
 }
+
+.active-btn-blue {
+    color: lightskyblue;
+}
+
 /* End Navigation Bar */
 
 /* Settings */
