@@ -1007,63 +1007,83 @@
 
 <script type='text/javascript'>
     function playMusic(track, key) {
-        if (keyData[key].id !== '') { // is playing
-
-            var currentSound = keyData[key].sound;
-            currentSound.stop();
-            keyData[key].id = '';
-            // console.log("stop audio");
-
-            if (!keyData[key].loop) { // if non loop, create new track
-                var sound = new Howl({
-                    src: ['sounds/' + track],
-                    onload: function () {
-                        var duration = sound.duration();
-                        // console.log(duration);
-
-                        var id = sound.play();
-                        sound.volume(keyData[key].volume, id);
-                        keyData[key].id = id;
-                        keyData[key].sound = sound;
-                        // console.log(keyData[key].id);
-
-                        showLoadingBar(key, duration);
-                    },
-                    onend: function () {
-                        keyData[key].id = ''; // set track ended
-                    }
-                });
-            } // if loop, just stop playing
-
-        } else { // not playing
-            var sound1 = new Howl({
+        if (key == undefined) {
+            if (soundPlayingInDir != undefined) {
+                soundPlayingInDir.stop();
+            }
+            // Play sound from dir
+            var sound = new Howl({
                 src: ['sounds/' + track],
                 onload: function () {
-                    var duration = sound1.duration();
+                    var duration = sound.duration();
                     // console.log(duration);
-
-                    var id = sound1.play();
-                    sound1.volume(keyData[key].volume, id);
-                    // console.log(sound.playing(id));
-                    keyData[key].id = id;
-                    keyData[key].sound = sound1;
-                    // console.log(keyData[key].id);
-                    if (keyData[key].loop) {
-                        sound1.loop(true, id);
-                        showLoadingBarLoop(key, duration);
-                    } else {
-                        showLoadingBar(key, duration);
-                    }
+                    var id = sound.play();
                 },
                 onend: function () {
-                    if (keyData[key].loop) { // if loop, create another progress bar
-                        var duration = sound1.duration(keyData[key].id);
-                        showLoadingBarLoop(key, duration);
-                    } else {
-                        keyData[key].id = ''; // if non loop, set track ended
-                    }
+                    // need to toggle back element
                 }
             });
+            soundPlayingInDir = sound;
+        } else {
+            // Play sound when pressing key
+            if (keyData[key].id !== '') { // is playing
+
+                var currentSound = keyData[key].sound;
+                currentSound.stop();
+                keyData[key].id = '';
+                // console.log("stop audio");
+
+                if (!keyData[key].loop) { // if non loop, create new track
+                    var sound = new Howl({
+                        src: ['sounds/' + track],
+                        onload: function () {
+                            var duration = sound.duration();
+                            // console.log(duration);
+
+                            var id = sound.play();
+                            sound.volume(keyData[key].volume, id);
+                            keyData[key].id = id;
+                            keyData[key].sound = sound;
+                            // console.log(keyData[key].id);
+
+                            showLoadingBar(key, duration);
+                        },
+                        onend: function () {
+                            keyData[key].id = ''; // set track ended
+                        }
+                    });
+                } // if loop, just stop playing
+
+            } else { // not playing
+                var sound1 = new Howl({
+                    src: ['sounds/' + track],
+                    onload: function () {
+                        var duration = sound1.duration();
+                        // console.log(duration);
+
+                        var id = sound1.play();
+                        sound1.volume(keyData[key].volume, id);
+                        // console.log(sound.playing(id));
+                        keyData[key].id = id;
+                        keyData[key].sound = sound1;
+                        // console.log(keyData[key].id);
+                        if (keyData[key].loop) {
+                            sound1.loop(true, id);
+                            showLoadingBarLoop(key, duration);
+                        } else {
+                            showLoadingBar(key, duration);
+                        }
+                    },
+                    onend: function () {
+                        if (keyData[key].loop) { // if loop, create another progress bar
+                            var duration = sound1.duration(keyData[key].id);
+                            showLoadingBarLoop(key, duration);
+                        } else {
+                            keyData[key].id = ''; // if non loop, set track ended
+                        }
+                    }
+                });
+            }
         }
     }
 
@@ -1093,6 +1113,7 @@
 </script>
 
 <script type='text/javascript'>
+    var soundPlayingInDir;
     var keyData = {
 
         Q: {

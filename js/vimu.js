@@ -838,17 +838,29 @@ function toggleOpenFolder(element, event) {
 }
 
 function togglePlaySoundInDir(element, event) {
-    $(element).find("i.fa").toggleClass('fa-play');
-    $(element).find("i.fa").toggleClass('fa-stop');
+    $(element).find("i.fa").removeClass('fa-play');
+    $(element).find("i.fa").addClass('fa-stop');
 
     if (!$(element).hasClass("selected")) {
+        // clicking on a different sound file
         var selected = document.getElementsByClassName("selected");
         $(selected).each(function () {
-            $(selected).find("i.fa").toggleClass('fa-play');
-            $(selected).find("i.fa").toggleClass('fa-stop');
+            $(selected).find("i.fa").addClass('fa-play');
+            $(selected).find("i.fa").removeClass('fa-stop');
             $(selected).removeClass('selected');
         });
         $(element).addClass('selected');
+        playMusic($(element).find("p.soundname").text());
+    } else if (soundPlayingInDir != undefined) {
+        // stop the music
+        $(element).find("i.fa").addClass('fa-play');
+        $(element).find("i.fa").removeClass('fa-stop');
+        soundPlayingInDir.stop();
+        soundPlayingInDir = undefined;
+    } else {
+        $(selected).find("i.fa").addClass('fa-play');
+        $(selected).find("i.fa").removeClass('fa-stop');
+        playMusic($(element).find("p.soundname").text());
     }
 }
 
