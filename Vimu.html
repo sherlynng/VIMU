@@ -832,7 +832,7 @@
                                             <label for="quantization" class="audio-settings">Quantize
                                                 to:</label>
                                             <div class="styled-select">
-                                                <select id="quantization" class="styled-select">
+                                                <select id="quantization" class="styled-select no-audio">
                                                     <option>1</option>
                                                     <option>1/2</option>
                                                     <option>1/4</option>
@@ -853,42 +853,44 @@
                                             </div>
                                         </div> -->
 
-                                        <div class="form-group" style="width:100%;">
-                                            <label for="loop" class="audio-settings">Loop:</label>
-                                            <span class="checkbox-switch">
+                                        <div class="form-group" class="volume">
+                                            <div class="volume-slider">
+                                                <i class="fa fa-volume-up no-audio"></i>
+                                                <input type="range" min="0" max="100" value="50"
+                                                       class="volume-slider no-audio"
+                                                       id="volume" onchange="setVolume(this.value)">
+                                            </div>
+                                        </div>
+
+                                    </form>
+                                </div>
+                                <div class="col-sm-3">
+                                    <div class="form-group" style="width:100%;">
+                                        <label for="loop" class="audio-settings">Loop:</label>
+                                        <span class="checkbox-switch">
                                                 <!--<input type="checkbox" class="input-checkbox" id="loop" onchange="loop()">-->
-                                                <input class="input-checkbox" type="checkbox" id="loop"
+                                                <input class="input-checkbox no-audio" type="checkbox" id="loop"
                                                        onchange="toggleLoop(this)">
                                                 <div class="checkbox-animate">
                                                     <span class="checkbox-off" id="loop-off">OFF</span>
                                                     <span class="checkbox-on" id="loop-on">ON</span>
                                                 </div>
                                             </span>
-                                        </div>
-
-                                        <div class="form-group" style="width:100%;">
-                                            <label for="hold-to-play" class="audio-settings">Hold To
-                                                Play:</label>
-                                            <span class="checkbox-switch">
-                                                <input type="checkbox" class="input-checkbox"
-                                                       id="hold-to-play">
-                                                <div class="checkbox-animate">
-                                                    <span class="checkbox-off">OFF</span>
-                                                    <span class="checkbox-on">ON</span>
-                                                </div>
-                                            </span>
-                                        </div>
-                                        <br/>
-                                    </form>
-                                </div>
-                                    <div class="form-group" class="volume">
-                                        <div class="volume-slider">
-                                            <i class="fa fa-volume-up"></i>
-                                            <input type="range" min="0" max="100" value="50"
-                                                   class="volume-slider"
-                                                   id="volume" onchange="setVolume(this.value)">
-                                        </div>
                                     </div>
+
+                                    <div class="form-group" style="width:100%;">
+                                        <label for="hold-to-play" class="audio-settings">Hold To
+                                            Play:</label>
+                                        <span class="checkbox-switch">
+                                            <input type="checkbox" class="input-checkbox no-audio"
+                                                   id="hold-to-play">
+                                            <div class="checkbox-animate">
+                                                <span class="checkbox-off">OFF</span>
+                                                <span class="checkbox-on">ON</span>
+                                            </div>
+                                        </span>
+                                    </div>
+                                </div>
                                 </div>
                             </div>
                         </div>

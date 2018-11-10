@@ -705,13 +705,15 @@ function setAudio(element, key) {
         $('#audio-contents').contents().show();
         $('#wave').show();
         $('#no-audio').hide();
-        $('.audio-settings').attr('disabled', false);
+        $('.no-audio').attr('disabled', false);
+        $('.no-audio').css('color', '');
         $('.audio-settings').css('color', '');
         $('#volume').removeClass('volume-slider-disabled');
     } else { // no audio selected
         $('#wave').hide();
         $('#no-audio').show();
-        $('.audio-settings').attr('disabled', true);
+        $('.no-audio').attr('disabled', true);
+        $('.no-audio').css('color', '#A0A0A0');
         $('.audio-settings').css('color', '#A0A0A0');
         $('#volume').addClass('volume-slider-disabled');
     }

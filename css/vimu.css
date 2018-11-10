@@ -366,7 +366,7 @@ p.soundname {
     padding-left: 70px;
 }
 
-.soundname:hover {
+.sound-file p {
     cursor: -webkit-grab;
     cursor: -moz-grab;
     cursor: grab;
@@ -421,6 +421,10 @@ p.soundname {
     text-align: left;
     float: left;
     width: 50%;
+}
+
+.volume-slider {
+    margin-left: 30px;
 }
 
 /* waveform */
