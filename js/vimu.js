@@ -932,3 +932,7 @@ function editShape(selectedShape){
         });
     }
 } 
+
+function updatePreviewColourHex(hex){
+    updatePreviewColour(hex);
+}
