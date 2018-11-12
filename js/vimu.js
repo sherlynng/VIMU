@@ -197,11 +197,11 @@ function toggleEditing() {
         // navigation bar
         tip = 1;
         isEditing = true;
+        tutorial()
         $('#lock').addClass('active-btn-pink');
         $('#settings').prop('disabled', true);
         $('#settings').popover('hide');
         $('#settings').css('color', 'lightgrey');
-        $('#info').popover('hide');
 
         // layout
         $('#myCanvas').hide();
@@ -915,16 +915,20 @@ function editShape(selectedShape){
  
  function tutorial() {
     console.log(tip);
-     if(localStorage.getItem('popState') != 'shown' && tip == 1){
+    //  if(localStorage.getItem('popState') != 'shown' && tip == 1){
+    //     $("#tip-popup").fadeIn();
+    //     localStorage.setItem('popState','shown')
+    //}
+    if(firstTimeEditing && tip == 1){
         $("#tip-popup").fadeIn();
-        localStorage.setItem('popState','shown')
+    
+        $('#tip-popup-close').click(function(e) // You are clicking the close button
+        {
+        $('#tip-popup').fadeOut();
+        });
+        $('#tip-popup').click(function(e) 
+        {
+        $('#tip-popup').fadeOut(); 
+        });
     }
-     $('#tip-popup-close').click(function(e) // You are clicking the close button
-    {
-    $('#tip-popup').fadeOut();
-    });
-    $('#tip-popup').click(function(e) 
-    {
-    $('#tip-popup').fadeOut(); 
-    });
 } 
