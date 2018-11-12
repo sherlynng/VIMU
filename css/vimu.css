@@ -881,6 +881,7 @@ p.soundname {
 #tab-container {
     background-color: #D6EACC;
     bottom: 0;
+    right: 0;
     height: 30%;
     position: absolute;
     width: 100%;
