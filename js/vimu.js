@@ -81,7 +81,8 @@ $(document).ready(function () {
     }
     hideNavBar();
 
-    $(".navbar").hover(function( event ) {
+    $("html").mousemove(function( event ) {
+        $(".navbar").slideDown();
         $(".navbar .container").slideDown();
         $(".navbar .icons").slideDown();
         $("#logo").slideDown();
