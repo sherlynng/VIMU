@@ -81,7 +81,9 @@ $(document).ready(function () {
     }
     hideNavBar();
 
-    $(".navbar").hover(function( event ) {
+    $("html").mousemove(function( event ) {
+        $('.navbar').css('background-color', 'rgb(231, 231, 231)');
+        $(".navbar").slideDown();
         $(".navbar .container").slideDown();
         $(".navbar .icons").slideDown();
         $("#logo").slideDown();
@@ -97,6 +99,7 @@ function hideNavBar() {
             $(".navbar .container").slideUp();
             $(".navbar .icons").slideUp();
             $("#logo").slideUp();
+            $('.navbar').css('background-color', 'white');
         }
     }, 3000);
 }
