@@ -82,6 +82,7 @@ $(document).ready(function () {
     hideNavBar();
 
     $("html").mousemove(function( event ) {
+        $('.navbar').css('background-color', 'rgb(231, 231, 231)');
         $(".navbar").slideDown();
         $(".navbar .container").slideDown();
         $(".navbar .icons").slideDown();
@@ -98,6 +99,7 @@ function hideNavBar() {
             $(".navbar .container").slideUp();
             $(".navbar .icons").slideUp();
             $("#logo").slideUp();
+            $('.navbar').css('background-color', 'white');
         }
     }, 3000);
 }
